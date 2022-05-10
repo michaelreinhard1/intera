@@ -1,0 +1,68 @@
+.Logo{
+    width: 60px;
+}
+
+.Login{
+    background-image: url('../../../assets/images/login-background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    img{
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+
+    }
+
+    &__BackgroundColor{
+        min-width: 100%;
+        min-height: 100%;
+        position: absolute;
+        opacity: .6;
+        background: rgb(43,101,249);
+        background: linear-gradient(90deg, rgba(43,101,249,1) 0%, rgba(34,80,197,1) 35%, rgba(20,48,120,1) 100%);
+    }
+}
+
+
+// .Login {
+//     box-shadow: 0px 0px 22px 7px rgba(0,0,0,0.10);
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     gap: 2em;
+//     padding: 2em;
+
+//     form{
+//         display: flex;
+//         flex-direction: column;
+//         gap: 1em;
+//         width: 100%;
+//     }
+
+//     .Logo{
+//         display: flex;
+//         width: 100%;
+//         justify-content: center;
+//         align-items: center;
+//         flex-direction: column;
+//         gap: 2em;
+
+//     }
+
+//     a{
+//         width: 100%;
+//     }
+    
+//     .btn{
+//         width: 100%;
+//     }
+// }

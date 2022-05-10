@@ -1,0 +1,16 @@
+.Home{
+    background-image: url('../../../assets/images/bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 800px;
+
+    &__Banner{
+
+        position: relative;
+        img{
+            width: 100%;
+        }
+    }
+
+}

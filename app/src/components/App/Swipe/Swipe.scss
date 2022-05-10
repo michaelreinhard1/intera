@@ -1,0 +1,15 @@
+.Swipe{
+    &__Buttons{
+        display: flex;
+        gap: 1em;
+    }
+
+    &__Buttons{
+        width: 100%;
+
+        button{
+            width: 50%;
+        }
+    }
+
+}
