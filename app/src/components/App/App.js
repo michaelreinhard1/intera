@@ -1,27 +1,36 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import NotFound from './NotFound/NotFound';
-import Login from './Login/Login';
+import Login from './Auth/Login/Login';
+import Register from './Auth/Register/Register';
 import Home from './Home/Home';
 // import Swipe from './Swipe/Swipe';
-// import AuthContainer from './AuthContainer';
+import AuthProvider from './Auth/AuthProvider';
 import Header from './Header/Header';
-import Container from '../Design/Container/Container';
+import OnboardingLayout from './Auth/OnboardingLayout';
 // import Likes from './Likes/Likes';
+import Profile from './Auth/Profile/Profile'; 
 
 function App() {
   return (
-    // <AuthContainer> 
-      <Router>
+    <AuthProvider> 
+        <Router>
           <Header/>
-                <Routes>
+              <Routes>
+                  <Route path={'/'} element={<Home />} />
+                  <Route path='/account' element={<OnboardingLayout />}>
+                      <Route path={'/account/login'} element={<Login />} />
+                      <Route path="/account/register" element={ <Register /> }/>
+                  </Route>
+
+                  <Route path={'/profile'} element={<Profile />} />
+
                   <Route path="*" element={ <NotFound /> }/>
-                  <Route path="/" element={ <Home /> }/>
-                  <Route path="/login" element={ <Login /> }/>
-                </Routes>
-      </Router>
-    // </AuthContainer>
+                  
+              </Routes>
+        </Router>
+    </AuthProvider>
   );
 }
 

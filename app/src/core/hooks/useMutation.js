@@ -5,7 +5,7 @@ import { handleErrors } from "../helpers/api";
 const useMutation = () => {
   const auth = useAuthContext();
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
 
   // method is pretty long, so async/await looks better than Promise.then()
   const mutate = async (url, options = {}) => {
@@ -44,6 +44,7 @@ const useMutation = () => {
       }
     }
   };
+
 
   return {
     isLoading,

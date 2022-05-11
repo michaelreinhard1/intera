@@ -11,6 +11,7 @@ const Input = ({ type, name, placeholder, value, onChange, className, disabled =
       onChange={onChange}
       disabled={disabled}
       placeholder={placeholder}
+      required
     />
   );
 };

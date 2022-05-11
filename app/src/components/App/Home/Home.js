@@ -14,8 +14,8 @@ const Home = () => {
                         <div className="SearchVariables flex justify-between gap-x-10">
                           <div className="City w-auto">
                             <p className='pb-4'>Select a city</p>
-                              <select name="city" id="" className='bg-blue-100 rounded p-3'>
-                                  <option selected disabled value="">Select a city</option>
+                              <select name="city" id="" className='bg-sky-50 rounded p-3'>
+                                  <option disabled value="">Select a city</option>
                                   <option value="">Paris</option>
                                   <option value="">Lyon</option>
                                   <option value="">Marseille</option>
@@ -27,8 +27,8 @@ const Home = () => {
                           </div>
                           <div className="Type w-auto">
                             <p className='pb-4'>Type</p>
-                              <select name="type" id="" className='bg-blue-100 rounded p-3'>
-                                  <option selected disabled value="">Type</option>
+                              <select name="type" id="" className='bg-sky-50 rounded p-3'>
+                                  <option disabled value="">Type</option>
                                   <option value="">House</option>
                                   <option value="">Apartment</option>
                                   <option value="">Flat</option>
@@ -39,8 +39,8 @@ const Home = () => {
                           </div>
                           <div className="Price w-auto">
                             <p className='pb-4'>Price</p>
-                              <select name="price" id="" className='bg-blue-100 rounded p-3'>
-                                  <option selected disabled value="">Price</option>
+                              <select name="price" id="" className='bg-sky-50 rounded p-3'>
+                                  <option disabled value="">Price</option>
                                   <option value="">€0 - €100.000</option>
                                   <option value="">€100.000 - €200.000</option>
                                   <option value="">€200.000 - €300.000</option>

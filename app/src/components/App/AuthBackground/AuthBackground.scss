@@ -1,0 +1,24 @@
+.AuthBackground{
+    background-image: url('../../../assets/images/login-background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    img{
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+
+    }
+
+    &__BackgroundColor{
+        min-width: 100%;
+        min-height: 100%;
+        position: absolute;
+        opacity: .6;
+        background: rgb(43,101,249);
+        background: linear-gradient(90deg, rgba(43,101,249,1) 0%, rgba(34,80,197,1) 35%, rgba(20,48,120,1) 100%);
+    }
+}

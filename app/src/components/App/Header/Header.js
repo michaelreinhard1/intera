@@ -1,29 +1,30 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import Button from '../../Design/Button/Button';
 // import { useAuthContext } from '../AuthContainer';
 import './Header.scss'
 import Logo from  '../../../assets/icons/Logo.svg';
+import { useAuthContext } from "../Auth/AuthProvider";
 
 const Header = () => {
 
-  // const { logout } = useAuthContext();
+	const { logout } = useAuthContext();
 
-  // const handleLogout = () => {
-  //   logout();
-  // };
+	const { auth } = useAuthContext();
+	const location = useLocation();
 
-  const [isOpen, setIsOpen] = React.useState(false);
+	//   set auth to true
 
-  const openHamburger = () => {
-	  	console.log('open');
-		setIsOpen(!isOpen);
-  }
+	const [isOpen, setIsOpen] = React.useState(false);
+
+	const openHamburger = () => {
+			setIsOpen(!isOpen);
+	}
 
       return (
         <>
 	<nav className="Nav z-50 fixed w-full px-4 py-4 flex justify-center items-center bg-white">
-  <div className="Nav__Container w-1440px  px-4 py-4 flex justify-center items-center bg-white">
+  <div className="Nav__Container w-1440px  px-4 py-4 flex lg:justify-between md:justify-center sm:justify-center items-center bg-white">
 		<NavLink className='Nav__Logo text-3xl font-bold leading-none' to={'/'}>
 			<img src={Logo} alt="" />
 		</NavLink>
@@ -66,12 +67,35 @@ const Header = () => {
 			</li>
 			<li><NavLink  className={({ isActive }) => (isActive ? 'text-blue-600 font-bold' : 'text-gray-400 hover:text-gray-500')} to="/contact">Contact</NavLink></li>
 		</ul>
-    <Button className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100  text-gray-900 font-bold  rounded-xl transition duration-200" href={'/login'}>
-      Login
-    </Button>
-    <Button className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600  text-white font-bold rounded-xl transition duration-200" href={'/register'}>
-      Register
-    </Button>
+
+		{/* If no auth show Login and Register button else show Log out */}
+		{!auth ? (
+			<>
+			<div>
+
+				<Button className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100  text-gray-900 font-bold  rounded-xl transition duration-200" href={'/account/login'}>
+				Login
+				</Button>
+				<Button className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600  text-white font-bold rounded-xl transition duration-200" href={'/account/register'}>
+				Register
+				</Button>
+			</div>
+			</>
+		) : (
+			<>
+			<div>
+				
+				<Button href={'/profile'} className="hidden lg:inline-block lg:mr-3 py-2 px-6 bg-blue-500 hover:bg-blue-600  text-white font-bold rounded-xl transition duration-200">
+				My account
+				</Button>
+				<Button className="hidden lg:inline-block lg:ml-auto  py-2 px-6 bg-gray-50 hover:bg-gray-100 hover:text-red-700 text-gray-900 font-bold  rounded-xl transition duration-200" onClick={logout}>
+				Logout
+				</Button>
+			</div>
+			</>
+
+	)}
+
   </div>
 	</nav>
 	<div className={`navbar-menu relative z-50 ${isOpen ? '' : 'hidden'}`} >
@@ -122,10 +146,10 @@ const Header = () => {
 				<div className="pt-6">
 					<NavLink
 					onClick={openHamburger}
-					className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" to="/login">Login</NavLink>
+					className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" to="/account/login">Login</NavLink>
 					<NavLink
 					onClick={openHamburger}
-					className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" to="/register">Register</NavLink>
+					className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" to="/account/register">Register</NavLink>
 				</div>
 				<p className="my-4 text-xs text-center text-gray-400">
 					<span>Copyright © 2022</span>
