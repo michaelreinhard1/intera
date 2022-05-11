@@ -11,7 +11,6 @@ const registerOnboardingRoutes = (router: Router) => {
     const userController = new UserController();
     router.post("/login", authLocal, authController.login);
     router.post("/register", authController.register);
-    
     // test route REMOVE after
     if (process.env.ENV === "development") {
         router.post("/dev/users", userController.create);

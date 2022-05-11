@@ -50,7 +50,8 @@ const Login = () => {
             <div className="bg-white absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-4">
               <img className='Logo' src={Icon} alt="Logo"/>
             </div>
-            <form onSubmit={handleSubmit} className="p-12 pt-20 md:p-18 rounded-xl flex flex-col">
+            <h1 className='text-center font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600 py-20 pb-8'>Login</h1>
+            <form onSubmit={handleSubmit} className="p-12 pt-0 md:p-18 rounded-xl flex flex-col">
               <div className="flex items-center text-lg mb-6 md:mb-8">
                 <div className='w-full'>
                   <label htmlFor="email" className='w-full'>Email</label>

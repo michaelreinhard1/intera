@@ -53,7 +53,8 @@ const Register = () => {
             <div className="bg-white absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-4">
               <img className='Logo' src={Icon} alt="Logo"/>
             </div>
-            <form action='/login/password' method="post" onSubmit={handleSubmit} className="p-12 pt-20 md:p-18 rounded-xl flex flex-col">
+            <h1 className='text-center font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600 py-20 pb-8'>Register</h1>
+            <form action='/login/password' method="post" onSubmit={handleSubmit} className="p-12 pt-20 pt-0 md:p-18 rounded-xl flex flex-col">
               <div className="flex items-center justify-between text-lg mb-6 md:mb-8">
                 <div className='w-5/12'>
                   <label htmlFor="name" className='w-6/12'>Name</label>
@@ -89,7 +90,7 @@ const Register = () => {
                   Register
               </Button>
 
-              <Link className='flex self-center gap-x-2 mt-5 px-2 inline-block text-sm  no-underline' to={'/login'}>
+              <Link className='flex self-center gap-x-2 mt-5 px-2 inline-block text-sm  no-underline' to={'/account/login'}>
                       Already have an account?<span className='text-blue-600'>Login here</span>
               </Link>
             </form>
