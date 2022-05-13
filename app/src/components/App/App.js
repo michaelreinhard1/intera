@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NotFound from './NotFound/NotFound';
 import Login from './Auth/Login/Login';
 import Register from './Auth/Register/Register';
@@ -11,7 +11,6 @@ import Header from './Header/Header';
 import OnboardingLayout from './Auth/OnboardingLayout';
 // import Likes from './Likes/Likes';
 import Profile from './Auth/Profile/Profile'; 
-import AdminLayout from './Auth/Admin/AdminLayout';
 
 function App() {
   return (
