@@ -11,9 +11,6 @@ const Header = () => {
 	const { logout } = useAuthContext();
 
 	const { auth } = useAuthContext();
-	const location = useLocation();
-
-	//   set auth to true
 
 	const [isOpen, setIsOpen] = React.useState(false);
 
@@ -24,7 +21,7 @@ const Header = () => {
       return (
         <>
 	<nav className="Nav z-50 fixed w-full px-4 py-4 flex justify-center items-center bg-white">
-  <div className="Nav__Container w-1440px  px-4 py-4 flex lg:justify-between md:justify-center sm:justify-center items-center bg-white">
+  		<div className="Nav__Container w-1440px  px-4 py-4 flex lg:justify-between md:justify-center sm:justify-center items-center bg-white">
 		<NavLink className='Nav__Logo text-3xl font-bold leading-none' to={'/'}>
 			<img src={Logo} alt="" />
 		</NavLink>

@@ -1,4 +1,5 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import AuthBackground from "../AuthBackground/AuthBackground";
 import { useAuthContext } from "./AuthProvider";
 
 const OnboardingLayout = () => {
@@ -7,11 +8,12 @@ const OnboardingLayout = () => {
 
     if (!auth) {
         return (
-            <Outlet />
+            <AuthBackground>
+                <Outlet />
+            </AuthBackground>
         );
-    }
-
-
+    } 
+    
     // check if a previous path was available
     const from = location.state?.from?.pathname || "/";
 

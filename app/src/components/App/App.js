@@ -11,6 +11,7 @@ import Header from './Header/Header';
 import OnboardingLayout from './Auth/OnboardingLayout';
 // import Likes from './Likes/Likes';
 import Profile from './Auth/Profile/Profile'; 
+import AdminLayout from './Auth/Admin/AdminLayout';
 
 function App() {
   return (

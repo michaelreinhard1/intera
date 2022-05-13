@@ -23,4 +23,13 @@ export default class AuthController {
 
 
     };
+    registerAdmin = async (req: AuthRequest, res: Response, next: NextFunction) => {
+
+
+        const userController = new UserController();
+
+        // Create a user with role admin
+        await userController.create(req, res, next);
+
+    };
 }

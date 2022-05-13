@@ -47,7 +47,6 @@ const Register = () => {
   };
   return (
 
-    <AuthBackground>
           <Container className={"h-screen overflow-hidden flex items-center justify-center"}>
           <div className="relative bg-white shadow-3xl rounded-xl sm:w-6/12  md:w-6/12 lg:w-6/12 xl:w-8/12 2xl:w-4/12">
             <div className="bg-white absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-4">
@@ -96,7 +95,6 @@ const Register = () => {
             </form>
           </div>
           </Container>
-    </AuthBackground>
   )
 }
 
