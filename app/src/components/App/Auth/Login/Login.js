@@ -11,8 +11,11 @@ import {Link } from 'react-router-dom';
 import { useAuthContext } from '../../Auth/AuthProvider';
 import { t } from 'i18next';
 import { AuthRoutes } from '../../../../core/routing';
+import useTitle from '../../../../core/hooks/useTitle';
 
 const Login = () => {
+
+  useTitle(t('login.title'));
 
   const { login } = useAuthContext();
 

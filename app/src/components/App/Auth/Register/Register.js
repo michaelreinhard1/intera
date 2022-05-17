@@ -12,8 +12,13 @@ import { Link, Navigate } from 'react-router-dom';
 import { useAuthContext } from '../AuthProvider';
 import { t } from 'i18next';
 import { AuthRoutes } from '../../../../core/routing';
+import useTitle from '../../../../core/hooks/useTitle';
 
 const Register = () => {
+
+useTitle(t('register.title'));
+
+  const { isLoading, error, mutate } = useMutation();
 
   const { login } = useAuthContext();
 
@@ -32,8 +37,12 @@ const Register = () => {
       });
   };
 
-  const { isLoading, error, mutate } = useMutation();
 
+
+
+  if (error) {
+    console.log(error);
+  }
   const handleSubmit = (e) => {
       e.preventDefault();
 
@@ -57,7 +66,7 @@ const Register = () => {
               <img className='Logo' src={Icon} alt="Logo"/>
             </div>
             <h1 className='text-center font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600 py-20 pb-8'>{t('register.title')}</h1>
-            <form action='/login/password' method="post" onSubmit={handleSubmit} className="p-12 pt-20 pt-0 md:p-18 rounded-xl flex flex-col">
+            <form action='/login/password' method="post" onSubmit={handleSubmit} className="p-12 pt-0 md:p-18 rounded-xl flex flex-col">
               <div className="flex items-center justify-between text-lg mb-6 md:mb-8">
                 <div className='w-5/12'>
                   <label htmlFor="name" className='w-6/12'>{t('register.name')}</label>

@@ -5,6 +5,13 @@
             "button": "Login"
         }
     },
+    "home": {
+        "title": "Home"
+    },
+    "notfound": {
+        "title": "404",
+        "message": "Page not found"
+    },
     "navigation": {
         "clients": "Clients",
         "projects": "Projects",

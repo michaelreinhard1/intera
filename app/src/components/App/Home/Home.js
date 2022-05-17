@@ -2,8 +2,12 @@ import React from 'react'
 import house from '../../../assets/images/house.jpg'
 import './Home.scss'
 import Container from '../../Design/Container/Container'
+import useTitle from '../../../core/hooks/useTitle';
+import { t } from 'i18next';
 
 const Home = () => {
+useTitle(t('home.title'));
+
   return (
     <>
         {/* Make a landing page image with a big title on the left with a button and an image on the right */}
