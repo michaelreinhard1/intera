@@ -1,0 +1,111 @@
+{
+    "onboarding": {
+        "login": {
+            "title": "Login",
+            "button": "Login"
+        }
+    },
+    "navigation": {
+        "clients": "Clients",
+        "projects": "Projects",
+        "users": "Users",
+        "buy": "Buy",
+        "rent": "Rent",
+        "sell": "Sell",
+        "saved": "Saved",
+        "contact": "Contact",
+        "mobile menu": "Mobile menu"
+    },
+    "login":{
+        "title": "Login",
+        "email": "Email",
+        "password": "Password",
+        "forgot password": "Forgot password?",
+        "error": "Error",
+        "error message": "Invalid email or password",
+        "dont have an account": "Don't have an account?",
+        "register here": "Register here"
+    },
+    "register":{
+        "title": "Register",
+        "name": "Name",
+        "surname": "Surname",
+        "email": "Email",
+        "password": "Password",
+        "confirm password": "Confirm password",
+        "register": "Register",
+        "error": "Error",
+        "error message": "Invalid email or password",
+        "already have an account": "Don't have an account?",
+        "login here": "Login here"
+    },
+    "clients": {
+        "title": "Clients",
+        "overview": {
+            "title": "Clients",
+            "create": "Create client"
+        },
+        "create": {
+            "title": "Create client"
+        },
+        "edit": {
+            "title": "Edit client"
+        },
+        "fields": {
+            "contact": "Contact person"
+        }
+    },
+    "projects": {
+        "title": "Projects",
+        "overview": {
+            "title": "Projects",
+            "create": "Create project"
+        },
+        "create": {
+            "title": "Create project"
+        },
+        "edit": {
+            "title": "Edit project"
+        }
+    },
+    "users": {
+        "title": "Users",
+        "overview": {
+            "title": "Users",
+            "create": "Create user"
+        },
+        "create": {
+            "title": "Create user"
+        },
+        "edit": {
+            "title": "Edit user"
+        }
+    },
+    "buttons": {
+        "create": "Create",
+        "edit": "Edit",
+        "save": "Save",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "close": "Close",
+        "back": "Back",
+        "next": "Next",
+        "previous": "Previous",
+        "finish": "Finish",
+        "search": "Search",
+        "reset": "Reset",
+        "add": "Add",
+        "login": "Login",
+        "logout": "Logout",
+        "register": "Register",
+        "my account": "My account"
+    },
+    "fields": {
+        "id": "Id",
+        "email": "Email",
+        "name": "Name",
+        "password": "Password",
+        "client": "Client",
+        "role": "Role"
+    }
+}

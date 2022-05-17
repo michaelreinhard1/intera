@@ -1,8 +1,11 @@
-const handleErrors = (res) => {
+import ApiError from "../error/ApiError";
+
+const handleErrors = async (res) => {
     if (!res.ok) {
-      return Promise.reject(res);
+        const json = await res.json();
+        throw new ApiError(json);
     }
-    return res.json();
-  };
-  
-  export { handleErrors };
+    return await res.json();
+};
+
+export { handleErrors };
