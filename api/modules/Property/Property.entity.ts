@@ -6,7 +6,7 @@ import { BaseEntity } from "../BaseEntity";
 export default class Property extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
-    
+
     @Column({ type: "varchar", length: 255 })
     name: string;
 
@@ -16,14 +16,23 @@ export default class Property extends BaseEntity {
     @Column({ type: "varchar", length: 255 })
     image: string;
 
-    @Column({ type: "varchar", length: 255 })
+    @Column({ type: "varchar", length: 255 , select: false })
     location: string;
 
     @Column({ type: "varchar", length: 255 })
     type: string;
 
     @Column({ type: "int" })
+    price: number;
+
+    @Column({ type: "int" })
     rooms: number;
+
+    @Column({ type: "int" })
+    bedrooms: number;
+
+    @Column({ type: "int" })
+    bathrooms: number;
 
     @Column({ type: "int" })
     area: number;
@@ -33,9 +42,6 @@ export default class Property extends BaseEntity {
 
     @Column({ type: "int" })
     year: number;
-
-    @Column({ type: "varchar", length: 255 })
-    heating: string;
 
     @Column({ type: "boolean" })
     balcony: boolean;

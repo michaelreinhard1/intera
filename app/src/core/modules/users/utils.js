@@ -8,4 +8,8 @@ const isAdmin = (user) => {
     return user.role === UserRoles.Admin;
 };
 
-export { isAdmin, formatName };
+const formatPrice = (price) => {
+    return `€${price.toLocaleString("nl-NL")}`;
+};
+
+export { isAdmin, formatName, formatPrice };

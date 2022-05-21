@@ -6,10 +6,11 @@ export interface PropertyBody {
     location: string;
     type: string;
     rooms: number;
+    bedrooms: number;
+    bathrooms: number;
     area: number;
     floor: number;
     year: number;
-    heating: string;
     balcony: boolean;
     elevator: boolean;
     parking: boolean;

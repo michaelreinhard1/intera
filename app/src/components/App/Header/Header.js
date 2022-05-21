@@ -7,10 +7,9 @@ import { useTranslation } from "react-i18next";
 import NavBar from '../../Design/NavBar/NavBar';
 import { AuthRoutes, HomeRoutes, AdminRoutes } from '../../../core/routing';
 import { isAdmin } from '../../../core/modules/users/utils';
-import { useLocation } from 'react-router-dom';
 
 const Header = () => {
-	
+
 	const { t } = useTranslation();
 
 	const { logout } = useAuthContext();
@@ -22,8 +21,6 @@ const Header = () => {
 	const openHamburger = () => {
 			setIsOpen(!isOpen);
 	}
-    const location = useLocation();
-
 
 	let items = [
 		{
@@ -77,6 +74,7 @@ const Header = () => {
 				onClick: logout
 			},
 		]
+
 	if (isAdmin(auth.user)) {
         // items = [
         //     ...items,
@@ -102,24 +100,24 @@ const Header = () => {
 
     }}
 
-      return (
-		<NavBar navItems={items} isOpen={isOpen} openHamburger={openHamburger}>
+		return (
+			<NavBar navItems={items} isOpen={isOpen} openHamburger={openHamburger}>
 
-			<div>
-				{buttons.map((button, index) => (
-					<Button
-					key={index}
-					color={button.color}
-					className={button.className}
-					href={button.href}
-					onClick={button.onClick}
-					>
-						{button.label}
-					</Button>
-				))}
-			</div>
+				<div>
+					{buttons.map((button, index) => (
+						<Button
+						key={index}
+						color={button.color}
+						className={button.className}
+						href={button.href}
+						onClick={button.onClick}
+						>
+							{button.label}
+						</Button>
+					))}
+				</div>
 
-		</NavBar>
+			</NavBar>
   )
 }
 

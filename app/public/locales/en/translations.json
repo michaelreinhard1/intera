@@ -24,27 +24,10 @@
         "mobile menu": "Mobile menu"
     },
     "login":{
-        "title": "Login",
-        "email": "Email",
-        "password": "Password",
-        "forgot password": "Forgot password?",
-        "error": "Error",
-        "error message": "Invalid email or password",
-        "dont have an account": "Don't have an account?",
-        "register here": "Register here"
+        "title": "Login"
     },
     "register":{
-        "title": "Register",
-        "name": "Name",
-        "surname": "Surname",
-        "email": "Email",
-        "password": "Password",
-        "confirm password": "Confirm password",
-        "register": "Register",
-        "error": "Error",
-        "error message": "Invalid email or password",
-        "already have an account": "Don't have an account?",
-        "login here": "Login here"
+        "title": "Register"
     },
     "clients": {
         "title": "Clients",
@@ -109,10 +92,46 @@
     },
     "fields": {
         "id": "Id",
+        "contact": "Contact",
         "email": "Email",
         "name": "Name",
+        "surname": "Surname",
         "password": "Password",
         "client": "Client",
-        "role": "Role"
+        "role": "Role",
+        "login": "Login",
+        "contact information": "Contact information",
+        "logout": "Logout",
+        "register": "Register",
+        "my account": "My account",
+        "first name": "First name",
+        "last name": "Last name",
+        "phone": "Phone",
+        "address": "Address",
+        "city": "City",
+        "zip": "Zip",
+        "country": "Country",
+        "state": "State",
+        "description": "Description",
+        "price": "Price",
+        "type": "Type",
+        "size": "Size",
+        "rooms": "Rooms",
+        "bathrooms": "Bathrooms",
+        "bedrooms": "Bedrooms",
+        "garages": "Garages",
+        "floor": "Floor",
+        "year": "Year",
+        "image": "Image",
+        "message": "Message",
+        "subject": "Subject",
+        "write your message": "Write your message",
+        "send": "Send",
+        "forgot password": "Forgot Password",
+        "register here": "Register here",
+        "login here": "Login here",
+        "remember me": "Remember me",
+        "dont have an account": "Don't have an account?",
+        "already have an account": "Already have an account?"
     }
 }

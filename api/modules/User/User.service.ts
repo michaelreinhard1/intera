@@ -41,9 +41,13 @@ export default class UserService {
 
         if (!user) {
             const user = await this.repository.save(this.repository.create(body));
-            return user;
+            const obj = {
+                user:{
+                    ...user,
+                },
+            }
+            return obj;
         }
-        
     };
 
     update = async (id: number, body) => {

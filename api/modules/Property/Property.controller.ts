@@ -15,6 +15,11 @@ export default class PropertyController {
         return res.json(properties);
     };
 
+    allWithLocation = async (req: Request, res: Response, next: NextFunction) => {
+        const properties = await this.propertyService.allWithLocation();
+        return res.json(properties);
+    };
+
     find = async (
         req: Request<{ id: string }>,
         res: Response,

@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import Logo from  '../../../assets/icons/Logo.svg';
 import Button from "../Button/Button";
-import { t } from "i18next";
 import { HomeRoutes } from "../../../core/routing";
 
 
@@ -15,19 +14,19 @@ const NavBar = ({ navItems = [], openHamburger, isOpen, children }) => {
                 <img src={Logo} alt="Logo" />
             </NavLink>
         <div className="lg:hidden">
-            <button className="navbar-burger flex items-center text-blue-600 p-3" onClick={openHamburger}>
+            {/* <button className="navbar-burger flex items-center text-blue-600 p-3" onClick={openHamburger}>
                 <svg className="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <title>{t('navigation.mobile menu')}</title>
                     <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
                 </svg>
-            </button>
+            </button> */}
         </div>
-      <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
+      <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
             {navItems.map((navItem) => (
             <>
 
             <li key={navItem.label}>
-                <NavLink 
+                <NavLink
                 className={({ isActive }) => (isActive ? 'text-blue-600 font-bold' : 'text-gray-400 hover:text-gray-500')}
                 to={navItem.href}>{navItem.label}
                 </NavLink>
@@ -48,7 +47,7 @@ const NavBar = ({ navItems = [], openHamburger, isOpen, children }) => {
     {children}
 
 </div>
-    </nav>     
+    </nav>
   <div className={`navbar-menu relative z-50 ${isOpen ? '' : 'hidden'}`} >
 		<div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
 		<nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
@@ -86,7 +85,7 @@ const NavBar = ({ navItems = [], openHamburger, isOpen, children }) => {
 				<div className="pt-6">
 					<NavLink
 					onClick={openHamburger}
-					className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" to="/account/login">Login</NavLink>
+					className="block px-4 py-3 mb-3  text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" to="/account/login">Login</NavLink>
 					<NavLink
 					onClick={openHamburger}
 					className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" to="/account/register">Register</NavLink>

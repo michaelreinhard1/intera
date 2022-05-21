@@ -16,10 +16,21 @@ export default class PropertyService {
         return properties;
     };
 
+    // get all properties including location column
+    allWithLocation = async () => {
+        const properties = await this.repository
+            .createQueryBuilder("property")
+            .select("property")
+            .addSelect("property.location")
+            .getMany();
+        return properties;
+    };
+
     findOne = async (id: number) => {
         const client = await this.repository.findOneBy({ id });
         return client;
     };
+
 
     create = async (body: PropertyBody) => {
         const client = await this.repository.save(this.repository.create(body));

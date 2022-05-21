@@ -1,5 +1,4 @@
 import React from 'react'
-import house from '../../../assets/images/house.jpg'
 import './Home.scss'
 import Container from '../../Design/Container/Container'
 import useTitle from '../../../core/hooks/useTitle';
@@ -57,7 +56,7 @@ useTitle(t('home.title'));
                                   <option value="">€900.000 - €1.000.000</option>
                                   <option value="">€1.000.000 +</option>
                               </select>
-                           </div>                               
+                           </div>
                         </div>
                       </div>
                   </Container>

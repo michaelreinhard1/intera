@@ -1,3 +1,9 @@
+const ApiRoutes = {
+    Login: '/login',
+    Register: '/register',
+    Properties: '/properties'
+}
+
 const AuthRoutes = {
     Index: '/account',
     Register: "/account/register",
@@ -50,4 +56,4 @@ export const route = (path, options = {}) => {
     return path;
 };
 
-export { AuthRoutes, HomeRoutes, ProjectRoutes, UserRoutes, AdminRoutes };
+export { AuthRoutes, HomeRoutes, ProjectRoutes, UserRoutes, AdminRoutes, ApiRoutes };

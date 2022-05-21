@@ -48,6 +48,11 @@ const registerAdminRoutes = (router: Router) => {
     router.use(withRole(UserRole.Admin), adminRouter);
 };
 
+const sharedRoutes = (router: Router) => {
+
+    const propertyController = new PropertyController();
+    router.get("/properties", handleErrors(propertyController.all));
+}
 
 const registerAuthenticatedRoutes = (router: Router) => {
     const authRouter = Router();
@@ -66,25 +71,26 @@ const registerAuthenticatedRoutes = (router: Router) => {
     authRouter.patch("/projects/:id", handleErrors(projectController.update));
     authRouter.delete("/projects/:id", handleErrors(projectController.delete));
 
+    const propertyController = new PropertyController();
+    authRouter.get("/properties", handleErrors(propertyController.allWithLocation));
+
     registerAdminRoutes(authRouter);
 
     // authenticated routes use authJWT
     router.use(authJwt, authRouter);
 };
 
-const brokerRoutes = (router: Router) => {
-
-    const propertyController = new PropertyController();
-    router.get("/properties", propertyController.all);
-
-};
-
 const registerRoutes = (app: Router) => {
+
+
     // onboarding routes (login, ...)
     registerOnboardingRoutes(app);
 
+
     // authenticated routes (authentication required)
     registerAuthenticatedRoutes(app);
+
+    sharedRoutes(app);
 
     // fallback route, return our own 404 instead of default
     app.use((req: Request, res: Response, next: NextFunction) => {
