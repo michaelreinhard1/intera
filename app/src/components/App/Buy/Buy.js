@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from '../../Design/Card/Card'
 import Container from '../../Design/Container/Container'
-import { ApiRoutes } from '../../../core/routing'
+import { ApiRoutes, AuthRoutes, HomeRoutes } from '../../../core/routing'
 import useFetch from '../../../core/hooks/useFetch'
 import { formatPrice } from '../../../core/modules/users/utils'
 import { DotPulse } from '@uiball/loaders'
@@ -19,7 +19,10 @@ const Buy = () => {
 
   return (
       <>
-    {!auth && <Banner message={t('fields.you need to be logged in to see the location')} className={'absolute top-28 w-full'} />}
+    {!auth &&
+    <Banner message={t('fields.you need to be logged in to see the location')} className={'absolute top-28 w-full '}
+    link={{ title: t('navigation.login here'), href: AuthRoutes.Login }}/>
+    }
     <Container>
         <h1>Buy</h1>
 

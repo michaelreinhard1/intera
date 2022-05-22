@@ -22,11 +22,12 @@ const NavBar = ({ navItems = [],buttons=[], toggleHamburger, isOpen, children })
             </button>
         </div>
       <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
-            {navItems.map((navItem) => (
+            {navItems.map((navItem, index) => (
             <>
 
             <li key={navItem.label}>
                 <NavLink
+                key={index}
                 className={({ isActive }) => (isActive ? 'text-blue-600 font-bold' : 'text-gray-400 hover:text-gray-500')}
                 to={navItem.href}>{navItem.label}
                 </NavLink>
@@ -49,7 +50,7 @@ const NavBar = ({ navItems = [],buttons=[], toggleHamburger, isOpen, children })
             <Button
             key={index}
             color={button.color}
-            className={`hidden ${button.className}`}
+            className={`hidden mx-3 ${button.className}`}
             href={button.href}
             onClick={button.onClick}
             >
@@ -77,10 +78,12 @@ const NavBar = ({ navItems = [],buttons=[], toggleHamburger, isOpen, children })
 			</div>
 			<div>
 				<ul>
-                {navItems.map((navItem) => (
+                {navItems.map((navItem, index) => (
                     <>
                     <li key={navItem.label} className="mb-1" >
-                        <NavLink onClick={toggleHamburger}
+                        <NavLink
+                        key={index}
+                        onClick={toggleHamburger}
 						className={({ isActive }) => (isActive ? 'block p-4  font-semibold  bg-blue-50 text-blue-500 rounded' : 'block p-4  font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded')}
 						to={navItem.href}>{navItem.label}</NavLink>
                     </li>

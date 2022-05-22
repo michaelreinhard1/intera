@@ -21,13 +21,18 @@
         "sell": "Sell",
         "saved": "Saved",
         "contact": "Contact",
-        "mobile menu": "Mobile menu"
+        "mobile menu": "Mobile menu",
+        "logout": "Logout",
+        "login here": "Login here"
     },
     "login":{
         "title": "Login"
     },
     "register":{
         "title": "Register"
+    },
+    "profile":{
+        "title": "Profile"
     },
     "clients": {
         "title": "Clients",

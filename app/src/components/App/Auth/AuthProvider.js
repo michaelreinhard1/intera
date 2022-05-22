@@ -14,7 +14,7 @@ const getAuthFromStorage = () => {
 
 const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState(getAuthFromStorage());
-    
+
     useEffect(() => {
         if (auth) {
             localStorage.setItem(KEY, JSON.stringify(auth));

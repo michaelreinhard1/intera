@@ -1,13 +1,16 @@
 import React from 'react'
-import Container from '../Container/Container'
+import { Link } from 'react-router-dom'
 
-const Banner = ({className, message}) => {
+const Banner = ({className, message, link = {}}) => {
   return (
 
     <div className={`bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3 ${className}`} role="alert">
-        <div className="w-4/6 m-auto">
+        <div className="max-w-[1440px] m-auto">
             <p className="font-bold">Informational message</p>
-            <p className="text-sm">{message}</p>
+            <div className="flex gap-1">
+              <p className="text-sm">{message}</p>
+              <Link to={link.href} className="text-sm underline">{link.title}</Link>
+            </div>
         </div>
     </div>
 
