@@ -7,7 +7,6 @@ import { useState } from "react";
 import Container from '../../../Design/Container/Container';
 import Icon from '../../../../assets/icons/Icon.svg';
 import Error from '../../../Design/Alerts/Error';
-import AuthBackground from '../../AuthBackground/AuthBackground';
 import { Link, Navigate } from 'react-router-dom';
 import { useAuthContext } from '../AuthProvider';
 import { t } from 'i18next';
@@ -37,12 +36,6 @@ useTitle(t('register.title'));
       });
   };
 
-
-
-
-  if (error) {
-    console.log(error);
-  }
   const handleSubmit = (e) => {
       e.preventDefault();
 
@@ -56,12 +49,12 @@ useTitle(t('register.title'));
           },
       });
   };
-  const mode = isLoading ? "bg-blue-500" : "";
+  const mode = isLoading ? "bg-blue-400 hover:bg-blue-400" : "";
 
   return (
 
           <Container className={"h-screen overflow-hidden flex items-center justify-center"}>
-          <div className="relative bg-white shadow-3xl rounded-xl mt-24 w-10/12 sm:w-6/12  md:w-6/12 lg:w-6/12 xl:w-8/12 2xl:w-4/12">
+          <div className="relative bg-white shadow-3xl rounded-xl mt-24 ">
             <div className="bg-white absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-4">
               <img className='Logo' src={Icon} alt="Logo"/>
             </div>

@@ -1,10 +1,8 @@
 import useFetch from "../../../../core/hooks/useFetch";
-import { useTranslation } from "react-i18next";
 import "../../NotFound/NotFound.css";
 
 const UsersOverviewScreen = () => {
-    const { t } = useTranslation();
-    const { isLoading, data: users, error } = useFetch("/users");
+    const { isLoading, error } = useFetch("/users");
 
     if (isLoading) {
         // return <LoadingIndicator />;

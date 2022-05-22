@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import NotFound from './NotFound/NotFound';
 import Login from './Auth/Login/Login';
 import Register from './Auth/Register/Register';
@@ -18,6 +18,7 @@ import UsersLayout from './Users/UsersLayout';
 import UsersOverviewScreen from './Users/Overview/UsersOverviewScreen';
 import Buy from './Buy/Buy';
 import Contact from './Contact/Contact';
+import Saved from './Saved/Saved';
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
                   </Route>
 
                   <Route path={HomeRoutes.Buy} element={<Buy />} />
+
+                  <Route path={HomeRoutes.Saved} element={<Saved />} />
 
                   <Route path={HomeRoutes.Contact} element={<Contact />} />
 

@@ -1,20 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Error from '../../Design/Alerts/Error'
 import Button from '../../Design/Button/Button'
 import Container from '../../Design/Container/Container'
 import Form from '../../Design/Form/Form'
 import FormGroup from '../../Design/Form/FormGroup'
-import Input from '../../Design/Input/Input'
-import AuthBackground from '../AuthBackground/AuthBackground'
 import Icon from  '../../../assets/icons/Icon.svg';
 import { useState } from "react";
 import useMutation from '../../../core/hooks/useMutation'
 import { t } from 'i18next';
-import { AuthRoutes } from '../../../core/routing'
 import * as MaterialDesign from "react-icons/md";
-import { Orbit } from '@uiball/loaders'
-import { $ } from 'react-icons/fa';
 
 const Contact = () => {
 
@@ -66,8 +60,10 @@ const Contact = () => {
     const mode = isLoading ? "bg-blue-500" : "";
 
   return (
-    <Container className={"h-screen overflow-hidden flex items-center justify-center bg-slate-100"}>
-    <div className="relative bg-white shadow-3xl rounded-xl sm:w-6/12  md:w-6/12 lg:w-6/12 xl:w-8/12 2xl:w-4/12">
+    <div className={"bg-slate-100"}>
+    <Container className={"h-screen overflow-hidden flex items-center justify-center"}>
+
+    <div className="relative bg-white shadow-3xl rounded-xl w-8/12">
       <div className="bg-white absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-4">
         <img className='Logo' src={Icon} alt="Logo"/>
       </div>
@@ -97,7 +93,7 @@ const Contact = () => {
             value={data.message}
             onChange={handleChange}
             />
-            <Button color="primary" className={'w-full'} disabled={isLoading}>{t('fields.send')}</Button>
+            <Button color="primary" className={`w-full ${mode}`} disabled={isLoading}>{t('fields.send')}</Button>
         </Form>
         <hr className='w-10/12 mx-auto' />
         {error && <Error message={error} />}
@@ -111,8 +107,9 @@ const Contact = () => {
                 </div>
             ))}
         </div>
-    </div>
+        </div>
     </Container>
+    </div>
 )
 }
 

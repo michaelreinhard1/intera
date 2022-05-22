@@ -7,9 +7,6 @@ const Dashboard = () => {
 
   const { auth } = useAuthContext();
 
-  console.log(auth);
-
-
   if (!auth.user.role === "ADMIN") {
     return (
         <Navigate to='/' state={{ replace: true }} />

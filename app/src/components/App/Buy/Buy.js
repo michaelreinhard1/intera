@@ -1,14 +1,15 @@
 import React from 'react'
 import Card from '../../Design/Card/Card'
 import Container from '../../Design/Container/Container'
-import { ApiRoutes, AuthRoutes, HomeRoutes } from '../../../core/routing'
+import { ApiRoutes, AuthRoutes } from '../../../core/routing'
 import useFetch from '../../../core/hooks/useFetch'
 import { formatPrice } from '../../../core/modules/users/utils'
 import { DotPulse } from '@uiball/loaders'
-import { useState } from 'react'
 import { useAuthContext } from '../Auth/AuthProvider'
 import Banner from '../../Design/Alerts/Banner'
 import { t } from 'i18next'
+import Footer from '../../Design/Footer/Footer'
+import AppFooter from '../AppFooter/AppFooter'
 
 const Buy = () => {
 
@@ -19,25 +20,20 @@ const Buy = () => {
 
   return (
       <>
-    {!auth &&
-    <Banner message={t('fields.you need to be logged in to see the location')} className={'absolute top-28 w-full '}
-    link={{ title: t('navigation.login here'), href: AuthRoutes.Login }}/>
-    }
-    <Container>
-        <h1>Buy</h1>
+    <Container className={'pt-32'}>
+        {!auth &&
+        <div className='m-auto rounded-lg flex justify-center'>
+            <Banner title={t('banner.informational message')} message={t('fields.you need to be logged in to see the location')}
+            link={{ title: t('navigation.login here'), href: AuthRoutes.Login }}/>
+        </div>
 
-        {/* If no auth then show banner */}
-
-        {/* Create a row with 3 columns using Tailwind */}
-        <div className="flex flex-wrap mx-3">
-            {/* Create a column with 3 cards using Tailwind */}
-            {/* if isLoading */}
+        }
+        <div className="flex flex-wrap justify-between">
             {isLoading && (
                 <div className="z-50 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <DotPulse size={50} color="#231F20" />
                 </div>
             )}
-            {/* else */}
             {!isLoading && data && data.map( (property) => (
 
                 <Card key={property.id}
@@ -55,7 +51,7 @@ const Buy = () => {
                 />
             ))}
         </div>
-
+        <AppFooter />
     </Container>
     </>
 

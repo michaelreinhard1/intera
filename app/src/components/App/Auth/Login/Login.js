@@ -7,7 +7,7 @@ import { useState } from "react";
 import Container from '../../../Design/Container/Container';
 import Icon from  '../../../../assets/icons/Icon.svg';
 import Error from '../../../Design/Alerts/Error';
-import {Link } from 'react-router-dom';
+import {Link, Navigate, useLocation } from 'react-router-dom';
 import { useAuthContext } from '../../Auth/AuthProvider';
 import { t } from 'i18next';
 import { AuthRoutes } from '../../../../core/routing';
@@ -18,6 +18,7 @@ const Login = () => {
   useTitle(t('login.title'));
 
   const { login } = useAuthContext();
+  const location = useLocation();
 
   const [data, setData] = useState({
       email: "",
@@ -31,7 +32,7 @@ const Login = () => {
       });
   };
 
-  const { isLoading, error, mutate } = useMutation();
+  const {  isLoading, error, mutate } = useMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,17 +42,18 @@ const Login = () => {
       data,
       onSuccess: (data) => {
               login(data);
+              const from = location.state?.from?.pathname || "/";
+              <Navigate to={from} state={{ replace: true }} />
             },
           });
   };
 
-
-  const mode = isLoading ? "bg-blue-500" : "";
+  const mode = isLoading ? "bg-blue-400 hover:bg-blue-400" : "";
 
   return (
 
           <Container className={"h-screen overflow-hidden flex items-center justify-center"}>
-          <div className="relative bg-white shadow-3xl rounded-xl mt-14 w-10/12 sm:w-6/12  md:w-6/12 lg:w-6/12 xl:w-8/12 2xl:w-4/12">
+          <div className="relative bg-white shadow-3xl rounded-xl mt-14 ">
             <div className="bg-white absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-4">
               <img className='Logo' src={Icon} alt="Logo"/>
             </div>

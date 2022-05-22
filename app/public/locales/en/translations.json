@@ -13,6 +13,13 @@
         "message": "Page not found"
     },
     "navigation": {
+        "home": "Home",
+        "services": "Services",
+        "about": "About",
+        "resources": "Resources",
+        "terms of use": "Terms of Use",
+        "privacy policy": "Privacy Policy",
+        "about us": "About us",
         "clients": "Clients",
         "projects": "Projects",
         "users": "Users",
@@ -32,7 +39,8 @@
         "title": "Register"
     },
     "profile":{
-        "title": "Profile"
+        "title": "Profile",
+        "likes": "Likes"
     },
     "clients": {
         "title": "Clients",
@@ -49,6 +57,17 @@
         "fields": {
             "contact": "Contact person"
         }
+    },
+    "banner":{
+        "informational message": "Informational message",
+        "dont lose your saved properties": "Don't lose your saved properties",
+        "please login to make sure you dont lose your saved properties": "Please login to make sure you dont lose your saved properties"
+    },
+    "property":{
+        "title": "Property",
+        "bedrooms": "Bedrooms",
+        "bathrooms": "Bathrooms",
+        "realtor": "Realtor"
     },
     "projects": {
         "title": "Projects",

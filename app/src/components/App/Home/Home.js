@@ -3,6 +3,8 @@ import './Home.scss'
 import Container from '../../Design/Container/Container'
 import useTitle from '../../../core/hooks/useTitle';
 import { t } from 'i18next';
+import Footer from '../../Design/Footer/Footer';
+import AppFooter from '../AppFooter/AppFooter';
 
 const Home = () => {
 useTitle(t('home.title'));
@@ -10,7 +12,8 @@ useTitle(t('home.title'));
   return (
     <>
         {/* Make a landing page image with a big title on the left with a button and an image on the right */}
-            <div className="Home flex items-end justify-center w-full">
+            <div className="Home w-full h-screen">
+              <div className='Home__Banner h-[800px]  flex items-end justify-center w-full '>
                <div className="Search w-4/6 bg-white rounded shadow-md translate-y-1/2">
                   <Container>
                       <div className="SearchContainer flex h-max p-8">
@@ -61,7 +64,10 @@ useTitle(t('home.title'));
                       </div>
                   </Container>
                </div>
+              </div>
             </div>
+
+            <AppFooter />
 
     </>
   )

@@ -21,6 +21,9 @@ const HomeRoutes = {
     Sell: "/sell",
     Saved: "/saved",
     Contact: "/contact",
+    About: "/about",
+    Terms: "/terms",
+    Privacy: "/privacy",
 };
 
 const AdminRoutes = {

@@ -1,6 +1,4 @@
 import React from 'react'
-import Button from '../../Design/Button/Button';
-// import { useAuthContext } from '../AuthContainer';
 import './Header.scss'
 import { useAuthContext } from "../Auth/AuthProvider";
 import { useTranslation } from "react-i18next";
@@ -101,11 +99,7 @@ const Header = () => {
     }}
 
 		return (
-			<NavBar navItems={items} buttons={buttons} isOpen={isOpen} toggleHamburger={toggleHamburger}>
-
-
-
-			</NavBar>
+			<NavBar navItems={items} buttons={buttons} isOpen={isOpen} toggleHamburger={toggleHamburger} />
   )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import useTitle from '../../../../core/hooks/useTitle';
 import { t } from 'i18next';
 import { useAuthContext } from '../AuthProvider';
