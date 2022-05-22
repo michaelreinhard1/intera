@@ -61,29 +61,29 @@ useTitle(t('register.title'));
   return (
 
           <Container className={"h-screen overflow-hidden flex items-center justify-center"}>
-          <div className="relative bg-white shadow-3xl rounded-xl sm:w-6/12  md:w-6/12 lg:w-6/12 xl:w-8/12 2xl:w-4/12">
+          <div className="relative bg-white shadow-3xl rounded-xl mt-24 w-10/12 sm:w-6/12  md:w-6/12 lg:w-6/12 xl:w-8/12 2xl:w-4/12">
             <div className="bg-white absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-4">
               <img className='Logo' src={Icon} alt="Logo"/>
             </div>
             <h1 className='text-center font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600 py-20 pb-8'>{t('register.title')}</h1>
-            <form action='/login/password' method="post" onSubmit={handleSubmit} className="p-12 pt-0 md:p-18 rounded-xl flex flex-col">
-              <div className="flex items-center justify-between text-lg mb-6 md:mb-8">
-                <div className='w-5/12'>
+            <form method="post" onSubmit={handleSubmit} className="p-12 pt-0 md:p-18 rounded-xl flex flex-col">
+              <div className="flex items-cente flex-col justify-between text-lg  sm:flex-row">
+                <div className='w-full$ sm:w-5/12 mb-6'>
                   <label htmlFor="name" className='w-6/12'>{t('fields.name')}</label>
                   <Input className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full"  placeholder='Name' name="name" value={data.name} onChange={handleChange} />
                 </div>
-                <div className='w-5/12'>
+                <div className='w-full sm:w-5/12 mb-6'>
                   <label htmlFor="surname" className='w-6/12'>{t('fields.surname')}</label>
                   <Input className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full"  placeholder='Surname' name="surname" value={data.surname} onChange={handleChange} />
                 </div>
               </div>
-              <div className="flex items-center text-lg mb-6 md:mb-8">
+              <div className="flex items-center text-lg mb-6 ">
                 <div className='w-full'>
                   <label htmlFor="email" className='w-full'>{t('fields.email')}</label>
                   <Input type='email' className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full"  placeholder='Email' name="email" value={data.email} onChange={handleChange} />
                 </div>
               </div>
-              <div className="flex items-center text-lg mb-6 md:mb-8">
+              <div className="flex items-center text-lg mb-6 ">
                 <div className='w-full '>
                   <label htmlFor="password" className='w-full'>{t('fields.password')}</label>
                   <Input className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full" type={'password'} placeholder='Password' name="password" value={data.password} onChange={handleChange} />
@@ -92,7 +92,7 @@ useTitle(t('register.title'));
 
               {error && <Error message={error} />}
 
-              <Button color={'primary'} className={`w-2/4 m-auto bg-blue-500 ${mode}`} type="submit" disabled={isLoading}>
+              <Button color={'primary'} className={`w-full m-auto bg-blue-500 ${mode}`} type="submit" disabled={isLoading}>
                 {/* If isloading is true  */}
                 {isLoading ?
                   <svg role="status" className="inline w-4 h-4 mr-3 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -103,7 +103,7 @@ useTitle(t('register.title'));
                   {t('buttons.register')}
               </Button>
 
-              <Link className='flex self-center gap-x-2 mt-5 px-2 inline-block text-sm  no-underline' to={AuthRoutes.Login}>
+              <Link className='flex flex-col sm:flex-row text-center sm:text-left self-center gap-x-2 mt-5 px-2 text-sm  no-underline' to={AuthRoutes.Login}>
                     {t('fields.already have an account')}<span className='text-blue-600'>{t('fields.login here')}</span>
               </Link>
             </form>

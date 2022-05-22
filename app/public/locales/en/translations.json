@@ -127,11 +127,12 @@
         "subject": "Subject",
         "write your message": "Write your message",
         "send": "Send",
-        "forgot password": "Forgot Password",
+        "forgot password": "Forgot Password?",
         "register here": "Register here",
         "login here": "Login here",
         "remember me": "Remember me",
         "dont have an account": "Don't have an account?",
-        "already have an account": "Already have an account?"
+        "already have an account": "Already have an account?",
+        "you need to be logged in to see the location": "You need to be logged in to see the location"
     }
 }

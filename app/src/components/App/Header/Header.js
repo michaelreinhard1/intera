@@ -18,7 +18,7 @@ const Header = () => {
 
 	const [isOpen, setIsOpen] = React.useState(false);
 
-	const openHamburger = () => {
+	const toggleHamburger = () => {
 			setIsOpen(!isOpen);
 	}
 
@@ -50,12 +50,13 @@ const Header = () => {
 		{
 			label: t('buttons.login'),
 			color: 'secondary',
-			className: 'mx-3',
+			className: ' mx-3',
 			href: AuthRoutes.Login
 		},
 		{
 			label: t('buttons.register'),
 			color: 'primary',
+			className: ' ',
 			href: AuthRoutes.Register
 		},
 	];
@@ -65,12 +66,12 @@ const Header = () => {
 			{
 				label: 'My account',
 				color: 'primary',
-				className: 'mx-3',
+				className: ' mx-3',
 				href: AuthRoutes.Profile
 			},
 			{
 				label: t('buttons.logout'),
-				className: 'bg-gray-50 hover:bg-gray-100 hover:text-red-700 text-gray-900',
+				className: ' bg-gray-50 hover:bg-gray-100 hover:text-red-700 text-gray-900',
 				onClick: logout
 			},
 		]
@@ -88,12 +89,11 @@ const Header = () => {
 			{
 				label: 'Dashboard',
 				color: 'primary',
-				className: 'mx-3',
 				href: AdminRoutes.Users
 			},
 			{
 				label: t('buttons.logout'),
-				className: 'bg-gray-50 hover:bg-gray-100 hover:text-red-700 text-gray-900',
+				className: ' bg-gray-50 hover:bg-gray-100 hover:text-red-700 text-gray-900',
 				onClick: logout
 			},
 		]
@@ -101,21 +101,9 @@ const Header = () => {
     }}
 
 		return (
-			<NavBar navItems={items} isOpen={isOpen} openHamburger={openHamburger}>
+			<NavBar navItems={items} buttons={buttons} isOpen={isOpen} toggleHamburger={toggleHamburger}>
 
-				<div>
-					{buttons.map((button, index) => (
-						<Button
-						key={index}
-						color={button.color}
-						className={button.className}
-						href={button.href}
-						onClick={button.onClick}
-						>
-							{button.label}
-						</Button>
-					))}
-				</div>
+
 
 			</NavBar>
   )

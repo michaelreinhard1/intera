@@ -6,37 +6,31 @@ import useFetch from '../../../core/hooks/useFetch'
 import { formatPrice } from '../../../core/modules/users/utils'
 import { DotPulse } from '@uiball/loaders'
 import { useState } from 'react'
+import { useAuthContext } from '../Auth/AuthProvider'
+import Banner from '../../Design/Alerts/Banner'
+import { t } from 'i18next'
 
 const Buy = () => {
 
+    // CHeck if user is authenticated
+    const { auth } = useAuthContext();
 
-    const {
-        data,
-        error,
-        isLoading,
-        invalidate,
-    } = useFetch( ApiRoutes.Properties );
-
-
-    console.log(data);
-
-    // const [isLoading, setIsLoading] = useState(true);
-
-    // // Set isLoading to true for 3 seconds
-    // setTimeout(() => {
-    //     setIsLoading(true);
-    // }, 2000);
+    const { data, isLoading } = useFetch(auth ? ApiRoutes.PropertiesWithLocation : ApiRoutes.Properties);
 
   return (
+      <>
+    {!auth && <Banner message={t('fields.you need to be logged in to see the location')} className={'absolute top-28 w-full'} />}
     <Container>
         <h1>Buy</h1>
+
+        {/* If no auth then show banner */}
 
         {/* Create a row with 3 columns using Tailwind */}
         <div className="flex flex-wrap mx-3">
             {/* Create a column with 3 cards using Tailwind */}
             {/* if isLoading */}
             {isLoading && (
-                <div className="z-50 absolute absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div className="z-50 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <DotPulse size={50} color="#231F20" />
                 </div>
             )}
@@ -60,6 +54,8 @@ const Buy = () => {
         </div>
 
     </Container>
+    </>
+
   )
 }
 

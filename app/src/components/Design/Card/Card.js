@@ -1,24 +1,35 @@
 import React from 'react'
+import Button from '../Button/Button'
 import './Card.scss'
 
 const Card = ({image, profilePicture, name, price, location, bedrooms, bathrooms, owner, year, phoneNumber}) => {
+
+
+    const [liked, setLiked] = React.useState(false);
+
+    const handleLike = () => {
+        setLiked(!liked);
+    }
+
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto pt-40">
         <div className="flex items-center justify-center">
             <div className="max-w-sm w-full sm:w-full lg:w-full py-6 px-3">
                 <div className="bg-white shadow-xl rounded-lg overflow-hidden">
-                    <div className="bg-cover bg-center h-56 p-4">
-                        <img src={`${process.env.REACT_APP_PUBLIC_URL}/images/${image}`} alt={name} />
-                        <div className="flex justify-end">
-                            <svg className="h-6 w-6 text-white fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <div className="bg-cover bg-center h-56 overflow-hidden relative">
+                        <Button onClick={handleLike} className="flex justify-end absolute top-8 right-8">
+                            <svg className={`h-6 w-6 ${liked ? 'text-red-500 fill-red-500' : 'text-white fill-white'}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path d="M12.76 3.76a6 6 0 0 1 8.48 8.48l-8.53 8.54a1 1 0 0 1-1.42 0l-8.53-8.54a6 6 0 0 1 8.48-8.48l.76.75.76-.75zm7.07 7.07a4 4 0 1 0-5.66-5.66l-1.46 1.47a1 1 0 0 1-1.42 0L9.83 5.17a4 4 0 1 0-5.66 5.66L12 18.66l7.83-7.83z"></path>
                             </svg>
-                        </div>
+                        </Button>
+                        <img className='p-4' src={`${process.env.REACT_APP_PUBLIC_URL}/images/${image}`} alt={name} />
                     </div>
                     <div className="p-4">
                         <p className="uppercase tracking-wide text-sm font-bold text-gray-700">{name} • {year}</p>
                         <p className="text-3xl text-gray-900">{price}</p>
-                        <p className="text-gray-700">{location}</p>
+                        {/* if there is no location display the message that you need to be logged in to see the loaciton */}
+                        {location && <p className="text-gray-700">{location}</p>}
+                        {!location && <p className="text-gray-700">You need to be logged in to see the location</p>}
                     </div>
                     <div className="flex p-4 border-t border-gray-300 text-gray-700">
                         <div className="flex-1 inline-flex items-center">

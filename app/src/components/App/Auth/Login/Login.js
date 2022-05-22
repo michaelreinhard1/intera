@@ -51,7 +51,7 @@ const Login = () => {
   return (
 
           <Container className={"h-screen overflow-hidden flex items-center justify-center"}>
-          <div className="relative bg-white shadow-3xl rounded-xl sm:w-6/12  md:w-6/12 lg:w-6/12 xl:w-8/12 2xl:w-4/12">
+          <div className="relative bg-white shadow-3xl rounded-xl mt-14 w-10/12 sm:w-6/12  md:w-6/12 lg:w-6/12 xl:w-8/12 2xl:w-4/12">
             <div className="bg-white absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-4">
               <img className='Logo' src={Icon} alt="Logo"/>
             </div>
@@ -76,7 +76,7 @@ const Login = () => {
               </div>
               {error && <Error message={error} />}
 
-              <Button color={'primary'} className={`w-2/4 m-auto bg-blue-500 ${mode}`} type="submit" disabled={isLoading}>
+              <Button color={'primary'} className={`w-full m-auto bg-blue-500 ${mode}`} type="submit" disabled={isLoading}>
                 {/* If isloading is true  */}
                 {isLoading ?
                   <svg role="status" className="inline w-4 h-4 mr-3 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -87,7 +87,7 @@ const Login = () => {
                   {t('buttons.login')}
               </Button>
 
-              <Link className='flex self-center gap-x-2 mt-5 px-2 text-sm  no-underline' to={AuthRoutes.Register}>
+              <Link className='flex flex-col sm:flex-row text-center sm:text-left self-center gap-x-2 mt-5 px-2 text-sm  no-underline' to={AuthRoutes.Register}>
                       {t('fields.dont have an account')}<span className='text-blue-600'>{t('fields.register here')}</span>
               </Link>
             </form>

@@ -1,7 +1,8 @@
 const ApiRoutes = {
     Login: '/login',
     Register: '/register',
-    Properties: '/properties'
+    Properties: '/properties',
+    PropertiesWithLocation: '/properties-with-location',
 }
 
 const AuthRoutes = {

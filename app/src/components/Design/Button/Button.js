@@ -15,8 +15,8 @@ const Button = ({
       <Link
         to={href}
         disabled={disabled}
-        className={`hidden lg:inline-block py-2 px-6 font-bold rounded-xl transition duration-200 lg:ml-auto
-        ${ color === "primary" ? "bg-blue-500 hover:bg-blue-600 text-white" : null}
+        className={` lg:inline-block py-2 px-6 font-bold rounded-xl transition duration-200 lg:ml-auto
+        ${ color === "primary" ? "bg-blue-600 hover:bg-blue-700 text-white" : null}
         ${ color === "secondary" ? "bg-gray-50 hover:bg-gray-100 text-gray-900" : null}
         ${className}`}
         onClick={onClick}
@@ -27,10 +27,10 @@ const Button = ({
   }
   return (
     <button
-      className={`hidden lg:inline-block py-2 px-6 font-bold rounded-xl transition duration-200 lg:ml-auto
-      ${ color === "primary" ? "bg-blue-500 hover:bg-blue-600 text-white" : null}
+      className={` lg:inline-block py-2 px-6 font-bold rounded-xl transition duration-200 lg:ml-auto
+      ${ color === "primary" ? "bg-blue-600 hover:bg-blue-700 text-white" : null}
       ${ color === "secondary" ? "bg-gray-50 hover:bg-gray-100 text-gray-900" : null}
-      ${className}`}
+      ${className ? className : null}`}
       // if color = primary then bg-blue-500
 
       onClick={onClick}
