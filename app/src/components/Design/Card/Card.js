@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 import * as MaterialDesign from "react-icons/md";
 import './Card.scss'
 import { PropertyRoutes, route } from '../../../core/routing';
-const Card = ({image, id, profilePicture, name, description, adress, payment, area, price, type,city, bedrooms, bathrooms, owner, year, phoneNumber}) => {
+import Button from '../Button/Button';
+const Card = ({image, id, profilePicture, name, description, adress, payment, area, price, type,city, bedrooms, bathrooms, owner, year, phoneNumber, toggleLike}) => {
 
   let typeColor;
   switch (type) {
@@ -83,7 +84,7 @@ const Card = ({image, id, profilePicture, name, description, adress, payment, ar
       <img className="absolute inset-0 h-full w-full object-cover hover:scale-105 transition-all duration-300	" src={`${process.env.REACT_APP_PUBLIC_URL}/images/${image}`} alt={name} />
     </div>
     <div className="p-4">
-      <span className={`inline-block px-2 py-1 leading-none rounded-full font-semibold uppercase tracking-wide text-xs ${typeColor}`}>{type}</span>
+        <span className={`inline-block px-2 py-1 leading-none rounded-full font-semibold uppercase tracking-wide text-xs ${typeColor}`}>{type}</span>
       <h2 className="mt-2 mb-2 text-lg text-gray-900 font-bold">{name}</h2>
       <p className="text-sm">{description}</p>
       <div className="mt-3 flex items-center">

@@ -1,5 +1,5 @@
 import { t } from 'i18next';
-import React from 'react'
+import {useState} from 'react'
 import { useTranslation } from 'react-i18next';
 import { Link, useOutletContext, useParams } from 'react-router-dom';
 import useFetch from '../../../../core/hooks/useFetch';
@@ -18,6 +18,14 @@ const PropertyDetail = () => {
   const { auth } = useAuthContext();
 
   const { property } = useOutletContext();
+
+  const { id } = useParams();
+
+  const [liked, setLiked] = useState(false);
+
+  const handleLike = () => {
+    setLiked(!liked);
+  };
 
   return (
     <>
@@ -49,9 +57,6 @@ const PropertyDetail = () => {
                           <MaterialDesign.MdSquareFoot />
                       </i>{formatArea(property.area)}
                   </span>
-                </div>
-
-                <div className='h-1/2 flex flex-col'>
                   {!auth ?
                       <>
                       <span className="flex items-center mb-1">
@@ -69,13 +74,37 @@ const PropertyDetail = () => {
                   </i>{property.adress}, {property.zip} {property.city}
                   </span>
                   }
-
-                  <Button className={'mt-auto'} color={'primary'}>
-                    {t('property.contact agent')}
-                  </Button>
                 </div>
 
+                <div className='h-1/2 flex items-center'>
+
+                  <Button className={'mt-auto w-fit py-2'} color={'primary'}>
+                    {t('property.contact agent')}
+                  </Button>
+                  {/* If like is true show buttons */}
+                  {!liked ?
+                  <Button onClick={handleLike} className=' border w-fit lg:flex items-center justify-between gap-2 leading-none rounded-lg font-semibold  '>
+                  <>
+                    {(t('property.save'))}
+                    {/* <MaterialDesign.MdCheck  /> */}
+                  </>
+                  </Button>
+                  :
+                  <>
+                  <Button onClick={handleLike} className='py-2 flex w-fit lg:flex items-center justify-between border gap-2 leading-none rounded-lg font-semibold '>
+                    <MaterialDesign.MdCheck color='#51cf96' />
+                    {(t('property.saved'))}
+                  </Button>
+
+                  </>
+                  }
+                </div>
+
+
               </div>
+          </div>
+          <div>
+            <h1 className='text-2xl mb-5 font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate'>{t('property.description')}</h1>
           </div>
       </Container>
       <AppFooter />

@@ -8,30 +8,36 @@ import { useAuthContext } from '../../Auth/AuthProvider'
 import AppFooter from '../../AppFooter/AppFooter'
 import HeaderSpacer from '../../../Design/HeaderSpacer/HeaderSpacer'
 import LoadingIndicator from '../../../Design/LoadingIndicator/LoadingIndicator'
+import useTitle from '../../../../core/hooks/useTitle'
+import { t } from 'i18next'
 
 const PropertiesOverviewScreen = ({type}) => {
 
     const { auth } = useAuthContext();
 
-
-
-
     let GuestRoute;
     let UserRoute;
+    let title;
+
 
     switch (type) {
         case PropertyRoutes.Buy:
             GuestRoute = ApiRoutes.BuyProperties
             UserRoute = ApiRoutes.BuyPropertiesWithLocation
+            title = t('property.buy properties')
             break;
         case PropertyRoutes.Rent:
             GuestRoute = ApiRoutes.RentProperties
             UserRoute = ApiRoutes.RentPropertiesWithLocation
+            title = t('property.rent properties')
             break;
         default:
             GuestRoute = ApiRoutes.Properties
             UserRoute = ApiRoutes.PropertiesWithLocation
+            title = t('property.all properties')
     }
+
+    useTitle(title);
 
     const {  isLoading, data } = useFetch(auth ? UserRoute : GuestRoute);
 
@@ -72,6 +78,7 @@ const PropertiesOverviewScreen = ({type}) => {
                 owner={property.owner}
                 type={property.type}
                 city={property.city}
+                toggleLike={handleLike}
                 />
             ))}
         </div>

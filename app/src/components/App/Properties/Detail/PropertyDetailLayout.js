@@ -1,4 +1,4 @@
-import React from 'react'
+import {useState} from 'react'
 import { Outlet, useParams } from 'react-router-dom';
 import useFetch from '../../../../core/hooks/useFetch';
 import { ApiRoutes } from '../../../../core/routing';
@@ -13,7 +13,9 @@ const PropertyDetailLayout = () => {
 
     const { isLoading, data: property, invalidate, error } = useFetch(auth ?  `${ApiRoutes.PropertyWithLocation}${id}`: `${ApiRoutes.Property}${id}`);
 
-    const handleUpdate = () => {
+    const [liked , setLiked] = useState(false);
+
+    const handleLike = () => {
         invalidate();
     };
 
@@ -27,7 +29,7 @@ const PropertyDetailLayout = () => {
         <>
             {error && <h1>Error</h1>}
             {property && (
-                <Outlet context={{ property, onProjectUpdate: handleUpdate }} />
+                <Outlet context={{ property, onLikeUpdate: handleLike }} />
             )}
         </>
     )

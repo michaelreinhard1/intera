@@ -70,7 +70,12 @@
         "realtor": "realtor",
         "overview": "Overview",
         "month": "month",
-        "contact agent": "Contact agent"
+        "contact agent": "Contact agent",
+        "buy properties": "Buy properties",
+        "rent properties": "Rent properties",
+        "all properties": "All properties",
+        "saved": "Saved",
+        "save": "Save"
     },
     "projects": {
         "title": "Projects",
