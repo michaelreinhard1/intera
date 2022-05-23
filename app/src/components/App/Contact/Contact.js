@@ -40,17 +40,17 @@ const Contact = () => {
 
     const contactDetails = [
         {
-            icon: <MaterialDesign.MdLocationPin />,
+            icon: <MaterialDesign.MdOutlinePinDrop />,
             description: 'Oude Jetseweg 1',
             href: '#',
         },
         {
-            icon: <MaterialDesign.MdCall />,
+            icon: <MaterialDesign.MdOutlinePhone />,
             description: '+31 (0) 6 12345678',
             href: 'tel:+31612345678',
         },
         {
-            icon: <MaterialDesign.MdMail />,
+            icon: <MaterialDesign.MdMailOutline />,
             description: 'info@intera.com',
             href: 'mailto:info@intera.com'
         },

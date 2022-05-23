@@ -52,9 +52,9 @@ const guestRoutes = (router: Router) => {
 
     const propertyController = new PropertyController();
     router.get("/properties", handleErrors(propertyController.all));
-
-    // if user is authenticated, return propertyController.allWithLocation on the same route
-
+    router.get("/buy-properties", handleErrors(propertyController.allBuy));
+    router.get("/rent-properties", handleErrors(propertyController.allRent));
+    router.get("/properties/:id", handleErrors(propertyController.find));
 }
 
 const registerAuthenticatedRoutes = (router: Router) => {
@@ -76,6 +76,9 @@ const registerAuthenticatedRoutes = (router: Router) => {
 
     const propertyController = new PropertyController();
     authRouter.get("/properties-with-location", handleErrors(propertyController.allWithLocation));
+    authRouter.get("/buy-properties-with-location", handleErrors(propertyController.allBuyWithLocation));
+    authRouter.get("/rent-properties-with-location", handleErrors(propertyController.allRentWithLocation));
+    authRouter.get("/properties-with-location/:id", handleErrors(propertyController.findWithLocation));
 
     registerAdminRoutes(authRouter);
 

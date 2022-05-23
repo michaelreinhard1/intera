@@ -3,8 +3,8 @@ export interface PropertyBody {
     name: string;
     description: string;
     image: string;
-    location: string;
     type: string;
+    payment: string;
     rooms: number;
     bedrooms: number;
     bathrooms: number;
@@ -17,4 +17,8 @@ export interface PropertyBody {
     phone: string;
     email: string;
     owner: string;
+    address: string;
+    city: string;
+    province: string;
+    zip: number;
 }

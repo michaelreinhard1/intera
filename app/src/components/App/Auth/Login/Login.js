@@ -7,7 +7,7 @@ import { useState } from "react";
 import Container from '../../../Design/Container/Container';
 import Icon from  '../../../../assets/icons/Icon.svg';
 import Error from '../../../Design/Alerts/Error';
-import {Link, Navigate, useLocation } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import { useAuthContext } from '../../Auth/AuthProvider';
 import { t } from 'i18next';
 import { AuthRoutes } from '../../../../core/routing';
@@ -18,7 +18,6 @@ const Login = () => {
   useTitle(t('login.title'));
 
   const { login } = useAuthContext();
-  const location = useLocation();
 
   const [data, setData] = useState({
       email: "",
@@ -42,8 +41,6 @@ const Login = () => {
       data,
       onSuccess: (data) => {
               login(data);
-              const from = location.state?.from?.pathname || "/";
-              <Navigate to={from} state={{ replace: true }} />
             },
           });
   };

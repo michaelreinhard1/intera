@@ -1,0 +1,87 @@
+import { t } from 'i18next';
+import React from 'react'
+import { useTranslation } from 'react-i18next';
+import { Link, useOutletContext, useParams } from 'react-router-dom';
+import useFetch from '../../../../core/hooks/useFetch';
+import Container from '../../../Design/Container/Container';
+import HeaderSpacer from '../../../Design/HeaderSpacer/HeaderSpacer';
+import AppFooter from '../../AppFooter/AppFooter';
+import * as MaterialDesign from "react-icons/md";
+import { formatArea, formatPrice } from '../../../../core/modules/users/utils';
+import Button from '../../../Design/Button/Button';
+import { useAuthContext } from '../../Auth/AuthProvider';
+import Banner from '../../../Design/Alerts/Banner';
+import { AuthRoutes } from '../../../../core/routing';
+
+const PropertyDetail = () => {
+
+  const { auth } = useAuthContext();
+
+  const { property } = useOutletContext();
+
+  return (
+    <>
+      <HeaderSpacer />
+      <Container>
+
+          <div className="flex gap-10">
+              <div className="w-full lg:w-1/2">
+                  <img src={`${process.env.REACT_APP_PUBLIC_URL}/images/${property.image}`} alt={property.title} className="rounded-lg"/>
+              </div>
+              <div className="w-full lg:w-1/2 flex flex-col flex-between h-full">
+                <div className='h-1/2'>
+                  <div className='flex justify-between'>
+                    <h1 className='text-2xl mb-5 font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate'>{t('property.overview')}</h1>
+                    <h2 className='text-2xl mb-5 font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate'>{formatPrice(property.price)}{property.payment === 'rent' ? <span className="text-sm text-gray-600"> / {t('property.month')}</span> : null}</h2>
+                  </div>
+                  <span className="flex items-center mb-1">
+                    <i className="mr-2 text-gray-900">
+                        <MaterialDesign.MdBed />
+                    </i> {property.bedrooms} {t('property.bedrooms')}
+                  </span>
+                  <span className="flex items-center mb-1">
+                      <i className="mr-2 text-gray-900">
+                          <MaterialDesign.MdOutlineBathtub />
+                      </i>{property.bathrooms} {t('property.bathrooms')}
+                  </span>
+                  <span className="flex items-center mb-1">
+                      <i className="mr-2 text-gray-900">
+                          <MaterialDesign.MdSquareFoot />
+                      </i>{formatArea(property.area)}
+                  </span>
+                </div>
+
+                <div className='h-1/2 flex flex-col'>
+                  {!auth ?
+                      <>
+                      <span className="flex items-center mb-1">
+                      <i className="mr-2 text-gray-900">
+                          <MaterialDesign.MdOutlinePinDrop />
+                      </i>{property.zip} {property.city}
+                      </span>
+                      <Banner title={t('banner.informational message')} message={t('fields.you need to be logged in to see the full address')}
+                      link={{ title: t('navigation.login here'), href: AuthRoutes.Login }}/>
+                      </>
+                  :
+                  <span className="flex items-center mb-1">
+                  <i className="mr-2 text-gray-900">
+                      <MaterialDesign.MdOutlinePinDrop />
+                  </i>{property.adress}, {property.zip} {property.city}
+                  </span>
+                  }
+
+                  <Button className={'mt-auto'} color={'primary'}>
+                    {t('property.contact agent')}
+                  </Button>
+                </div>
+
+              </div>
+          </div>
+      </Container>
+      <AppFooter />
+    </>
+
+  );
+}
+
+export default PropertyDetail

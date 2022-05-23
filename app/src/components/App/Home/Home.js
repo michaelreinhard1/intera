@@ -11,8 +11,7 @@ useTitle(t('home.title'));
 
   return (
     <>
-        {/* Make a landing page image with a big title on the left with a button and an image on the right */}
-            <div className="Home w-full h-screen">
+            <div className="Home w-full">
               <div className='Home__Banner h-[800px]  flex items-end justify-center w-full '>
                <div className="Search w-4/6 bg-white rounded shadow-md translate-y-1/2">
                   <Container>
@@ -66,9 +65,7 @@ useTitle(t('home.title'));
                </div>
               </div>
             </div>
-
             <AppFooter />
-
     </>
   )
 }

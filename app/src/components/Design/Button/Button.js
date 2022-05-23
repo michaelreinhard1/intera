@@ -15,7 +15,7 @@ const Button = ({
       <Link
         to={href}
         disabled={disabled}
-        className={` lg:inline-block py-2 px-6 font-bold rounded-xl transition duration-200 lg:ml-auto
+        className={` lg:inline-block py-2 px-6 font-bold rounded-xl transition duration-200
         ${ color === "primary" ? "bg-blue-600 hover:bg-blue-700 text-white" : null}
         ${ color === "secondary" ? "bg-gray-50 hover:bg-gray-100 text-gray-900" : null}
         ${className}`}
@@ -27,7 +27,7 @@ const Button = ({
   }
   return (
     <button
-      className={` lg:inline-block py-2 px-6 font-bold rounded-xl transition duration-200 lg:ml-auto
+      className={` lg:inline-block py-2 px-6 font-bold rounded-xl transition duration-200
       ${ color === "primary" ? "bg-blue-600 hover:bg-blue-700 text-white" : null}
       ${ color === "secondary" ? "bg-gray-50 hover:bg-gray-100 text-gray-900" : null}
       ${className ? className : null}`}

@@ -16,18 +16,66 @@ export default class PropertyService {
         return properties;
     };
 
+    allRent = async () => {
+        const properties = await this.repository.find({
+            where: {
+                payment: "rent"
+            }
+        });
+        return properties;
+    };
+
+    allBuy = async () => {
+        const properties = await this.repository.find({
+            where: {
+                payment: "buy"
+            }
+        });
+        return properties;
+    };
+
     // get all properties including location column
     allWithLocation = async () => {
         const properties = await this.repository
             .createQueryBuilder("property")
             .select("property")
-            .addSelect("property.location")
+            .addSelect("property.adress")
+            .getMany();
+        return properties;
+    };
+
+    allRentWithLocation = async () => {
+        const properties = await this.repository
+            .createQueryBuilder("property")
+            .select("property")
+            .addSelect("property.adress")
+            .where("property.payment = :payment", { payment: "rent" })
+            .getMany();
+        return properties;
+    };
+
+    allBuyWithLocation = async () => {
+        const properties = await this.repository
+            .createQueryBuilder("property")
+            .select("property")
+            .addSelect("property.adress")
+            .where("property.payment = :payment", { payment: "buy" })
             .getMany();
         return properties;
     };
 
     findOne = async (id: number) => {
         const client = await this.repository.findOneBy({ id });
+        return client;
+    };
+
+    findOneWithLocation = async (id: number) => {
+        const client = await this.repository
+            .createQueryBuilder("property")
+            .select("property")
+            .addSelect("property.adress")
+            .where("property.id = :id", { id })
+            .getOne();
         return client;
     };
 

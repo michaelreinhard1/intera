@@ -3,8 +3,9 @@ import './Header.scss'
 import { useAuthContext } from "../Auth/AuthProvider";
 import { useTranslation } from "react-i18next";
 import NavBar from '../../Design/NavBar/NavBar';
-import { AuthRoutes, HomeRoutes, AdminRoutes } from '../../../core/routing';
+import { AuthRoutes, HomeRoutes, AdminRoutes, PropertyRoutes } from '../../../core/routing';
 import { isAdmin } from '../../../core/modules/users/utils';
+import { useLocation, useParams } from 'react-router-dom';
 
 const Header = () => {
 
@@ -23,12 +24,12 @@ const Header = () => {
 	let items = [
 		{
 			label: t('navigation.buy'),
-			href: HomeRoutes.Buy
+			href: PropertyRoutes.Buy
 		},
 		// Rent, Sell, Saved homes, Contact
 		{
 			label: t('navigation.rent'),
-			href: HomeRoutes.Rent
+			href: PropertyRoutes.Rent
 		},
 		{
 			label: t('navigation.sell'),

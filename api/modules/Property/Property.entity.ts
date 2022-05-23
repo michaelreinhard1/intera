@@ -17,10 +17,22 @@ export default class Property extends BaseEntity {
     image: string;
 
     @Column({ type: "varchar", length: 255 , select: false })
-    location: string;
+    adress: string;
+
+    @Column({ type: "varchar", length: 255})
+    city: string;
+
+    @Column({ type: "int"})
+    zip: number;
+
+    @Column({ type: "varchar", length: 255})
+    province: string;
 
     @Column({ type: "varchar", length: 255 })
     type: string;
+
+    @Column({ type: "varchar", length: 255 })
+    payment: string;
 
     @Column({ type: "int" })
     price: number;

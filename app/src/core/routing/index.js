@@ -2,7 +2,13 @@ const ApiRoutes = {
     Login: '/login',
     Register: '/register',
     Properties: '/properties',
+    BuyProperties : '/buy-properties',
+    RentProperties : '/rent-properties',
     PropertiesWithLocation: '/properties-with-location',
+    BuyPropertiesWithLocation: '/buy-properties-with-location',
+    RentPropertiesWithLocation: '/rent-properties-with-location',
+    Property: '/properties/',
+    PropertyWithLocation: '/properties-with-location/',
 }
 
 const AuthRoutes = {
@@ -24,6 +30,13 @@ const HomeRoutes = {
     About: "/about",
     Terms: "/terms",
     Privacy: "/privacy",
+};
+
+const PropertyRoutes = {
+    Index: "/properties",
+    Buy: "/properties/buy",
+    Rent: "/properties/rent",
+    Detail: `/properties/:id`,
 };
 
 const AdminRoutes = {
@@ -60,4 +73,4 @@ export const route = (path, options = {}) => {
     return path;
 };
 
-export { AuthRoutes, HomeRoutes, ProjectRoutes, UserRoutes, AdminRoutes, ApiRoutes };
+export { AuthRoutes, HomeRoutes, ProjectRoutes, UserRoutes, AdminRoutes, ApiRoutes , PropertyRoutes};

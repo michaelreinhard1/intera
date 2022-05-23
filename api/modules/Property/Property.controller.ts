@@ -15,8 +15,28 @@ export default class PropertyController {
         return res.json(properties);
     };
 
+    allRent = async (req: Request, res: Response, next: NextFunction) => {
+        const properties = await this.propertyService.allRent();
+        return res.json(properties);
+    };
+
+    allBuy = async (req: Request, res: Response, next: NextFunction) => {
+        const properties = await this.propertyService.allBuy();
+        return res.json(properties);
+    };
+
     allWithLocation = async (req: Request, res: Response, next: NextFunction) => {
         const properties = await this.propertyService.allWithLocation();
+        return res.json(properties);
+    };
+
+    allRentWithLocation = async (req: Request, res: Response, next: NextFunction) => {
+        const properties = await this.propertyService.allRentWithLocation();
+        return res.json(properties);
+    };
+
+    allBuyWithLocation = async (req: Request, res: Response, next: NextFunction) => {
+        const properties = await this.propertyService.allBuyWithLocation();
         return res.json(properties);
     };
 
@@ -26,6 +46,20 @@ export default class PropertyController {
         next: NextFunction
     ) => {
         const property = await this.propertyService.findOne(
+            parseInt(req.params.id)
+        );
+        if (!property) {
+            next(new NotFoundError());
+        }
+        return res.json(property);
+    };
+
+    findWithLocation = async (
+        req: Request<{ id: string }>,
+        res: Response,
+        next: NextFunction
+    ) => {
+        const property = await this.propertyService.findOneWithLocation(
             parseInt(req.params.id)
         );
         if (!property) {

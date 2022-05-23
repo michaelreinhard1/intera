@@ -8,10 +8,10 @@ import { t } from "i18next";
 const NavBar = ({ navItems = [],buttons=[], toggleHamburger, isOpen, children }) => {
     return (
         <>
-    <nav className="Nav z-50 fixed w-full px-4 py-4 flex justify-center items-center bg-white shadow-sm">
-        <div className="Nav__Container w-1140px  px-4 py-4 flex flex-row-reverse lg:flex-row lg:justify-between md:justify-end sm:justify-end items-center bg-white">
+    <nav className="z-50 fixed top-0 w-full px-4 py-4 flex justify-center items-center bg-white shadow-sm">
+        <div className="container  px-4 py-4 flex flex-row-reverse lg:flex-row lg:justify-between md:justify-end sm:justify-end items-center bg-white">
             <NavLink className='Nav__Logo text-3xl font-bold leading-none justify-self-center m-auto lg:m-0' to={HomeRoutes.Index}>
-                <img src={Logo} alt="Logo" />
+                <img className="w-[100px]" src={Logo} alt="Logo" />
             </NavLink>
         <div className="lg:hidden justify-self-end">
             <button className="navbar-burger flex items-center text-blue-600 p-3" onClick={toggleHamburger}>

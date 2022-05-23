@@ -61,13 +61,16 @@
     "banner":{
         "informational message": "Informational message",
         "dont lose your saved properties": "Don't lose your saved properties",
-        "please login to make sure you dont lose your saved properties": "Please login to make sure you dont lose your saved properties"
+        "please login to make sure you dont lose your saved properties": "Please login to make sure you don't lose your saved properties"
     },
     "property":{
         "title": "Property",
-        "bedrooms": "Bedrooms",
-        "bathrooms": "Bathrooms",
-        "realtor": "Realtor"
+        "bedrooms": "bedrooms",
+        "bathrooms": "bathrooms",
+        "realtor": "realtor",
+        "overview": "Overview",
+        "month": "month",
+        "contact agent": "Contact agent"
     },
     "projects": {
         "title": "Projects",
@@ -157,6 +160,6 @@
         "remember me": "Remember me",
         "dont have an account": "Don't have an account?",
         "already have an account": "Already have an account?",
-        "you need to be logged in to see the location": "You need to be logged in to see the location"
+        "you need to be logged in to see the full address": "You need to be logged in to see the full address"
     }
 }

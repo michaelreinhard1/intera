@@ -12,8 +12,8 @@ const OnboardingLayout = () => {
                 <Outlet />
             </AuthBackground>
         );
-    } 
-    
+    }
+
     // check if a previous path was available
     const from = location.state?.from?.pathname || "/";
 

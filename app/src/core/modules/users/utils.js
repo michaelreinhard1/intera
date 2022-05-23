@@ -9,7 +9,11 @@ const isAdmin = (user) => {
 };
 
 const formatPrice = (price) => {
-    return `€${price.toLocaleString("nl-NL")}`;
+    return `€ ${price.toLocaleString("nl-NL")}`;
 };
 
-export { isAdmin, formatName, formatPrice };
+const formatArea = (area) => {
+    return `${area.toLocaleString("nl-NL")} m²`;
+};
+
+export { isAdmin, formatName, formatPrice, formatArea };
