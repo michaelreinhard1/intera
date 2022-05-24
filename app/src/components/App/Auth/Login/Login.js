@@ -12,6 +12,7 @@ import { useAuthContext } from '../../Auth/AuthProvider';
 import { t } from 'i18next';
 import { AuthRoutes } from '../../../../core/routing';
 import useTitle from '../../../../core/hooks/useTitle';
+import PasswordInput from '../../../Design/Form/PasswordInput';
 
 const Login = () => {
 
@@ -65,7 +66,7 @@ const Login = () => {
               <div className="text-lg">
                 <div className='w-full'>
                   <label htmlFor="password" className='w-full'>{t('fields.password')}</label>
-                  <Input className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full" type={'password'} placeholder='Password' name="password" value={data.password} onChange={handleChange} />
+                  <PasswordInput value={data.password} onChange={handleChange}></PasswordInput>
                   <div className="flex justify-end">
                     <Link className='my-5 px-2 inline-block text-sm text-blue-600 no-underline' to={'/forgot-password'}>
                       {t('fields.forgot password')}

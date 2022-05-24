@@ -1,5 +1,6 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { BaseEntity } from "../BaseEntity";
+import User from "../User/User.entity";
 // import Project from "../Project/Project.entity";
 
 @Entity()
@@ -73,6 +74,7 @@ export default class Property extends BaseEntity {
     @Column({ type: "varchar", length: 255 })
     owner: string;
 
-    // @OneToMany(() => Project, (project) => project.client)
-    // projects: Project[];
+    @OneToMany(() => User, (user) => user.savedProperties)
+    savedBy: User[];
+
 }

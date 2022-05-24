@@ -1,7 +1,7 @@
 enum UserRole {
     Admin = "ADMIN",
     User = "USER",
-    Broker = "BROKER",
+    Agent = "AGENT",
 }
 
 export { UserRole };

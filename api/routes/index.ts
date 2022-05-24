@@ -80,6 +80,14 @@ const registerAuthenticatedRoutes = (router: Router) => {
     authRouter.get("/rent-properties-with-location", handleErrors(propertyController.allRentWithLocation));
     authRouter.get("/properties-with-location/:id", handleErrors(propertyController.findWithLocation));
 
+    const userController = new UserController();
+    // Get all users
+    authRouter.get("/users", handleErrors(userController.all));
+    // Get a user by id
+    authRouter.get("/user/:id", handleErrors(userController.find));
+    // Update a user
+    authRouter.patch("/user/:id", handleErrors(userController.update));
+
     registerAdminRoutes(authRouter);
 
     // authenticated routes use authJWT

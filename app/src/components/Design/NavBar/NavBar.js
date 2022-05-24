@@ -68,7 +68,7 @@ const NavBar = ({ navItems = [],buttons=[], toggleHamburger, isOpen, children })
 				<NavLink
 				onClick={toggleHamburger}
 				className="mr-auto text-3xl font-bold leading-none" to="/">
-					<img className='Hamburger__Logo' src={Logo} alt="Logo" />
+					<img className='w-[100px]' src={Logo} alt="Logo" />
 				</NavLink>
 				<Button className="navbar-close" onClick={toggleHamburger}>
 					<svg className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

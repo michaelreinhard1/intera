@@ -100,7 +100,8 @@
             "title": "Create user"
         },
         "edit": {
-            "title": "Edit user"
+            "title": "Edit user",
+            "success": "User updated successfully"
         }
     },
     "buttons": {
@@ -120,7 +121,8 @@
         "login": "Login",
         "logout": "Logout",
         "register": "Register",
-        "my account": "My account"
+        "my account": "My account",
+        "save changes": "Save changes"
     },
     "fields": {
         "id": "Id",

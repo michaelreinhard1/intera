@@ -1,21 +1,17 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { useAuthContext } from '../../AuthContainer';
+import AdminHeader from '../../Header/AdminHeader';
 
 
-const Dashboard = () => {
+const AdminLayout = () => {
 
-  const { auth } = useAuthContext();
-
-  if (!auth.user.role === "ADMIN") {
-    return (
-        <Navigate to='/' state={{ replace: true }} />
-    );
-  }else{
-    return (
-      <div>Dashboard</div>
-    )
-  }
+  return (
+    <>
+      <AdminHeader />
+      <Outlet />
+    </>
+  )
 }
 
-export default Dashboard
+export default AdminLayout

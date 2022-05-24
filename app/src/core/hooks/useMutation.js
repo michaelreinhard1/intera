@@ -24,6 +24,7 @@ const useMutation = () => {
 
             if (options.onSuccess) {
                 options.onSuccess(data);
+                setIsLoading(false);
             } else {
                 setIsLoading(false);
             }

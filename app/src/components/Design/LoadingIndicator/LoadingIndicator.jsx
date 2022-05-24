@@ -1,6 +1,4 @@
 import { DotPulse } from '@uiball/loaders';
-import React from 'react';
-import './LoadingIndicator.css';
 
 const LoadingIndicator = () => {
   return (

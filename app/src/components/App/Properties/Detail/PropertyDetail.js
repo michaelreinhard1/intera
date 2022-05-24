@@ -19,8 +19,6 @@ const PropertyDetail = () => {
 
   const { property } = useOutletContext();
 
-  const { id } = useParams();
-
   const [liked, setLiked] = useState(false);
 
   const handleLike = () => {

@@ -1,4 +1,4 @@
-import { CreateDateColumn, DeleteDateColumn, UpdateDateColumn } from "typeorm";
+import { BeforeInsert, CreateDateColumn, DeleteDateColumn, UpdateDateColumn } from "typeorm";
 
 export abstract class BaseEntity {
     @CreateDateColumn({ select: false })

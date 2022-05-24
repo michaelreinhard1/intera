@@ -26,14 +26,9 @@ const Header = () => {
 			label: t('navigation.buy'),
 			href: PropertyRoutes.Buy
 		},
-		// Rent, Sell, Saved homes, Contact
 		{
 			label: t('navigation.rent'),
 			href: PropertyRoutes.Rent
-		},
-		{
-			label: t('navigation.sell'),
-			href: HomeRoutes.Sell
 		},
 		{
 			label: t('navigation.saved'),
@@ -49,7 +44,6 @@ const Header = () => {
 		{
 			label: t('buttons.login'),
 			color: 'secondary',
-			className: ' mx-3',
 			href: AuthRoutes.Login
 		},
 		{
@@ -65,7 +59,6 @@ const Header = () => {
 			{
 				label: 'My account',
 				color: 'primary',
-				className: ' mx-3',
 				href: AuthRoutes.Profile
 			},
 			{

@@ -9,6 +9,8 @@ const ApiRoutes = {
     RentPropertiesWithLocation: '/rent-properties-with-location',
     Property: '/properties/',
     PropertyWithLocation: '/properties-with-location/',
+    Users: '/users',
+    User: '/user/',
 }
 
 const AuthRoutes = {
@@ -24,7 +26,6 @@ const HomeRoutes = {
     Index: "/",
     Buy: "/buy",
     Rent: "/rent",
-    Sell: "/sell",
     Saved: "/saved",
     Contact: "/contact",
     About: "/about",
@@ -42,6 +43,7 @@ const PropertyRoutes = {
 const AdminRoutes = {
     Index: "/admin",
     Users: "/admin/users",
+    UserDetail: "/admin/user/:id",
     Properties: "/admin/properties",
     Agents: "/admin/agents",
     Settings: "/admin/settings",

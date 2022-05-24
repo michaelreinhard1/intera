@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import * as MaterialDesign from "react-icons/md";
 import './Card.scss'
 import { PropertyRoutes, route } from '../../../core/routing';
-import Button from '../Button/Button';
 const Card = ({image, id, profilePicture, name, description, adress, payment, area, price, type,city, bedrooms, bathrooms, owner, year, phoneNumber, toggleLike}) => {
 
   let typeColor;

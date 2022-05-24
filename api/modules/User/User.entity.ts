@@ -1,8 +1,9 @@
 import { compare, hash } from "bcrypt";
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import { BaseEntity } from "../BaseEntity";
 import { UserRole } from "./User.constants";
 import { IsDefined, IsEmail } from "class-validator";
+import Property from "../Property/Property.entity";
 
 @Entity()
 export default class User extends BaseEntity {
@@ -32,6 +33,11 @@ export default class User extends BaseEntity {
         default: UserRole.User,
     })
     role: UserRole;
+
+    // Column called saves to save the user's saved properties
+    @ManyToMany(() => Property, (property) => property.savedBy)
+    savedProperties: Property[];
+
 
     @BeforeInsert()
     async hashPassword() {
