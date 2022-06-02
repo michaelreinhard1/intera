@@ -45,6 +45,7 @@ const AdminRoutes = {
     Users: "/admin/users",
     UserDetail: "/admin/user/:id",
     Properties: "/admin/properties",
+    PropertyDetail: "/admin/property/:id",
     Agents: "/admin/agents",
     Settings: "/admin/settings",
     Logout: "/logout",

@@ -7,9 +7,7 @@ const PropertiesLayout = () => {
     useTitle(t("properties.title"));
 
     return (
-        <div>
             <Outlet />
-        </div>
     );
 };
 

@@ -1,31 +1,32 @@
 import { useState, useEffect } from "react";
 import { t } from 'i18next';
-import { Link, useOutletContext, useParams } from 'react-router-dom';
-import useFetch from '../../../../../../core/hooks/useFetch';
-import { ApiRoutes, AuthRoutes } from '../../../../../../core/routing';
+import { useOutletContext, useParams } from 'react-router-dom';
 import Error from '../../../../../Design/Alerts/Error';
 import Succes from '../../../../../Design/Alerts/Succes';
 import Button from '../../../../../Design/Button/Button';
 import Container from '../../../../../Design/Container/Container';
 import HeaderSpacer from '../../../../../Design/HeaderSpacer/HeaderSpacer';
 import Input from '../../../../../Design/Input/Input';
-import LoadingIndicator from '../../../../../Design/LoadingIndicator/LoadingIndicator';
 import useMutation from "../../../../../../core/hooks/useMutation";
 import { UserRoles } from "../../../../../../core/modules/users/constants";
+import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndicator";
+import useFetch from '../../../../../../core/hooks/useFetch';
+import { useAuthContext } from '../../../AuthProvider';
+import { ApiRoutes } from "../../../../../../core/routing";
 
 const UserEdit = () => {
 
-  const { user } = useOutletContext();
-
   const { id } = useParams();
 
+  const { auth } = useAuthContext();
 
-  const { mutate, isLoading, error } = useMutation();
+  const { isLoading, data: user, error } = useFetch(`${ApiRoutes.User}${id}`);
 
+  console.log(`${ApiRoutes.User}${id}`);
 
-  console.log(isLoading);
+  console.log(user);
 
-
+  const { mutate } = useMutation();
 
   const [data, setData] = useState({
     name: '',
@@ -37,7 +38,6 @@ const UserEdit = () => {
 
   const [succes, setSucces] = useState(false);
 
-
   useEffect(() => {
     if (user) {
       setData({
@@ -48,7 +48,6 @@ const UserEdit = () => {
     });
     }
   }, [user]);
-
 
   const handleSubmit = (e) => {
       e.preventDefault();
@@ -63,13 +62,18 @@ const UserEdit = () => {
       });
   };
 
-
   const handleChange = (e) => {
       setData({
           ...data,
           [e.target.name]: e.target.value,
       });
   };
+
+  if(isLoading) {
+    return (
+        <LoadingIndicator />
+    )
+}
 
   if (error) {
     return <Error message={error} />;

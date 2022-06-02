@@ -56,15 +56,6 @@ export default class Property extends BaseEntity {
     @Column({ type: "int" })
     year: number;
 
-    @Column({ type: "boolean" })
-    balcony: boolean;
-
-    @Column({ type: "boolean" })
-    elevator: boolean;
-
-    @Column({ type: "boolean" })
-    parking: boolean;
-
     @Column({ type: "varchar", length: 255 })
     phone: string;
 

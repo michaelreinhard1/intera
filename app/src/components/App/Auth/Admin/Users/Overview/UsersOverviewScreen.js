@@ -5,7 +5,8 @@ import "../../../../NotFound/NotFound.css";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
 import Container from "../../../../../Design/Container/Container";
 import Table from "../../../../../Design/Table/Table";
-import { ApiRoutes } from "../../../../../../core/routing";
+import { AdminRoutes, ApiRoutes, route } from "../../../../../../core/routing";
+import * as MaterialDesign from "react-icons/md";
 
 const UsersOverviewScreen = () => {
 
@@ -22,10 +23,17 @@ const UsersOverviewScreen = () => {
         <>
             <HeaderSpacer />
             <Container>
-                <h1>Users</h1>
-                <Table
-                items={data}
-                />
+                {
+                    !data ?
+                    <div className="not-found">
+                        <h1>No users found</h1>
+                    </div>
+                    :
+                    <Table
+                    items={data}
+                    edit={AdminRoutes.UserDetail}
+                    />
+                }
             </Container>
         </>
     );

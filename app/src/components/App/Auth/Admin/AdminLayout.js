@@ -1,6 +1,5 @@
 import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom';
-import { useAuthContext } from '../../AuthContainer';
+import { Outlet } from 'react-router-dom';
 import AdminHeader from '../../Header/AdminHeader';
 
 

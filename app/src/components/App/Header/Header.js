@@ -69,14 +69,6 @@ const Header = () => {
 		]
 
 	if (isAdmin(auth.user)) {
-        // items = [
-        //     ...items,
-        //     {
-        //         href: AdminRoutes.Index,
-        //         isActive: location.pathname.includes(AdminRoutes.Index),
-        //         label: 'Dashboard',
-        //     },
-        // ];
 		buttons = [
 			{
 				label: 'Dashboard',

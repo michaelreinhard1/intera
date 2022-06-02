@@ -11,9 +11,6 @@ export interface PropertyBody {
     area: number;
     floor: number;
     year: number;
-    balcony: boolean;
-    elevator: boolean;
-    parking: boolean;
     phone: string;
     email: string;
     owner: string;

@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import NotFound from './NotFound/NotFound';
 import Login from './Auth/Login/Login';
 import Register from './Auth/Register/Register';
@@ -24,7 +24,6 @@ import PropertiesOverviewScreen from './Properties/Overview/PropertiesOverviewSc
 import PropertiesOverviewScreenAdmin from './Auth/Admin/Properties/Overview/PropertiesOverviewScreenAdmin';
 import PropertiesLayoutAdmin from './Auth/Admin/Properties/PropertiesLayoutAdmin';
 import UserEdit from './Auth/Admin/Users/Edit/UserEdit';
-import UserEditLayout from './Auth/Admin/Users/Edit/UserEditLayout';
 
 function App() {
 
@@ -80,20 +79,16 @@ function App() {
                             </RoleContainer>
                         }>
 
+                            <Route
+                                path={AdminRoutes.Index}
+                                element={<Navigate to={AdminRoutes.Users} />}
+                            />
+
                             {/* Users */}
                             <Route element={<UsersLayout />}>
                                 <Route index path={AdminRoutes.Users} element={<UsersOverviewScreen />} />
+                                <Route path={AdminRoutes.UserDetail} element={<UserEdit />} />
                             </Route>
-
-                            <Route
-                                path={AdminRoutes.UserDetail}
-                                element={<UserEditLayout />}>
-                                <Route index element={<UserEdit />}
-                                />
-                            </Route>
-
-
-                            <Route path={AdminRoutes.UserDetail} element={<UserEdit />} />
 
                         <Route element={<PropertiesLayoutAdmin />}>
                             <Route index path={AdminRoutes.Properties} element={<PropertiesOverviewScreenAdmin />} />
