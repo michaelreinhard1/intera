@@ -18,11 +18,7 @@ const Table = ({items = [], edit}) => {
                         </th>
                     ))}
 
-                    <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        <button className="text-sm font-medium text-gray-900">
-                            <MaterialDesign.MdAdd />
-                        </button>
-                    </th>
+                    <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left"></th>
 
                 </tr>
             </thead>

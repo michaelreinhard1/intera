@@ -10,7 +10,7 @@ import Error from '../../../Design/Alerts/Error';
 import { Link, Navigate } from 'react-router-dom';
 import { useAuthContext } from '../AuthProvider';
 import { t } from 'i18next';
-import { AuthRoutes } from '../../../../core/routing';
+import { ApiRoutes, AuthRoutes } from '../../../../core/routing';
 import useTitle from '../../../../core/hooks/useTitle';
 import PasswordInput from '../../../Design/Form/PasswordInput';
 
@@ -40,7 +40,7 @@ useTitle(t('register.title'));
   const handleSubmit = (e) => {
       e.preventDefault();
 
-      mutate(`${process.env.REACT_APP_API_URL}/register`, {
+      mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.Register}`, {
           method: "POST",
           data,
           onSuccess: (data) => {
@@ -64,17 +64,17 @@ useTitle(t('register.title'));
               <div className="flex items-cente flex-col justify-between text-lg  sm:flex-row">
                 <div className='w-full$ sm:w-5/12 mb-6'>
                   <label htmlFor="name" className='w-6/12'>{t('fields.name')}</label>
-                  <Input className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full"  placeholder='Name' name="name" value={data.name} onChange={handleChange} />
+                  <Input placeholder='Name' name="name" value={data.name} onChange={handleChange} />
                 </div>
                 <div className='w-full sm:w-5/12 mb-6'>
                   <label htmlFor="surname" className='w-6/12'>{t('fields.surname')}</label>
-                  <Input className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full"  placeholder='Surname' name="surname" value={data.surname} onChange={handleChange} />
+                  <Input placeholder='Surname' name="surname" value={data.surname} onChange={handleChange} />
                 </div>
               </div>
               <div className="flex items-center text-lg mb-6 ">
                 <div className='w-full'>
                   <label htmlFor="email" className='w-full'>{t('fields.email')}</label>
-                  <Input type='email' className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full"  placeholder='Email' name="email" value={data.email} onChange={handleChange} />
+                  <Input type='email' placeholder='Email' name="email" value={data.email} onChange={handleChange} />
                 </div>
               </div>
               <div className="flex items-center text-lg mb-6 ">

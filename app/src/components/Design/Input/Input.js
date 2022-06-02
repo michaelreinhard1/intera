@@ -3,7 +3,7 @@ import "./Input.css";
 const Input = ({ type, name, placeholder, value, onChange, className, disabled = false }) => {
   return (
     <input
-      className={`Input h-10 ${className}`}
+      className={`border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full ${className}`}
       type={type}
       id={name}
       name={name}

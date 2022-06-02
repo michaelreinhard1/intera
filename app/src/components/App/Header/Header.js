@@ -3,7 +3,7 @@ import './Header.scss'
 import { useAuthContext } from "../Auth/AuthProvider";
 import { useTranslation } from "react-i18next";
 import NavBar from '../../Design/NavBar/NavBar';
-import { AuthRoutes, HomeRoutes, AdminRoutes, PropertyRoutes } from '../../../core/routing';
+import { AuthRoutes, HomeRoutes, AdminRoutes, PropertyRoutes, UserRoutes } from '../../../core/routing';
 import { isAdmin } from '../../../core/modules/users/utils';
 import { useLocation, useParams } from 'react-router-dom';
 
@@ -24,11 +24,11 @@ const Header = () => {
 	let items = [
 		{
 			label: t('navigation.buy'),
-			href: PropertyRoutes.Buy
+			href: HomeRoutes.Buy
 		},
 		{
 			label: t('navigation.rent'),
-			href: PropertyRoutes.Rent
+			href: HomeRoutes.Rent
 		},
 		{
 			label: t('navigation.saved'),
@@ -73,7 +73,7 @@ const Header = () => {
 			{
 				label: 'Dashboard',
 				color: 'primary',
-				href: AdminRoutes.Users
+				href: UserRoutes.Index
 			},
 			{
 				label: t('buttons.logout'),

@@ -1,4 +1,5 @@
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import Agency from "../Agency/Agency.entity";
 import { BaseEntity } from "../BaseEntity";
 import User from "../User/User.entity";
 // import Project from "../Project/Project.entity";
@@ -68,4 +69,6 @@ export default class Property extends BaseEntity {
     @OneToMany(() => User, (user) => user.savedProperties)
     savedBy: User[];
 
+    @ManyToOne(() => Agency, (agency) => agency.properties)
+    agency: Agency;
 }

@@ -4,6 +4,7 @@ import * as helmet from "helmet";
 import { Application, NextFunction, Request, Response, Router } from "express";
 import BaseError from "../errors/BaseError";
 import { QueryFailedError, TypeORMError } from "typeorm";
+import * as fileUpload from "express-fileupload";
 
 const registerMiddleware = (app: Router) => {
     // use CORS middleware
@@ -23,6 +24,13 @@ const registerMiddleware = (app: Router) => {
     app.use(
         bodyParser.urlencoded({
             extended: true,
+        })
+    );
+
+    app.use(
+        fileUpload({
+            useTempFiles: true,
+            tempFileDir: "/tmp/",
         })
     );
 

@@ -8,7 +8,7 @@ import Home from './Home/Home';
 import AuthProvider from './Auth/AuthProvider';
 import OnboardingLayout from './Auth/OnboardingLayout';
 import Profile from './Auth/Profile/Profile';
-import { AdminRoutes, AuthRoutes, HomeRoutes, PropertyRoutes } from '../../core/routing';
+import { AdminRoutes, AgencyRoutes, AuthRoutes, HomeRoutes, PropertyRoutes, UserRoutes } from '../../core/routing';
 import RoleContainer from '../App/Auth/RoleContainer';
 import { UserRoles } from "../../core/modules/users/constants";
 import Contact from './Contact/Contact';
@@ -20,10 +20,14 @@ import AdminLayout from './Auth/Admin/AdminLayout';
 import AppLayout from './AppLayout';
 import UsersOverviewScreen from './Auth/Admin/Users/Overview/UsersOverviewScreen';
 import UsersLayout from './Auth/Admin/Users/UsersLayout';
+import AgenciesLayout from './Auth/Admin/Agencies/AgenciesLayout';
 import PropertiesOverviewScreen from './Properties/Overview/PropertiesOverviewScreen';
 import PropertiesOverviewScreenAdmin from './Auth/Admin/Properties/Overview/PropertiesOverviewScreenAdmin';
 import PropertiesLayoutAdmin from './Auth/Admin/Properties/PropertiesLayoutAdmin';
 import UserEdit from './Auth/Admin/Users/Edit/UserEdit';
+import AgenciesOverviewScreen from './Auth/Admin/Agencies/Overview/AgenciesOverviewScreen';
+import UserAdd from './Auth/Admin/Users/Add/UserAdd';
+import PropertyAdd from './Auth/Admin/Properties/Add/PropertyAdd';
 
 function App() {
 
@@ -33,7 +37,6 @@ function App() {
               <Routes>
                   <Route element={<AppLayout />}>
 
-                    <Route path={HomeRoutes.Index} element={<Home />} />
 
                     <Route path={AuthRoutes.Index} element={<OnboardingLayout />}>
                         <Route path={AuthRoutes.Login} element={<Login />} />
@@ -41,20 +44,22 @@ function App() {
                     </Route>
 
                     <Route
-                            path={PropertyRoutes.Index}
+                            path={HomeRoutes.Index}
                             element={<PropertiesLayout />}>
-                            {/* <Route index element={<PropertiesOverviewScreen />} /> */}
+
+                            <Route index element={<Home />} />
+
                             <Route
-                                path={PropertyRoutes.Buy}
-                                element={<PropertiesOverviewScreen type={PropertyRoutes.Buy} />}
+                                path={HomeRoutes.Buy}
+                                element={<PropertiesOverviewScreen type={HomeRoutes.Buy} />}
                             />
                             <Route
-                                path={PropertyRoutes.Rent}
-                                element={<PropertiesOverviewScreen type={PropertyRoutes.Rent}/>}
+                                path={HomeRoutes.Rent}
+                                element={<PropertiesOverviewScreen type={HomeRoutes.Rent}/>}
                             />
 
                             <Route
-                                path={PropertyRoutes.Detail}
+                                path={HomeRoutes.Property}
                                 element={<PropertyDetailLayout />}>
                                 <Route index element={<PropertyDetail />}
                                 />
@@ -81,18 +86,33 @@ function App() {
 
                             <Route
                                 path={AdminRoutes.Index}
-                                element={<Navigate to={AdminRoutes.Users} />}
+                                element={<Navigate to={UserRoutes.Index} />}
                             />
 
                             {/* Users */}
-                            <Route element={<UsersLayout />}>
-                                <Route index path={AdminRoutes.Users} element={<UsersOverviewScreen />} />
-                                <Route path={AdminRoutes.UserDetail} element={<UserEdit />} />
+                            <Route
+                                path={UserRoutes.Index}
+                                element={<UsersLayout />}>
+                                <Route index element={<UsersOverviewScreen />} />
+                                <Route path={UserRoutes.Detail} element={<UserEdit />} />
+                                <Route path={UserRoutes.New} element={<UserAdd />} />
                             </Route>
 
-                        <Route element={<PropertiesLayoutAdmin />}>
-                            <Route index path={AdminRoutes.Properties} element={<PropertiesOverviewScreenAdmin />} />
-                        </Route>
+                            {/* Properties */}
+                            <Route
+                                path={PropertyRoutes.Index}
+                                element={<PropertiesLayoutAdmin />}>
+                                <Route index element={<PropertiesOverviewScreenAdmin />} />
+                                <Route index path={PropertyRoutes.New} element={<PropertyAdd />} />
+                            </Route>
+
+                            {/* Agencies */}
+                            <Route
+                            path={AgencyRoutes.Index}
+                                element={<AgenciesLayout />}>
+                                <Route index path={AgencyRoutes.Agencies} element={<AgenciesOverviewScreen />} />
+                            </Route>
+
 
                     </Route>
 

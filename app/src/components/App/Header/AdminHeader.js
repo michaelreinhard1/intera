@@ -1,5 +1,6 @@
+import { t } from 'i18next';
 import React from 'react'
-import { AdminRoutes, HomeRoutes } from '../../../core/routing'
+import { AdminRoutes, AgencyRoutes, HomeRoutes, PropertyRoutes, UserRoutes } from '../../../core/routing'
 import NavBar from '../../Design/NavBar/NavBar'
 
 const AdminHeader = () => {
@@ -13,26 +14,22 @@ const AdminHeader = () => {
 
     const items = [
         {
-            label: 'Users',
-            href: AdminRoutes.Users
+            label: t('navigation.users'),
+            href: UserRoutes.Index
         },
         {
-            label: 'Properties',
-            href: AdminRoutes.Properties
+            label: t('navigation.properties'),
+            href: PropertyRoutes.Index
         },
         {
-            label: 'Agents',
-            href: AdminRoutes.Agents
-        },
-        {
-            label: 'Settings',
-            href: AdminRoutes.Settings
+            label: t('navigation.agencies'),
+            href: AgencyRoutes.Index
         },
     ]
 
     const buttons = [
         {
-            label: 'Backt to Home',
+            label: t('buttons.back to home'),
             color: 'primary',
             href: HomeRoutes.Index
         },

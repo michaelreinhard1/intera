@@ -30,7 +30,9 @@
         "contact": "Contact",
         "mobile menu": "Mobile menu",
         "logout": "Logout",
-        "login here": "Login here"
+        "login here": "Login here",
+        "agencies" : "Agencies",
+        "properties" : "Properties"
     },
     "login":{
         "title": "Login"
@@ -42,38 +44,54 @@
         "title": "Profile",
         "likes": "Likes"
     },
-    "clients": {
-        "title": "Clients",
-        "overview": {
-            "title": "Clients",
-            "create": "Create client"
-        },
-        "create": {
-            "title": "Create client"
-        },
-        "edit": {
-            "title": "Edit client"
-        },
-        "fields": {
-            "contact": "Contact person"
-        }
-    },
     "banner":{
         "informational message": "Informational message",
         "dont lose your saved properties": "Don't lose your saved properties",
         "please login to make sure you dont lose your saved properties": "Please login to make sure you don't lose your saved properties"
     },
-    "property":{
-        "title": "Property",
+    "properties":{
+        "title": "Properties",
+        "overview": {
+            "title": "Properties",
+            "create": "Create property"
+        },
+        "create": {
+            "title": "Create property"
+        },
+        "edit": {
+            "title": "Edit property"
+        },
+        "fields": {
+            "contact": "Contact person"
+        },
         "bedrooms": "bedrooms",
         "bathrooms": "bathrooms",
         "realtor": "realtor",
-        "overview": "Overview",
         "month": "month",
         "contact agent": "Contact agent",
         "buy properties": "Buy properties",
         "rent properties": "Rent properties",
         "all properties": "All properties",
+        "saved": "Saved",
+        "save": "Save"
+    },
+    "agencies":{
+        "title": "Agencies",
+        "overview": {
+            "title": "Agencies",
+            "create": "Create agency"
+        },
+        "create": {
+            "title": "Create agency"
+        },
+        "edit": {
+            "title": "Edit agency"
+        },
+        "fields": {
+            "contact": "Contact person"
+        },
+        "contact": "Contact",
+        "all agencies": "All agencies",
         "saved": "Saved",
         "save": "Save"
     },
@@ -122,7 +140,8 @@
         "logout": "Logout",
         "register": "Register",
         "my account": "My account",
-        "save changes": "Save changes"
+        "save changes": "Save changes",
+        "back to home": "Back to home"
     },
     "fields": {
         "id": "Id",
@@ -167,6 +186,10 @@
         "remember me": "Remember me",
         "dont have an account": "Don't have an account?",
         "already have an account": "Already have an account?",
-        "you need to be logged in to see the full address": "You need to be logged in to see the full address"
+        "you need to be logged in to see the full address": "You need to be logged in to see the full address",
+        "area": "Area",
+        "owner": "Owner",
+        "province": "Province",
+        "payment": "Payment"
     }
 }

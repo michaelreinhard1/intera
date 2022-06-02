@@ -13,6 +13,7 @@ import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndi
 import useFetch from '../../../../../../core/hooks/useFetch';
 import { useAuthContext } from '../../../AuthProvider';
 import { ApiRoutes } from "../../../../../../core/routing";
+import Select from "../../../../../Design/Form/Select";
 
 const UserEdit = () => {
 
@@ -20,7 +21,7 @@ const UserEdit = () => {
 
   const { auth } = useAuthContext();
 
-  const { isLoading, data: user, error } = useFetch(`${ApiRoutes.User}${id}`);
+  const { isLoading, data: user, error, invalidate } = useFetch(`${ApiRoutes.User}${id}`);
 
   console.log(`${ApiRoutes.User}${id}`);
 
@@ -33,7 +34,6 @@ const UserEdit = () => {
     surname: '',
     email: '',
     role: '',
-
   });
 
   const [succes, setSucces] = useState(false);
@@ -52,10 +52,11 @@ const UserEdit = () => {
   const handleSubmit = (e) => {
       e.preventDefault();
 
-      mutate(`${process.env.REACT_APP_API_URL}/user/${id}`, {
+      mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.User}${id}`, {
           method: "PATCH",
           data,
           onSuccess: (data) => {
+            invalidate();
             setSucces(true);
             console.log(data);
           },
@@ -89,29 +90,31 @@ const UserEdit = () => {
               <div className="flex items-cente flex-col justify-between text-lg  sm:flex-row">
                 <div className='w-full sm:w-5/12 mb-6'>
                   <label htmlFor="name" className='w-6/12'>{t('fields.name')}</label>
-                  <Input className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full"  placeholder='Name' name="name" value={data.name} onChange={handleChange} />
+                  <Input placeholder='Name' name="name" value={data.name} onChange={handleChange} />
                 </div>
                 <div className='w-full sm:w-5/12 mb-6'>
                   <label htmlFor="surname" className='w-6/12'>{t('fields.surname')}</label>
-                  <Input className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full"  placeholder='Surname' name="surname" value={data.surname} onChange={handleChange} />
+                  <Input placeholder='Surname' name="surname" value={data.surname} onChange={handleChange} />
                 </div>
               </div>
               <div className="flex items-center text-lg mb-6 ">
                 <div className='w-full'>
                   <label htmlFor="email" className='w-full'>{t('fields.email')}</label>
-                  <Input type='email' className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full"  placeholder='Email' name="email" value={data.email} onChange={handleChange} />
+                  <Input type='email' placeholder='Email' name="email" value={data.email} onChange={handleChange} />
                 </div>
               </div>
               <div className="flex items-center text-lg mb-6 ">
                 <div className='w-full'>
                   <label htmlFor="role" className='w-full'>{t('fields.role')}</label>
-                  <select onChange={handleChange} name="role" id="role" className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full">
-                    {/* Map thorugh user roles values from UserRoles */}
-                    {Object.values(UserRoles).map((role) => (
-                      <option key={role} value={role} selected={ role === user.role }>{role}</option>
-                    ))}
-
-                  </select>
+                  <Select
+                  name="role"
+                  options = {Object.values(UserRoles)}
+                  onChange = {handleChange}
+                  value = {data.role}
+                  error = {error}
+                  disabled = {isLoading}
+                  >
+                  </Select>
                 </div>
               </div>
               {error && <Error message={error} />}

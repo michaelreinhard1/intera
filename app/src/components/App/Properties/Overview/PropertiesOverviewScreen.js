@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Card from '../../../Design/Card/Card'
 import Container from '../../../Design/Container/Container'
-import { ApiRoutes,  PropertyRoutes } from '../../../../core/routing'
+import { ApiRoutes,  HomeRoutes,  PropertyRoutes } from '../../../../core/routing'
 import useFetch from '../../../../core/hooks/useFetch'
 import { formatArea, formatPrice } from '../../../../core/modules/users/utils'
 import { useAuthContext } from '../../Auth/AuthProvider'
@@ -21,12 +21,12 @@ const PropertiesOverviewScreen = ({type}) => {
 
 
     switch (type) {
-        case PropertyRoutes.Buy:
+        case HomeRoutes.Buy:
             GuestRoute = ApiRoutes.BuyProperties
             UserRoute = ApiRoutes.BuyPropertiesWithLocation
             title = t('property.buy properties')
             break;
-        case PropertyRoutes.Rent:
+        case HomeRoutes.Rent:
             GuestRoute = ApiRoutes.RentProperties
             UserRoute = ApiRoutes.RentPropertiesWithLocation
             title = t('property.rent properties')
@@ -62,7 +62,6 @@ const PropertiesOverviewScreen = ({type}) => {
 
         <div className="flex flex-wrap">
             {!isLoading && data && data.map( (property) => (
-
                 <Card key={property.id}
                 id={property.id}
                 adress={property.adress}

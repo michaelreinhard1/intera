@@ -10,7 +10,7 @@ import Error from '../../../Design/Alerts/Error';
 import {Link} from 'react-router-dom';
 import { useAuthContext } from '../../Auth/AuthProvider';
 import { t } from 'i18next';
-import { AuthRoutes } from '../../../../core/routing';
+import { ApiRoutes, AuthRoutes } from '../../../../core/routing';
 import useTitle from '../../../../core/hooks/useTitle';
 import PasswordInput from '../../../Design/Form/PasswordInput';
 
@@ -37,7 +37,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    mutate(`${process.env.REACT_APP_API_URL}/login`, {
+    mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.Login}`, {
       method: "POST",
       data,
       onSuccess: (data) => {
@@ -60,7 +60,7 @@ const Login = () => {
               <div className="text-lg mb-6 md:mb-8">
                 <div className='w-full'>
                   <label htmlFor="email" className='w-full'>{t('fields.email')}</label>
-                  <Input type='email' className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full"  placeholder='Email' name="email" value={data.email} onChange={handleChange} />
+                  <Input type='email' placeholder='Email' name="email" value={data.email} onChange={handleChange} />
                 </div>
               </div>
               <div className="text-lg">

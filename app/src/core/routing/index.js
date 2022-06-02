@@ -11,6 +11,7 @@ const ApiRoutes = {
     PropertyWithLocation: '/properties-with-location/',
     Users: '/users',
     User: '/user/',
+    Agencies: '/agencies',
 }
 
 const AuthRoutes = {
@@ -26,6 +27,7 @@ const HomeRoutes = {
     Index: "/",
     Buy: "/buy",
     Rent: "/rent",
+    Property: `/property/:id`,
     Saved: "/saved",
     Contact: "/contact",
     About: "/about",
@@ -33,20 +35,14 @@ const HomeRoutes = {
     Privacy: "/privacy",
 };
 
-const PropertyRoutes = {
-    Index: "/properties",
-    Buy: "/properties/buy",
-    Rent: "/properties/rent",
-    Detail: `/properties/:id`,
-};
 
 const AdminRoutes = {
     Index: "/admin",
-    Users: "/admin/users",
-    UserDetail: "/admin/user/:id",
     Properties: "/admin/properties",
     PropertyDetail: "/admin/property/:id",
-    Agents: "/admin/agents",
+    AddProperty: "/admin/property/add",
+    Agencies: "/admin/agencies",
+    AddAgency: "/admin/agency/add",
     Settings: "/admin/settings",
     Logout: "/logout",
     Notifications: "/admin/notifications",
@@ -67,6 +63,20 @@ const UserRoutes = {
     Edit: "/users/:id/edit",
 };
 
+const PropertyRoutes = {
+    Index: "/properties",
+    New: "/properties/new",
+    Detail: `/properties/:id`,
+    Edit: `/properties/:id/edit`,
+};
+
+const AgencyRoutes = {
+    Index: "/agencies",
+    New: "/agencies/new",
+    Detail: "/agencies/:id",
+    Edit: "/agencies/:id/edit",
+};
+
 // replaces : values with values from object
 // e.g. route('/projects/:id', { id : 9 }) -> /projects/9
 export const route = (path, options = {}) => {
@@ -76,4 +86,4 @@ export const route = (path, options = {}) => {
     return path;
 };
 
-export { AuthRoutes, HomeRoutes, ProjectRoutes, UserRoutes, AdminRoutes, ApiRoutes , PropertyRoutes};
+export { AuthRoutes, HomeRoutes, ProjectRoutes, UserRoutes, AdminRoutes, ApiRoutes , PropertyRoutes, AgencyRoutes};

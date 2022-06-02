@@ -65,39 +65,48 @@ export default class PropertyService {
     };
 
     findOne = async (id: number) => {
-        const client = await this.repository.findOneBy({ id });
-        return client;
+        const property = await this.repository.findOneBy({ id });
+        return property;
     };
 
     findOneWithLocation = async (id: number) => {
-        const client = await this.repository
+        const property = await this.repository
             .createQueryBuilder("property")
             .select("property")
             .addSelect("property.adress")
             .where("property.id = :id", { id })
             .getOne();
-        return client;
+        return property;
     };
 
+    findPropertiesByAgency = async (id: number) => {
+        const properties = await this.repository
+            .createQueryBuilder("property")
+            .select("property")
+            .addSelect("property.adress")
+            .where("property.agency = :agency", { agency: id })
+            .getMany();
+        return properties;
+    };
 
     create = async (body: PropertyBody) => {
-        const client = await this.repository.save(this.repository.create(body));
-        return client;
+        const property = await this.repository.save(this.repository.create(body));
+        return property;
     };
 
     update = async (id: number, body: PropertyBody) => {
-        let client = await this.findOne(id);
-        if (client) {
-            client = await this.repository.save({ ...client, ...body });
+        let property = await this.findOne(id);
+        if (property) {
+            property = await this.repository.save({ ...property, ...body });
         }
-        return client;
+        return property;
     };
 
     delete = async (id: number) => {
-        let client = await this.findOne(id);
-        if (client) {
+        let property = await this.findOne(id);
+        if (property) {
             await this.repository.softDelete({ id });
         }
-        return client;
+        return property;
     };
 }

@@ -5,6 +5,7 @@ import ClientController from "../modules/Client/Client.controller";
 import ProjectController from "../modules/Project/Project.controller";
 import AuthController from "../modules/User/Auth.controller";
 import UserController from "../modules/User/User.controller";
+import AgencyController from "../modules/Agency/Agency.controller";
 import PropertyController from "../modules/Property/Property.controller";
 import { UserRole } from "../modules/User/User.constants";
 
@@ -45,6 +46,9 @@ const registerAdminRoutes = (router: Router) => {
     adminRouter.patch("/users/:id", handleErrors(userController.update));
     adminRouter.delete("/users/:id", handleErrors(userController.delete));
 
+    const agencyController = new AgencyController();
+    adminRouter.get("/agencies", handleErrors(agencyController.all));
+
     router.use(withRole(UserRole.Admin), adminRouter);
 };
 
@@ -60,20 +64,6 @@ const guestRoutes = (router: Router) => {
 const registerAuthenticatedRoutes = (router: Router) => {
     const authRouter = Router();
 
-    const clientController = new ClientController();
-    authRouter.get("/clients", handleErrors(clientController.all));
-    authRouter.get("/clients/:id", handleErrors(clientController.find));
-    authRouter.post("/clients", handleErrors(clientController.create));
-    authRouter.patch("/clients/:id", handleErrors(clientController.update));
-    authRouter.delete("/clients/:id", handleErrors(clientController.delete));
-
-    const projectController = new ProjectController();
-    authRouter.get("/projects", handleErrors(projectController.all));
-    authRouter.get("/projects/:id", handleErrors(projectController.find));
-    authRouter.post("/projects", handleErrors(projectController.create));
-    authRouter.patch("/projects/:id", handleErrors(projectController.update));
-    authRouter.delete("/projects/:id", handleErrors(projectController.delete));
-
     const propertyController = new PropertyController();
     authRouter.get("/properties-with-location", handleErrors(propertyController.allWithLocation));
     authRouter.get("/buy-properties-with-location", handleErrors(propertyController.allBuyWithLocation));
@@ -81,16 +71,12 @@ const registerAuthenticatedRoutes = (router: Router) => {
     authRouter.get("/properties-with-location/:id", handleErrors(propertyController.findWithLocation));
 
     const userController = new UserController();
-    // Get all users
     authRouter.get("/users", handleErrors(userController.all));
-    // Get a user by id
     authRouter.get("/user/:id", handleErrors(userController.find));
-    // Update a user
     authRouter.patch("/user/:id", handleErrors(userController.update));
 
     registerAdminRoutes(authRouter);
 
-    // authenticated routes use authJWT
     router.use(authJwt, authRouter);
 };
 

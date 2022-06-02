@@ -5,17 +5,16 @@ import "../../../../NotFound/NotFound.css";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
 import Container from "../../../../../Design/Container/Container";
 import Table from "../../../../../Design/Table/Table";
-import { AdminRoutes, ApiRoutes, route, UserRoutes } from "../../../../../../core/routing";
+import { AdminRoutes, AgencyRoutes, ApiRoutes, route } from "../../../../../../core/routing";
 import * as MaterialDesign from "react-icons/md";
-import Button from "../../../../../Design/Button/Button";
 import { t } from "i18next";
-import useTitle from "../../../../../../core/hooks/useTitle";
+import Button from "../../../../../Design/Button/Button";
 
-const UsersOverviewScreen = () => {
+const AgenciesOverviewScreen = () => {
 
-    useTitle(t('users.overview.title'));
+    const {  isLoading, data, error } = useFetch(ApiRoutes.Agencies);
 
-    const {  isLoading, data, error } = useFetch(ApiRoutes.Users);
+    console.log(data);
 
     if (isLoading) {
         return <LoadingIndicator />
@@ -29,24 +28,26 @@ const UsersOverviewScreen = () => {
             <HeaderSpacer />
             <Container>
                 <div className="flex justify-end mb-5">
-                    <Button href={UserRoutes.New} color={'primary'} className="text-sm font-medium text-gray-900 w-max flex justify-center items-center gap-2">
-                        {t('users.overview.create')}
+                    <Button href={AgencyRoutes.New} color={'primary'} className="text-sm font-medium text-gray-900 w-max flex justify-center items-center gap-2">
+                        {t('agencies.overview.create')}
                     </Button>
                 </div>
                 {
                     data.length === 0 ?
-                    <div className="not-found">
-                        <h1>No users found</h1>
+                    <div className="NotFound">
+                        <h1>No agencies found</h1>
                     </div>
                     :
+                    <>
                     <Table
                     items={data}
-                    edit={UserRoutes.Detail}
+                    edit={AgencyRoutes.Detail}
                     />
+                    </>
                 }
             </Container>
         </>
     );
 };
 
-export default UsersOverviewScreen;
+export default AgenciesOverviewScreen;

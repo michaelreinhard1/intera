@@ -25,11 +25,11 @@ const AppFooter = () => {
       links: [
         {
           title: t('navigation.buy'),
-          href: PropertyRoutes.Buy,
+          href: HomeRoutes.Buy,
         },
         {
           title: t('navigation.rent'),
-          href: PropertyRoutes.Rent,
+          href: HomeRoutes.Rent,
         },
       ],
     },

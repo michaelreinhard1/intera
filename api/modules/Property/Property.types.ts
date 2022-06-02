@@ -1,3 +1,5 @@
+import Agency from "../Agency/Agency.entity";
+
 export interface PropertyBody {
     price: number;
     name: string;
@@ -18,4 +20,5 @@ export interface PropertyBody {
     city: string;
     province: string;
     zip: number;
+    agency: Agency;
 }

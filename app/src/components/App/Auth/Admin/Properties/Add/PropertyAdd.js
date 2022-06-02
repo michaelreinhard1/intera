@@ -6,14 +6,14 @@ import { ApiRoutes, route, UserRoutes } from "../../../../../../core/routing";
 import Error from "../../../../../Design/Alerts/Error";
 import Container from "../../../../../Design/Container/Container";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
-import UserForm from "../UserForm";
+import PropertyForm from "../PropertyForm";
 
-const UserAdd = () => {
+const PropertyAdd = () => {
     const navigate = useNavigate();
 
     useTitle(t("users.create.title"));
 
-    const { isLoading, error, mutate } = useMutation();
+    const { isLoading, error, mutate} = useMutation();
 
     const handleSubmit = (data) => {
         mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.Register}`, {
@@ -31,7 +31,7 @@ const UserAdd = () => {
         <Container>
 
             {/* <BackButton href={route(UserRoutes.Index)} /> */}
-            <UserForm
+            <PropertyForm
                 label={t("buttons.create")}
                 disabled={isLoading}
                 onSubmit={handleSubmit}
@@ -42,4 +42,4 @@ const UserAdd = () => {
     );
 };
 
-export default UserAdd;
+export default PropertyAdd;
