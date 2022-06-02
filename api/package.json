@@ -1,9 +1,12 @@
 {
     "name": "Intera",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "index.ts",
     "license": "MIT",
     "type": "module",
+    "engines": {
+        "node": "16.x"
+      },
     "dependencies": {
         "@types/express-fileupload": "^1.2.2",
         "bcrypt": "^5.0.1",
