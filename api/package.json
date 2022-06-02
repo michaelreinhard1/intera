@@ -25,7 +25,7 @@
         "typescript": "^4.6.3"
     },
     "scripts": {
-        "start": "nodemon index.ts"
+        "start": "node index.ts"
     },
     "devDependencies": {
         "@types/bcrypt": "^5.0.0",

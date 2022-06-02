@@ -65,7 +65,7 @@ function App() {
                                 />
                             </Route>
 
-                        </Route>
+                    </Route>
 
 
                     <Route path={HomeRoutes.Saved} element={<Saved />} />
