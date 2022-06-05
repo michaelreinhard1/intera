@@ -5,6 +5,7 @@ import User from "../User/User.entity";
 
 @Entity()
 export default class Agency extends BaseEntity {
+
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -18,7 +19,7 @@ export default class Agency extends BaseEntity {
     image: string;
 
     @Column()
-    adress: string;
+    address: string;
 
     @Column()
     province: string;

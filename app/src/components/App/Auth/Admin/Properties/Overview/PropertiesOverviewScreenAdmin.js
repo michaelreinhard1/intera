@@ -7,14 +7,14 @@ import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
 import Container from "../../../../../Design/Container/Container";
 import Table from "../../../../../Design/Table/Table";
 import useTitle from "../../../../../../core/hooks/useTitle";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import Button from "../../../../../Design/Button/Button";
 
 const PropertiesOverviewScreen = () => {
-
+    const { t } = useTranslation();
     useTitle(t('properties.overview.title'));
 
-    const {  isLoading, data, error } = useFetch(ApiRoutes.Properties);
+    const {  isLoading, data, error } = useFetch(ApiRoutes.PropertiesWithLocation);
 
 
     if (isLoading) {

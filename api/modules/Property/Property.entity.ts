@@ -15,11 +15,11 @@ export default class Property extends BaseEntity {
     @Column({ type: "varchar", length: 255 })
     description: string;
 
-    @Column({ type: "varchar", length: 255 })
+    @Column({ type: "varchar", length: 255, nullable: true })
     image: string;
 
     @Column({ type: "varchar", length: 255 , select: false })
-    adress: string;
+    address: string;
 
     @Column({ type: "varchar", length: 255})
     city: string;

@@ -190,6 +190,11 @@
         "area": "Area",
         "owner": "Owner",
         "province": "Province",
-        "payment": "Payment"
+        "payment": "Payment",
+        "general information": "General information",
+        "street and number": "Street and number",
+        "owner's contact details": "Owner's contact details",
+        "type of property": "Type of property",
+        "total rooms": "Total rooms"
     }
 }

@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import Logo from  '../../../assets/icons/Logo.svg';
 import Button from "../Button/Button";
 import { HomeRoutes } from "../../../core/routing";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const NavBar = ({ navItems = [],buttons=[], toggleHamburger, isOpen, children }) => {
+    const { t } = useTranslation();
     return (
         <>
     <nav className="z-50 fixed top-0 w-full px-4 py-4 flex justify-center items-center bg-white shadow-sm">

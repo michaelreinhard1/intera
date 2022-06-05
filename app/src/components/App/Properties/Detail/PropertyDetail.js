@@ -69,7 +69,7 @@ const PropertyDetail = () => {
                   <span className="flex items-center mb-1">
                   <i className="mr-2 text-gray-900">
                       <MaterialDesign.MdOutlinePinDrop />
-                  </i>{property.adress}, {property.zip} {property.city}
+                  </i>{property.address}, {property.zip} {property.city}
                   </span>
                   }
                 </div>

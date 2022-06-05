@@ -19,16 +19,17 @@ const handleErrors =
         }
     };
 
-
 const registerOnboardingRoutes = (router: Router) => {
     const authController = new AuthController();
     const userController = new UserController();
     const propertyController = new PropertyController();
+    const agencyController = new AgencyController();
 
     router.post("/login", authLocal, handleErrors(authController.login));
     router.post("/register", handleErrors(authController.register));
 
     router.post("/dev/property", propertyController.create);
+    router.post("/dev/agency", agencyController.create);
 
     // test route REMOVE after
     if (process.env.ENV === "development") {
@@ -45,6 +46,9 @@ const registerAdminRoutes = (router: Router) => {
     adminRouter.post("/users", handleErrors(userController.create));
     adminRouter.patch("/users/:id", handleErrors(userController.update));
     adminRouter.delete("/users/:id", handleErrors(userController.delete));
+
+    const propertyController = new PropertyController();
+    adminRouter.post("/properties", handleErrors(propertyController.create));
 
     const agencyController = new AgencyController();
     adminRouter.get("/agencies", handleErrors(agencyController.all));

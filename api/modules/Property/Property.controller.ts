@@ -103,10 +103,10 @@ export default class PropertyController {
         res: Response,
         next: NextFunction
     ) => {
-        const image = getImage(req);
-        if (image) {
-            req.body.image = image;
-        }
+        // const image = getImage(req);
+        // if (image) {
+        //     req.body.image = image;
+        // }
         const property = await this.propertyService.create(req.body);
         return res.json(property);
     };

@@ -5,7 +5,7 @@ export interface AgencyBody {
     name: string;
     description: string;
     image: string;
-    adress: string;
+    address: string;
     province: string;
     agents: User[];
     properties: Property[];

@@ -8,11 +8,11 @@ import Table from "../../../../../Design/Table/Table";
 import { AdminRoutes, ApiRoutes, route, UserRoutes } from "../../../../../../core/routing";
 import * as MaterialDesign from "react-icons/md";
 import Button from "../../../../../Design/Button/Button";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import useTitle from "../../../../../../core/hooks/useTitle";
 
 const UsersOverviewScreen = () => {
-
+    const { t } = useTranslation();
     useTitle(t('users.overview.title'));
 
     const {  isLoading, data, error } = useFetch(ApiRoutes.Users);

@@ -1,54 +1,75 @@
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import useForm from "../../../../../core/hooks/useForm";
 import Button from "../../../../Design/Button/Button";
 import Input from "../../../../Design/Input/Input";
 
-const getSchema = (isUpdate) => {
-  return yup.object().shape({
-      name: yup.string().required(),
-      surname: yup.string().required(),
-      email: yup.string().email().required(),
-      password: isUpdate ? yup.string() : yup.string().required(),
-  });
-};
 
-const transformValues = (values) => {
-  // don't send password if it's empty
-  if (values.password.length === 0) {
-      const { password, ...rest } = values; // or use "delete" keyword
-      values = rest;
-  }
-  return values;
-};
+const schema = yup.object().shape({
+    name: yup.string().required(),
+    description: yup.string().required(),
+    // image: yup.string().email().required(),
+    type: yup.string().required(),
+    rooms: yup.number().required(),
+    bedrooms: yup.number().required(),
+    bathrooms: yup.number().required(),
+    price: yup.number().required(),
+    area: yup.number().required(),
+    floor: yup.number().required(),
+    year: yup.number().required(),
+    address: yup.string().required(),
+    phone: yup.string().required(),
+    email: yup.string().required(),
+    owner: yup.string().required(),
+    city: yup.string().required(),
+    zip: yup.string().required(),
+    payment: yup.string().required(),
+    province: yup.string().required(),
+});
 
 const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
-  const isUpdate = !!initialData.id;
   const { values, errors, handleChange, handleSubmit } = useForm(
-      getSchema(isUpdate),
+    schema,
       {
-          name: "",
-          surname: "",
-          email: "",
-          password: "",
+        name: "",
+        description: "",
+        // image: "",
+        type: "",
+        rooms: "",
+        bedrooms: "",
+        bathrooms: "",
+        price: "",
+        area: "",
+        floor: "",
+        year: "",
+        address: "",
+        phone: "",
+        email: "",
+        owner: "",
+        city: "",
+        zip: "",
+        payment: "",
+        province: "",
           ...initialData,
       }
   );
-
   const handleData = (values) => {
-      onSubmit(transformValues(values));
-  };
+    console.log(values);
+    onSubmit(values);
+};
 
   const mode = disabled ? "bg-blue-400 hover:bg-blue-400" : "";
 
+  const { t } = useTranslation();
+
   return (
-      <form onSubmit={handleSubmit(handleData)} noValidate={true} className="p-12 pt-0 md:p-18 rounded-xl grid grid-cols-2">
-          <div className="w-ful mb-6 mx-auto">
-                {/* Upload zone to upload multiple images */}
-
-
+      <form onSubmit={handleSubmit(handleData)}  className="p-12 pt-0 md:p-18 rounded-xl grid grid-cols-2 gap-x-5">
+          <div className="w-6/7 mb-6  col-span-full flex justify-items-start">
+                <p className="text-lg font-bold">
+                    {t('fields.general information')}
+                </p>
           </div>
-          <div className='w-4/5 mb-6 mx-auto'>
+          <div className='w-full mr-3 mb-6 '>
               <label htmlFor="name" className='w-6/12'>{t('fields.name')}</label>
               <Input
               name="name"
@@ -57,52 +78,16 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.name}
               />
           </div>
-          <div className='w-4/5 mb-6 mx-auto'>
+          <div className='w-full mr-3 mb-6 col-span-full'>
               <label htmlFor="description" className='w-6/12'>{t('fields.description')}</label>
-              <Input
+              <textarea
+              className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full"
               name="description"
               value={values.description}
               onChange={handleChange}
-              error={errors.description}
-              />
+              error={errors.description} />
           </div>
-          <div className='w-4/5 mb-6 mx-auto'>
-              <label htmlFor="city" className='w-6/12'>{t('fields.city')}</label>
-              <Input
-              name="city"
-              value={values.city}
-              onChange={handleChange}
-              error={errors.city}
-              />
-          </div>
-          <div className='w-4/5 mb-6 mx-auto'>
-              <label htmlFor="province" className='w-6/12'>{t('fields.province')}</label>
-              <Input
-              name="province"
-              value={values.province}
-              onChange={handleChange}
-              error={errors.province}
-              />
-          </div>
-          <div className='w-4/5 mb-6 mx-auto'>
-              <label htmlFor="type" className='w-6/12'>{t('fields.type')}</label>
-              <Input
-              name="type"
-              value={values.type}
-              onChange={handleChange}
-              error={errors.type}
-              />
-          </div>
-          <div className='w-4/5 mb-6 mx-auto'>
-              <label htmlFor="payment" className='w-6/12'>{t('fields.payment')}</label>
-              <Input
-              name="payment"
-              value={values.payment}
-              onChange={handleChange}
-              error={errors.payment}
-              />
-          </div>
-          <div className='w-4/5 mb-6 mx-auto'>
+          <div className='w-full mr-3 mb-6 '>
               <label htmlFor="price" className='w-6/12'>{t('fields.price')}</label>
               <Input
               name="price"
@@ -112,57 +97,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.price}
               />
           </div>
-          <div className='w-4/5 mb-6 mx-auto'>
-              <label htmlFor="rooms" className='w-6/12'>{t('fields.rooms')}</label>
-              <Input
-              name="rooms"
-              type={'number'}
-              value={values.rooms}
-              onChange={handleChange}
-              error={errors.rooms}
-              />
-          </div>
-          <div className='w-4/5 mb-6 mx-auto'>
-              <label htmlFor="bedrooms" className='w-6/12'>{t('fields.bedrooms')}</label>
-              <Input
-              name="bedrooms"
-              type={'number'}
-              value={values.bedrooms}
-              onChange={handleChange}
-              error={errors.bedrooms}
-              />
-          </div>
-          <div className='w-4/5 mb-6 mx-auto'>
-              <label htmlFor="bathrooms" className='w-6/12'>{t('fields.bathrooms')}</label>
-              <Input
-              name="bathrooms"
-              type={'number'}
-              value={values.bathrooms}
-              onChange={handleChange}
-              error={errors.bathrooms}
-              />
-          </div>
-          <div className='w-4/5 mb-6 mx-auto'>
-              <label htmlFor="area" className='w-6/12'>{t('fields.area')}</label>
-              <Input
-              name="area"
-              type={'number'}
-              value={values.area}
-              onChange={handleChange}
-              error={errors.area}
-              />
-          </div>
-          <div className='w-4/5 mb-6 mx-auto'>
-              <label htmlFor="floor" className='w-6/12'>{t('fields.floor')}</label>
-              <Input
-              name="floor"
-              type={'number'}
-              value={values.floor}
-              onChange={handleChange}
-              error={errors.floor}
-              />
-          </div>
-          <div className='w-4/5 mb-6 mx-auto'>
+          <div className='w-full mr-3 mb-6 '>
               <label htmlFor="year" className='w-6/12'>{t('fields.year')}</label>
               <Input
               name="year"
@@ -172,17 +107,140 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.year}
               />
           </div>
-          <div className='w-4/5 mb-6 mx-auto'>
-              <label htmlFor="phone" className='w-6/12'>{t('fields.phone')}</label>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="area" className='w-6/12'>{t('fields.area')}</label>
               <Input
-              name="phone"
-              type={'phone'}
-              value={values.phone}
+              name="area"
+              type={'number'}
+              value={values.area}
               onChange={handleChange}
-              error={errors.phone}
+              error={errors.area}
               />
           </div>
-          <div className='w-4/5 mb-6 mx-auto'>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="floor" className='w-6/12'>{t('fields.floor')}</label>
+              <Input
+              name="floor"
+              type={'number'}
+              value={values.floor}
+              onChange={handleChange}
+              error={errors.floor}
+              />
+          </div>
+          <div className="w-6/7 mb-6  col-span-full flex justify-items-start">
+                <p className="text-lg font-bold">
+                    {t('fields.address')}
+                </p>
+          </div>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="address" className='w-6/12'>{t('fields.street and number')}</label>
+              <Input
+              name="address"
+              value={values.address}
+              onChange={handleChange}
+              error={errors.address}
+              />
+          </div>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="city" className='w-6/12'>{t('fields.city')}</label>
+              <Input
+              name="city"
+              value={values.city}
+              onChange={handleChange}
+              error={errors.city}
+              />
+          </div>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="province" className='w-6/12'>{t('fields.province')}</label>
+              <Input
+              name="province"
+              value={values.province}
+              onChange={handleChange}
+              error={errors.province}
+              />
+          </div>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="zip" className='w-6/12'>{t('fields.zip')}</label>
+              <Input
+              name="zip"
+              value={values.zip}
+              onChange={handleChange}
+              error={errors.zip}
+              />
+          </div>
+          <div className="w-6/7 mb-6  col-span-full flex justify-items-start">
+                <p className="text-lg font-bold">
+                    {t('fields.type of property')}
+                </p>
+          </div>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="type" className='w-6/12'>{t('fields.type')}</label>
+              <Input
+              name="type"
+              value={values.type}
+              onChange={handleChange}
+              error={errors.type}
+              />
+          </div>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="payment" className='w-6/12'>{t('fields.payment')}</label>
+              <Input
+              name="payment"
+              value={values.payment}
+              onChange={handleChange}
+              error={errors.payment}
+              />
+          </div>
+          <div className="w-6/7 mb-6  col-span-full flex justify-items-start">
+                <p className="text-lg font-bold">
+                    {t('fields.rooms')}
+                </p>
+          </div>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="rooms" className='w-6/12'>{t('fields.total rooms')}</label>
+              <Input
+              name="rooms"
+              type={'number'}
+              value={values.rooms}
+              onChange={handleChange}
+              error={errors.rooms}
+              />
+          </div>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="bedrooms" className='w-6/12'>{t('fields.bedrooms')}</label>
+              <Input
+              name="bedrooms"
+              type={'number'}
+              value={values.bedrooms}
+              onChange={handleChange}
+              error={errors.bedrooms}
+              />
+          </div>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="bathrooms" className='w-6/12'>{t('fields.bathrooms')}</label>
+              <Input
+              name="bathrooms"
+              type={'number'}
+              value={values.bathrooms}
+              onChange={handleChange}
+              error={errors.bathrooms}
+              />
+          </div>
+          <div className="w-6/7 mb-6  col-span-full flex justify-items-start">
+                <p className="text-lg font-bold">
+                    {t("fields.owner's contact details")}
+                </p>
+          </div>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="owner" className='w-6/12'>{t('fields.name')}</label>
+              <Input
+              name="owner"
+              value={values.owner}
+              onChange={handleChange}
+              error={errors.owner}
+              />
+          </div>
+          <div className='w-full mr-3 mb-6 '>
               <label htmlFor="email" className='w-6/12'>{t('fields.email')}</label>
               <Input
               name="email"
@@ -192,13 +250,14 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.email}
               />
           </div>
-          <div className='w-4/5 mb-6 mx-auto'>
-              <label htmlFor="owner" className='w-6/12'>{t('fields.owner')}</label>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="phone" className='w-6/12'>{t('fields.phone')}</label>
               <Input
-              name="owner"
-              value={values.owner}
+              name="phone"
+              type={'tel'}
+              value={values.phone}
               onChange={handleChange}
-              error={errors.owner}
+              error={errors.phone}
               />
           </div>
           <Button className={` m-auto bg-blue-500 col-span-2 ${mode}`} color={'primary'} type="submit" disabled={disabled}>

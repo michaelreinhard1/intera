@@ -64,7 +64,7 @@ const PropertiesOverviewScreen = ({type}) => {
             {!isLoading && data && data.map( (property) => (
                 <Card key={property.id}
                 id={property.id}
-                adress={property.adress}
+                address={property.address}
                 image={property.image}
                 name={property.name}
                 year={property.year}

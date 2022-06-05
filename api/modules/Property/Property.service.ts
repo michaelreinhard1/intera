@@ -39,7 +39,7 @@ export default class PropertyService {
         const properties = await this.repository
             .createQueryBuilder("property")
             .select("property")
-            .addSelect("property.adress")
+            .addSelect("property.address")
             .getMany();
         return properties;
     };
@@ -48,7 +48,7 @@ export default class PropertyService {
         const properties = await this.repository
             .createQueryBuilder("property")
             .select("property")
-            .addSelect("property.adress")
+            .addSelect("property.address")
             .where("property.payment = :payment", { payment: "rent" })
             .getMany();
         return properties;
@@ -58,7 +58,7 @@ export default class PropertyService {
         const properties = await this.repository
             .createQueryBuilder("property")
             .select("property")
-            .addSelect("property.adress")
+            .addSelect("property.address")
             .where("property.payment = :payment", { payment: "buy" })
             .getMany();
         return properties;
@@ -69,11 +69,16 @@ export default class PropertyService {
         return property;
     };
 
+    findOneBy = async (options: object) => {
+        const property = await this.repository.findOneBy(options);
+        return property;
+    }
+
     findOneWithLocation = async (id: number) => {
         const property = await this.repository
             .createQueryBuilder("property")
             .select("property")
-            .addSelect("property.adress")
+            .addSelect("property.address")
             .where("property.id = :id", { id })
             .getOne();
         return property;
@@ -83,16 +88,23 @@ export default class PropertyService {
         const properties = await this.repository
             .createQueryBuilder("property")
             .select("property")
-            .addSelect("property.adress")
+            .addSelect("property.address")
             .where("property.agency = :agency", { agency: id })
             .getMany();
         return properties;
     };
 
     create = async (body: PropertyBody) => {
-        const property = await this.repository.save(this.repository.create(body));
-        return property;
+        const property = await this.findOneBy({ address: body.address });
+        if (property) {
+            return console.error("Property already exists");
+        }
+        const newProperty = await this.repository.save(
+            this.repository.create(body)
+        );
+        return newProperty;
     };
+
 
     update = async (id: number, body: PropertyBody) => {
         let property = await this.findOne(id);

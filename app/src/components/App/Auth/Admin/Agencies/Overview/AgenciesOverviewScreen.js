@@ -7,11 +7,11 @@ import Container from "../../../../../Design/Container/Container";
 import Table from "../../../../../Design/Table/Table";
 import { AdminRoutes, AgencyRoutes, ApiRoutes, route } from "../../../../../../core/routing";
 import * as MaterialDesign from "react-icons/md";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import Button from "../../../../../Design/Button/Button";
 
 const AgenciesOverviewScreen = () => {
-
+    const { t } = useTranslation();
     const {  isLoading, data, error } = useFetch(ApiRoutes.Agencies);
 
     console.log(data);

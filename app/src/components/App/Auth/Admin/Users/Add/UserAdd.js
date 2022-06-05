@@ -1,4 +1,4 @@
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import useMutation from "../../../../../../core/hooks/useMutation";
 import useTitle from "../../../../../../core/hooks/useTitle";
@@ -10,7 +10,7 @@ import UserForm from "../UserForm";
 
 const UserAdd = () => {
     const navigate = useNavigate();
-
+    const { t } = useTranslation();
     useTitle(t("users.create.title"));
 
     const { isLoading, error, mutate } = useMutation();
@@ -29,7 +29,6 @@ const UserAdd = () => {
         <>
         <HeaderSpacer />
         <Container>
-
             {/* <BackButton href={route(UserRoutes.Index)} /> */}
             <UserForm
                 label={t("buttons.create")}

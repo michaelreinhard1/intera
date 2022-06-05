@@ -1,4 +1,4 @@
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import useForm from "../../../../../core/hooks/useForm";
 import { UserRoles } from "../../../../../core/modules/users/constants";
@@ -42,7 +42,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
   };
 
   const mode = disabled ? "bg-blue-400 hover:bg-blue-400" : "";
-
+  const { t } = useTranslation();
   return (
       <form onSubmit={handleSubmit(handleData)} noValidate={true} className="p-12 pt-0 md:p-18 rounded-xl flex flex-col">
           <div className='w-full  mb-6'>

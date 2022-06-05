@@ -103,7 +103,7 @@ function App() {
                                 path={PropertyRoutes.Index}
                                 element={<PropertiesLayoutAdmin />}>
                                 <Route index element={<PropertiesOverviewScreenAdmin />} />
-                                <Route index path={PropertyRoutes.New} element={<PropertyAdd />} />
+                                <Route path={PropertyRoutes.New} element={<PropertyAdd />} />
                             </Route>
 
                             {/* Agencies */}

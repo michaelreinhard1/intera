@@ -3,8 +3,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import * as MaterialDesign from "react-icons/md";
 import './Card.scss'
-import { HomeRoutes, PropertyRoutes, route } from '../../../core/routing';
-const Card = ({image, id, profilePicture, name, description, adress, payment, area, price, type,city, bedrooms, bathrooms, owner, year, phoneNumber, toggleLike}) => {
+import { HomeRoutes, route } from '../../../core/routing';
+const Card = ({image, id, profilePicture, name, description, address, payment, area, price, type,city, bedrooms, bathrooms, owner, year, phoneNumber, toggleLike}) => {
 
   let typeColor;
   switch (type) {
