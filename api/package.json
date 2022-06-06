@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
+    "type": "module",
     "dependencies": {
         "@types/express-fileupload": "^1.2.2",
         "bcrypt": "^5.0.1",
