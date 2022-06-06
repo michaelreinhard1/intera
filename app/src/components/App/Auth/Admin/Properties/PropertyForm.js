@@ -1,7 +1,10 @@
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import useForm from "../../../../../core/hooks/useForm";
+import { PropertyTypes, TransactionTypes } from "../../../../../core/modules/properties/constants";
 import Button from "../../../../Design/Button/Button";
+import Select from "../../../../Design/Form/Select";
+import Textarea from "../../../../Design/Form/Textarea";
 import Input from "../../../../Design/Input/Input";
 
 
@@ -10,16 +13,16 @@ const schema = yup.object().shape({
     description: yup.string().required(),
     // image: yup.string().email().required(),
     type: yup.string().required(),
-    rooms: yup.number().required(),
-    bedrooms: yup.number().required(),
-    bathrooms: yup.number().required(),
-    price: yup.number().required(),
-    area: yup.number().required(),
-    floor: yup.number().required(),
-    year: yup.number().required(),
+    rooms: yup.number().typeError('rooms must be a number').required(),
+    bedrooms: yup.number().typeError('bedrooms must be a number').required(),
+    bathrooms: yup.number().typeError('bathrooms must be a number').required(),
+    price: yup.number().typeError('price must be a number. eg: 350000').required(),
+    area: yup.number().typeError('area must be a number').required(),
+    floor: yup.number().typeError('floor must be a number').required(),
+    year: yup.number().typeError('year must be a number').required(),
     address: yup.string().required(),
     phone: yup.string().required(),
-    email: yup.string().required(),
+    email: yup.string().email().required(),
     owner: yup.string().required(),
     city: yup.string().required(),
     zip: yup.string().required(),
@@ -80,7 +83,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
           </div>
           <div className='w-full mr-3 mb-6 col-span-full'>
               <label htmlFor="description" className='w-6/12'>{t('fields.description')}</label>
-              <textarea
+              <Textarea
               className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full"
               name="description"
               value={values.description}
@@ -127,7 +130,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.floor}
               />
           </div>
-          <div className="w-6/7 mb-6  col-span-full flex justify-items-start">
+          <div className="w-6/7 mb-6  col-span-full flex justify-items-start mt-10">
                 <p className="text-lg font-bold">
                     {t('fields.address')}
                 </p>
@@ -168,30 +171,35 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.zip}
               />
           </div>
-          <div className="w-6/7 mb-6  col-span-full flex justify-items-start">
+          <div className="w-6/7 mb-6  col-span-full flex justify-items-start mt-10">
                 <p className="text-lg font-bold">
                     {t('fields.type of property')}
                 </p>
           </div>
           <div className='w-full mr-3 mb-6 '>
               <label htmlFor="type" className='w-6/12'>{t('fields.type')}</label>
-              <Input
-              name="type"
-              value={values.type}
-              onChange={handleChange}
-              error={errors.type}
+              <Select
+                label="type"
+                name="type"
+                value={values.type}
+                options={Object.values(PropertyTypes)}
+                onChange={handleChange}
+                error={errors.type}
               />
           </div>
           <div className='w-full mr-3 mb-6 '>
               <label htmlFor="payment" className='w-6/12'>{t('fields.payment')}</label>
-              <Input
-              name="payment"
-              value={values.payment}
-              onChange={handleChange}
-              error={errors.payment}
+              <Select
+                label="payment"
+                name="payment"
+                value={values.type}
+                options={Object.values(TransactionTypes)}
+                onChange={handleChange}
+                error={errors.type}
               />
+
           </div>
-          <div className="w-6/7 mb-6  col-span-full flex justify-items-start">
+          <div className="w-6/7 mb-6  col-span-full flex justify-items-start mt-10">
                 <p className="text-lg font-bold">
                     {t('fields.rooms')}
                 </p>
@@ -226,7 +234,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.bathrooms}
               />
           </div>
-          <div className="w-6/7 mb-6  col-span-full flex justify-items-start">
+          <div className="w-6/7 mb-6  col-span-full flex justify-items-start mt-10">
                 <p className="text-lg font-bold">
                     {t("fields.owner's contact details")}
                 </p>

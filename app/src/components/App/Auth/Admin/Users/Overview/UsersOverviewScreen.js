@@ -25,7 +25,6 @@ const UsersOverviewScreen = () => {
     }
 
     const dataForTable = data.map(item => {
-        delete item.id;
         return item;
     }
     );
@@ -51,7 +50,6 @@ const UsersOverviewScreen = () => {
                     edit={UserRoutes.Detail}
                     />
                 }
-
             </div>
         </>
     );

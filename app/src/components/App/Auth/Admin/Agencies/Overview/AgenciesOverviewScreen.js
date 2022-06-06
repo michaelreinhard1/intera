@@ -6,7 +6,6 @@ import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
 import Container from "../../../../../Design/Container/Container";
 import Table from "../../../../../Design/Table/Table";
 import { AdminRoutes, AgencyRoutes, ApiRoutes, route } from "../../../../../../core/routing";
-import * as MaterialDesign from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import Button from "../../../../../Design/Button/Button";
 
@@ -24,7 +23,6 @@ const AgenciesOverviewScreen = () => {
     }
 
     const dataForTable = data.map(item => {
-        delete item.id;
         delete item.description;
         delete item.image;
         delete item.province;

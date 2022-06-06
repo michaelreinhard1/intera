@@ -11,25 +11,4 @@ export default class AuthController {
             token: createToken(user),
         });
     };
-    register = async (req: AuthRequest, res: Response, next: NextFunction) => {
-        // const { user } = req;
-        // res.json({
-        //     user,
-        //     token: createToken(user),
-        // });
-
-        const userController = new UserController();
-        await userController.create(req, res, next);
-
-
-    };
-    registerAdmin = async (req: AuthRequest, res: Response, next: NextFunction) => {
-
-
-        const userController = new UserController();
-
-        // Create a user with role admin
-        await userController.create(req, res, next);
-
-    };
 }

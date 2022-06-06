@@ -1,6 +1,7 @@
 import User from "./User.entity";
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../database/DataSource";
+import { UserBody } from "./User.types";
 
 export default class UserService {
     private repository: Repository<User>;
@@ -11,8 +12,9 @@ export default class UserService {
     }
 
     all = async () => {
-        // don't show password
-        const users = await this.repository.find();
+        const users = await this.repository.find(
+            { relations: ["agency"] }
+        );
         return users;
     };
 
@@ -35,11 +37,9 @@ export default class UserService {
         return user;
     };
 
-    create = async (body) => {
-
+    create = async (body: UserBody) => {
         const user = await this.findOneBy({ email: body.email });
-
-        if (!user) {
+        if(!user){
             const user = await this.repository.save(this.repository.create(body));
             const obj = {
                 user:{
@@ -49,9 +49,8 @@ export default class UserService {
             return obj;
         }
     };
-
-    update = async (id: number, body) => {
-        let user = await this.findOne(id);
+    update = async (id: number, body: UserBody) => {
+        let user = await this.repository.findOneBy({ id });
         if (user) {
             user = await this.repository.save({ ...user, ...body });
         }

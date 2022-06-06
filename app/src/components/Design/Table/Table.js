@@ -1,8 +1,10 @@
+import { useTranslation } from "react-i18next";
 import * as MaterialDesign from "react-icons/md";
 import { Link } from "react-router-dom";
 import { AdminRoutes, route } from "../../../core/routing";
 
 const Table = ({items = [], edit}) => {
+const { t } = useTranslation();
   return (
    <div className="flex flex-col h-2/6">
     <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -30,7 +32,7 @@ const Table = ({items = [], edit}) => {
                     {
                     Object.keys(item).map(key => (
                         // everything except the id and image
-                        <td key={key} className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                        <td key={key} className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                             {item[key]}
                         </td>
                     ))

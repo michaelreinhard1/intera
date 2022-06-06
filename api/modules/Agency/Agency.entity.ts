@@ -37,7 +37,7 @@ export default class Agency extends BaseEntity {
     email: string;
 
     @OneToMany(() => User, (user) => user.agency)
-    agents: User[];
+    users: User[];
 
     @OneToMany(() => Property, (property) => property.agency)
     properties: Property[];

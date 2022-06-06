@@ -12,16 +12,16 @@ import { UserRoles } from "../../../../../../core/modules/users/constants";
 import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndicator";
 import useFetch from '../../../../../../core/hooks/useFetch';
 import { useAuthContext } from '../../../AuthProvider';
-import { ApiRoutes, route, UserRoutes } from "../../../../../../core/routing";
+import { AgencyRoutes, ApiRoutes, route, UserRoutes } from "../../../../../../core/routing";
 import Select from "../../../../../Design/Form/Select";
-import UserForm from "../UserForm";
 import { useTranslation } from "react-i18next";
 import useTitle from "../../../../../../core/hooks/useTitle";
+import AgencyForm from "../AgencyForm";
 
-const UserEdit = () => {
+const AgencyEdit = () => {
 
   const { t } = useTranslation();
-  const { user, onUserUpdate } = useOutletContext();
+  const { agency, onAgencyUpdate } = useOutletContext();
   const navigate = useNavigate();
 
   useTitle(t("users.edit.title"));
@@ -29,12 +29,12 @@ const UserEdit = () => {
   const { isLoading, error, mutate } = useMutation();
 
   const handleSubmit = (data) => {
-      mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.User}${user.id}`, {
+      mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.Agency}${agency.id}`, {
           method: "PATCH",
           data,
           onSuccess: () => {
-              onUserUpdate();
-              navigate(route(UserRoutes.Detail, { id: user.id }));
+              onAgencyUpdate();
+              navigate(route(AgencyRoutes.Detail, { id: agency.id }));
           },
       });
   };
@@ -43,11 +43,11 @@ const UserEdit = () => {
     <>
       <HeaderSpacer />
       <Container>
-          <UserForm
+          <AgencyForm
                 label={t("buttons.save")}
                 disabled={isLoading}
                 onSubmit={handleSubmit}
-                initialData={user}
+                initialData={agency}
             />
             {error && <Error>{error}</Error>}
       </Container>
@@ -56,4 +56,4 @@ const UserEdit = () => {
   )
 }
 
-export default UserEdit
+export default AgencyEdit

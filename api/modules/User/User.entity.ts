@@ -1,5 +1,5 @@
 import { compare, hash } from "bcrypt";
-import { BeforeInsert, Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { BaseEntity } from "../BaseEntity";
 import { UserRole } from "./User.constants";
 import { IsDefined, IsEmail } from "class-validator";
@@ -11,20 +11,20 @@ export default class User extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @IsDefined()
+    @IsDefined({ always: true })
     @Column()
     name: string;
 
-    @IsDefined()
+    @IsDefined({ always: true })
     @Column()
     surname: string;
 
-    @IsDefined()
-    @IsEmail()
+    @IsDefined({ always: true })
+    @IsEmail(undefined, { always: true })
     @Column({ unique: true })
     email: string;
 
-    @IsDefined()
+    @IsDefined({groups: ["create"]})
     @Column({ select: false })
     password: string;
 
@@ -38,10 +38,11 @@ export default class User extends BaseEntity {
     @ManyToMany(() => Property, (property) => property.savedBy)
     savedProperties: Property[];
 
-    @ManyToOne(() => Agency, (agency) => agency.agents)
-    agency: Agency[];
+    @ManyToOne(() => Agency, (agency) => agency.users)
+    agency: Agency;
 
     @BeforeInsert()
+    @BeforeUpdate()
     async hashPassword() {
         if (this.password) {
             this.password = await hash(this.password, 10);
@@ -51,4 +52,9 @@ export default class User extends BaseEntity {
     async checkPassword(passwordToCheck: string) {
         return await compare(passwordToCheck, this.password);
     }
+
+    isAdmin() {
+        return this.role === UserRole.Admin;
+    }
+
 }

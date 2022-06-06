@@ -11,12 +11,12 @@ const Select = ({ name, options = [], onChange, value, error, disabled }) => {
                 onChange={onChange}>
                 {options &&
                     options.map((option) => (
-                        <option key={option} value={option}>
-                            {option}
+                        <option key={option.value} value={option.value}>
+                            {option.label}
                         </option>
                     ))}
             </select>
-            {error && <div className="invalid-feedback">{error}</div>}
+            {error && <div className="text-red-500">{error}</div>}
         </>
     );
 };

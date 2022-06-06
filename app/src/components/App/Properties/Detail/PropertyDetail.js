@@ -7,11 +7,11 @@ import Container from '../../../Design/Container/Container';
 import HeaderSpacer from '../../../Design/HeaderSpacer/HeaderSpacer';
 import AppFooter from '../../AppFooter/AppFooter';
 import * as MaterialDesign from "react-icons/md";
-import { formatArea, formatPrice } from '../../../../core/modules/users/utils';
 import Button from '../../../Design/Button/Button';
 import { useAuthContext } from '../../Auth/AuthProvider';
 import Banner from '../../../Design/Alerts/Banner';
 import { AuthRoutes } from '../../../../core/routing';
+import { formatArea, formatPrice } from '../../../../core/modules/properties/utils';
 
 const PropertyDetail = () => {
 
@@ -29,7 +29,6 @@ const PropertyDetail = () => {
     <>
       <HeaderSpacer />
       <Container>
-
           <div className="flex gap-10">
               <div className="w-full lg:w-1/2">
                   <img src={`${process.env.REACT_APP_PUBLIC_URL}/images/${property.image}`} alt={property.title} className="rounded-lg"/>

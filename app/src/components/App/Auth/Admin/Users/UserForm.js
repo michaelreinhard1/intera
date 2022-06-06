@@ -4,15 +4,29 @@ import useForm from "../../../../../core/hooks/useForm";
 import { UserRoles } from "../../../../../core/modules/users/constants";
 import Button from "../../../../Design/Button/Button";
 import PasswordInput from "../../../../Design/Form/PasswordInput";
+import SearchbarDropdown from "../../../../Design/Form/SearchbarDropdown";
+import Select from "../../../../Design/Form/Select";
 import Input from "../../../../Design/Input/Input";
+import AgencySelect from "../../../Shared/Agencies/Select/AgencySelect";
 
 const getSchema = (isUpdate) => {
   return yup.object().shape({
       name: yup.string().required(),
       surname: yup.string().required(),
       email: yup.string().email().required(),
+      role: yup.string().required(),
       password: isUpdate ? yup.string() : yup.string().required(),
+      agencyId: yup.number().nullable().required(),
   });
+};
+const transformInitialData = (initialData) => {
+    if (initialData.agency) {
+        initialData = {
+            ...initialData,
+            agencyId: initialData.agency.id,
+        };
+    }
+    return initialData;
 };
 
 const transformValues = (values) => {
@@ -33,7 +47,9 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
           surname: "",
           email: "",
           password: "",
-          ...initialData,
+          agencyId: null,
+          role: UserRoles.User,
+          ...transformInitialData(initialData),
       }
   );
 
@@ -41,11 +57,12 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
       onSubmit(transformValues(values));
   };
 
+  console.log(values);
   const mode = disabled ? "bg-blue-400 hover:bg-blue-400" : "";
   const { t } = useTranslation();
   return (
-      <form onSubmit={handleSubmit(handleData)} noValidate={true} className="p-12 pt-0 md:p-18 rounded-xl flex flex-col">
-          <div className='w-full  mb-6'>
+      <form onSubmit={handleSubmit(handleData)} noValidate={true} className="p-12 pt-0 md:p-18 rounded-xl grid grid-cols-2 gap-x-5">
+          <div className='w-full mr-3 mb-6'>
               <label htmlFor="name" className='w-6/12'>{t('fields.name')}</label>
               <Input
               name="name"
@@ -54,7 +71,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.name}
               />
           </div>
-          <div className='w-full  mb-6'>
+          <div className='w-full mr-3 mb-6'>
               <label htmlFor="surname" className='w-6/12'>{t('fields.surname')}</label>
               <Input
               name="surname"
@@ -63,7 +80,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.surname}
               />
           </div>
-          <div className='w-full  mb-6'>
+          <div className='w-full mr-3 mb-6'>
               <label htmlFor="email" className='w-6/12'>{t('fields.email')}</label>
               <Input
               name="email"
@@ -72,7 +89,28 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.email}
               />
           </div>
-          <div className='w-full  mb-6'>
+          <div className='w-full mr-3 mb-6'>
+              <label htmlFor="role" className='w-6/12'>{t('fields.role')}</label>
+              <Select
+              label="role"
+                name="role"
+                value={values.role}
+                options={Object.values(UserRoles)}
+                onChange={handleChange}
+                error={errors.role}
+              />
+          </div>
+          <div className='w-full mr-3 mb-6'>
+              <label htmlFor="role" className='w-6/12'>{t('fields.agency')}</label>
+              <AgencySelect
+                    name="agencyId"
+                    value={values.agencyId}
+                    onChange={handleChange}
+                    error={errors.agencyId}
+                />
+
+          </div>
+          <div className='w-full mr-3 mb-6'>
               <label htmlFor="password" className='w-6/12'>{t('fields.password')}</label>
               <PasswordInput
                   name="password"
@@ -82,12 +120,12 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                   error={errors.password}
               />
               {isUpdate && (
-                  <p className="text-muted">
+                  <p className="text-muted mt-5 pl-2 ">
                       {t("users.edit.password_print")}
                   </p>
               )}
           </div>
-          <Button className={` m-auto bg-blue-500 ${mode}`} color={'primary'} type="submit" disabled={disabled}>
+          <Button className={` m-auto bg-blue-500 col-span-2 ${mode}`} color={'primary'} type="submit" disabled={disabled}>
               {label}
           </Button>
       </form>

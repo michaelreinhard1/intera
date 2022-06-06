@@ -2,8 +2,8 @@ import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import useForm from "../../../../../core/hooks/useForm";
 import Button from "../../../../Design/Button/Button";
+import Textarea from "../../../../Design/Form/Textarea";
 import Input from "../../../../Design/Input/Input";
-
 
 const schema = yup.object().shape({
     name: yup.string().required(),
@@ -11,6 +11,10 @@ const schema = yup.object().shape({
     // image: yup.string().email().required(),
     address: yup.string().required(),
     province: yup.string().required(),
+    city: yup.string().required(),
+    zip: yup.string().required(),
+    phone: yup.string().required(),
+    email: yup.string().email().required(),
 });
 
 const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
@@ -21,6 +25,10 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
         description: "",
         address: "",
         province: "",
+        city: "",
+        zip: "",
+        email: "",
+        phone: "",
           ...initialData,
       }
   );
@@ -51,8 +59,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
           </div>
           <div className='w-full mr-3 mb-6 col-span-full'>
               <label htmlFor="description" className='w-6/12'>{t('fields.description')}</label>
-              <textarea
-              className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full"
+              <Textarea
               name="description"
               value={values.description}
               onChange={handleChange}
@@ -74,6 +81,15 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               value={values.province}
               onChange={handleChange}
               error={errors.province}
+              />
+          </div>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="city" className='w-6/12'>{t('fields.city')}</label>
+              <Input
+              name="city"
+              value={values.city}
+              onChange={handleChange}
+              error={errors.city}
               />
           </div>
           <div className='w-full mr-3 mb-6 '>

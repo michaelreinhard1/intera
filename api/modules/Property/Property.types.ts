@@ -20,5 +20,6 @@ export interface PropertyBody {
     city: string;
     province: string;
     zip: number;
-    agency: Agency;
+    agency?: Agency;
+    agencyId: number;
 }

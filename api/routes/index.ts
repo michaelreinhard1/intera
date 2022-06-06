@@ -1,8 +1,6 @@
 import { NextFunction, Request, Response, Router } from "express";
 import NotFoundError from "../errors/NotFoundError";
 import { authJwt, authLocal, withRole } from "../middleware/auth";
-import ClientController from "../modules/Client/Client.controller";
-import ProjectController from "../modules/Project/Project.controller";
 import AuthController from "../modules/User/Auth.controller";
 import UserController from "../modules/User/User.controller";
 import AgencyController from "../modules/Agency/Agency.controller";
@@ -26,10 +24,11 @@ const registerOnboardingRoutes = (router: Router) => {
     const agencyController = new AgencyController();
 
     router.post("/login", authLocal, handleErrors(authController.login));
-    router.post("/register", handleErrors(authController.register));
+    router.post("/register", handleErrors(userController.create));
 
     router.post("/dev/property", propertyController.create);
     router.post("/dev/agency", agencyController.create);
+    router.get("/agencies", handleErrors(agencyController.all));
 
     // test route REMOVE after
     if (process.env.ENV === "development") {
@@ -52,6 +51,9 @@ const registerAdminRoutes = (router: Router) => {
 
     const agencyController = new AgencyController();
     adminRouter.get("/agencies", handleErrors(agencyController.all));
+    adminRouter.get("/agencies/:id", handleErrors(agencyController.find));
+    adminRouter.post("/agencies", handleErrors(agencyController.create));
+    adminRouter.patch("/agencies/:id", handleErrors(agencyController.update));
 
     router.use(withRole(UserRole.Admin), adminRouter);
 };

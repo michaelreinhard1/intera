@@ -119,7 +119,9 @@
         },
         "edit": {
             "title": "Edit user",
-            "success": "User updated successfully"
+            "success": "User updated successfully",
+            "password_print": "Leave blank if you don't want to change the password"
+
         }
     },
     "buttons": {
@@ -146,6 +148,7 @@
     "fields": {
         "id": "Id",
         "contact": "Contact",
+        "edit": "Edit",
         "email": "Email",
         "name": "Name",
         "surname": "Surname",

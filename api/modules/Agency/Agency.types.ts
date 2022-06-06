@@ -11,6 +11,4 @@ export interface AgencyBody {
     phone: string;
     zip: number;
     province: string;
-    agents: User[];
-    properties: Property[];
 }

@@ -8,7 +8,7 @@ import Container from "../../../../../Design/Container/Container";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
 import PropertyForm from "../PropertyForm";
 
-const PropertyAdd = () => {
+const PropertyEdit = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     useTitle(t("properties.create.title"));
@@ -31,7 +31,6 @@ const PropertyAdd = () => {
         <Container>
             {/* <BackButton href={route(UserRoutes.Index)} /> */}
             <PropertyForm
-                initialData={null}
                 label={t("buttons.create")}
                 disabled={isLoading}
                 onSubmit={handleSubmit}
@@ -42,4 +41,4 @@ const PropertyAdd = () => {
     );
 };
 
-export default PropertyAdd;
+export default PropertyEdit;

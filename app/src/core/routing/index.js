@@ -11,6 +11,7 @@ const ApiRoutes = {
     Users: '/users',
     User: '/user/',
     Agencies: '/agencies',
+    Agency: '/agencies/',
 }
 
 const AuthRoutes = {
@@ -37,11 +38,6 @@ const HomeRoutes = {
 
 const AdminRoutes = {
     Index: "/admin",
-    Properties: "/admin/properties",
-    PropertyDetail: "/admin/property/:id",
-    AddProperty: "/admin/property/add",
-    Agencies: "/admin/agencies",
-    AddAgency: "/admin/agency/add",
     Settings: "/admin/settings",
     Logout: "/logout",
     Notifications: "/admin/notifications",
