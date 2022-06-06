@@ -1,6 +1,7 @@
 import { Repository } from "typeorm";
 
 import { AppDataSource } from "../../database/DataSource";
+import { TransactionTypes } from "./Property.constants";
 import Property from "./Property.entity";
 import { PropertyBody } from "./Property.types";
 
@@ -49,7 +50,7 @@ export default class PropertyService {
             .createQueryBuilder("property")
             .select("property")
             .addSelect("property.address")
-            .where("property.payment = :payment", { payment: "rent" })
+            .where("property.payment = :payment", { payment: TransactionTypes.Rent })
             .getMany();
         return properties;
     };
@@ -59,7 +60,7 @@ export default class PropertyService {
             .createQueryBuilder("property")
             .select("property")
             .addSelect("property.address")
-            .where("property.payment = :payment", { payment: "buy" })
+            .where("property.payment = :payment", { payment: TransactionTypes.Buy })
             .getMany();
         return properties;
     };

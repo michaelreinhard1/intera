@@ -10,21 +10,32 @@ const useMutation = () => {
     const mutate = async (url, options = {}) => {
         setIsLoading(true);
 
-        const headers = {
-            "accept": "application/json",
-            "content-type": "application/json",
-        };
-
+        let headers = {};
+        if (!options.multipart) {
+            headers = {
+                "accept": "application/json",
+                "content-type": "application/json",
+            };
+        }
         try {
-            const data = await authFetch(url, {
+            let body;
+            let data = options.data ?? {};
+            if (options.multipart) {
+                body = new FormData();
+                for (const name in data) {
+                    body.append(name, data[name]);
+                }
+            } else {
+                body = JSON.stringify(data);
+            }
+            const result = await authFetch(url, {
                 method: options.method ?? "POST",
                 headers: headers,
-                body: JSON.stringify(options.data ?? {}),
+                body: body,
             });
 
             if (options.onSuccess) {
-                options.onSuccess(data);
-                setIsLoading(false);
+                options.onSuccess(result);
             } else {
                 setIsLoading(false);
             }
@@ -32,8 +43,10 @@ const useMutation = () => {
             if (options.onError) {
                 options.onError(String(error));
             } else {
+                console.log(error);
+                console.log(error.toString());
                 setIsLoading(false);
-                setError(String(error));
+                setError(error.toString());
             }
         }
     };

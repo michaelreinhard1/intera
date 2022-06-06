@@ -51,6 +51,12 @@ export default class UserController {
         next: NextFunction
     ) => {
         try {
+            const { body } = req;
+
+            if (body.agencyId) {
+                body.agency = await this.agencyService.findOne(body.agencyId);
+            }
+
             const user = await this.userService.update(
                 parseInt(req.params.id),
                 req.body

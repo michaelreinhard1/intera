@@ -8,10 +8,12 @@ import AppFooter from '../../AppFooter/AppFooter'
 import HeaderSpacer from '../../../Design/HeaderSpacer/HeaderSpacer'
 import LoadingIndicator from '../../../Design/LoadingIndicator/LoadingIndicator'
 import useTitle from '../../../../core/hooks/useTitle'
-import { t } from 'i18next'
 import { formatArea, formatPrice } from '../../../../core/modules/properties/utils'
+import { useTranslation } from 'react-i18next'
 
 const PropertiesOverviewScreen = ({type}) => {
+
+    const { t } = useTranslation();
 
     const { auth } = useAuthContext();
 
@@ -58,31 +60,27 @@ const PropertiesOverviewScreen = ({type}) => {
   return (
       <>
         <HeaderSpacer />
-        <Container>
 
-        <div className="flex flex-wrap">
-            {!isLoading && data && data.map( (property) => (
-                <Card key={property.id}
-                id={property.id}
-                address={property.address}
-                image={property.image}
-                name={property.name}
-                year={property.year}
-                description={property.description}
-                bathrooms={property.bathrooms}
-                bedrooms={property.bedrooms}
-                price={formatPrice(property.price)}
-                area={formatArea(property.area)}
-                payment={property.payment}
-                owner={property.owner}
-                type={property.type}
-                city={property.city}
-                toggleLike={handleLike}
-                />
+            {/* if no data */}
+            {!data.length ?
+                <div className="w-full">
+                    <div className="text-center">
+                        <h1>{t('properties.overview.no properties')}</h1>
+                    </div>
+                </div>
+            :
+            data.map( (property) => (
+            <Container>
+                <div className="flex flex-wrap">
+                    <Card
+                        key={property.id}
+                        property={property}
+                        toggleLike={handleLike}
+                    />
+                </div>
+                <AppFooter />
+            </Container>
             ))}
-        </div>
-    </Container>
-    <AppFooter />
     </>
 
   )

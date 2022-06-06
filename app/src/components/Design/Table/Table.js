@@ -29,7 +29,11 @@ const { t } = useTranslation();
                     {
                     Object.keys(item).map(key => (
                         <td key={key} className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                            {item[key]}
+                            {
+                                typeof item[key] === 'object' && item[key] !== null ?
+                                item[key].name :
+                                item[key]
+                            }
                         </td>
                     ))
                     }

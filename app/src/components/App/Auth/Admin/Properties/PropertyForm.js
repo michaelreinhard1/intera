@@ -4,6 +4,7 @@ import useForm from "../../../../../core/hooks/useForm";
 import { PropertyTypes, TransactionTypes } from "../../../../../core/modules/properties/constants";
 import { convertObjectToArrayForSelect } from "../../../../../core/modules/properties/utils";
 import Button from "../../../../Design/Button/Button";
+import FileInput from "../../../../Design/Form/FileInput";
 import Select from "../../../../Design/Form/Select";
 import Textarea from "../../../../Design/Form/Textarea";
 import Input from "../../../../Design/Input/Input";
@@ -12,7 +13,6 @@ import Input from "../../../../Design/Input/Input";
 const schema = yup.object().shape({
     name: yup.string().required(),
     description: yup.string().required(),
-    // image: yup.string().email().required(),
     type: yup.string().required(),
     rooms: yup.number().typeError('rooms must be a number').required(),
     bedrooms: yup.number().typeError('bedrooms must be a number').required(),
@@ -37,7 +37,6 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
       {
         name: "",
         description: "",
-        // image: "",
         type: "",
         rooms: "",
         bedrooms: "",
@@ -52,7 +51,6 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
         owner: "",
         city: "",
         zip: "",
-        payment: "",
         province: "",
           ...initialData,
       }
@@ -60,14 +58,6 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
   const handleData = (values) => {
     onSubmit(values);
 };
-
-    // const typeOptions = Object.keys(Object(PropertyTypes)).map(key => {
-    //     return {
-    //         label: Object(PropertyTypes)[key],
-    //         value: key
-    //     }
-    // }
-    // )
 
   const mode = disabled ? "bg-blue-400 hover:bg-blue-400" : "";
 
@@ -79,6 +69,16 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 <p className="text-lg font-bold">
                     {t('fields.general information')}
                 </p>
+          </div>
+          <div className='w-full mr-3 mb-6 '>
+              <label htmlFor="name" className='w-6/12'>{t('fields.name')}</label>
+              <FileInput
+                name="image"
+                value={values.image}
+                disabled={disabled}
+                onChange={handleChange}
+                error={errors.image}
+              />
           </div>
           <div className='w-full mr-3 mb-6 '>
               <label htmlFor="name" className='w-6/12'>{t('fields.name')}</label>
@@ -200,7 +200,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               <Select
                 label="payment"
                 name="payment"
-                value={values.type}
+                value={values.payment}
                 options={convertObjectToArrayForSelect(TransactionTypes)}
                 onChange={handleChange}
                 error={errors.type}

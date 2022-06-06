@@ -4,7 +4,7 @@ export interface PropertyBody {
     price: number;
     name: string;
     description: string;
-    image: string;
+    image?: string | null;
     type: string;
     payment: string;
     rooms: number;

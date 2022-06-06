@@ -2,11 +2,11 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import useMutation from "../../../../../../core/hooks/useMutation";
 import useTitle from "../../../../../../core/hooks/useTitle";
-import { ApiRoutes, PropertyRoutes } from "../../../../../../core/routing";
+import { AgencyRoutes, ApiRoutes, PropertyRoutes } from "../../../../../../core/routing";
 import Error from "../../../../../Design/Alerts/Error";
 import Container from "../../../../../Design/Container/Container";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
-import PropertyForm from "../AgencyForm";
+import AgencyForm from "../AgencyForm";
 
 const AgencyAdd = () => {
     const navigate = useNavigate();
@@ -20,7 +20,7 @@ const AgencyAdd = () => {
             method: "POST",
             data,
             onSuccess: () => {
-                navigate(PropertyRoutes.Index);
+                navigate(AgencyRoutes.Index);
             },
         });
     };
@@ -30,7 +30,7 @@ const AgencyAdd = () => {
         <HeaderSpacer />
         <Container>
             {/* <BackButton href={route(UserRoutes.Index)} /> */}
-            <PropertyForm
+            <AgencyForm
                 label={t("buttons.create")}
                 disabled={isLoading}
                 onSubmit={handleSubmit}

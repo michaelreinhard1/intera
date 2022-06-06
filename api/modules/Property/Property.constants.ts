@@ -7,4 +7,9 @@ enum PropertyTypes {
     Other = "Other"
 }
 
-export { PropertyTypes };
+enum TransactionTypes {
+    Rent = "Rent",
+    Buy = "Buy"
+}
+
+export { PropertyTypes, TransactionTypes };

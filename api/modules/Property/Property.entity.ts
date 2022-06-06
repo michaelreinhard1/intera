@@ -15,7 +15,7 @@ export default class Property extends BaseEntity {
     @Column({ type: "varchar", length: 255 })
     description: string;
 
-    @Column({ type: "varchar", length: 255, nullable: true })
+    @Column({ nullable: true })
     image: string;
 
     @Column({ type: "varchar", length: 255 , select: false })
@@ -57,13 +57,13 @@ export default class Property extends BaseEntity {
     @Column({ type: "int" })
     year: number;
 
-    @Column({ type: "varchar", length: 255 })
+    @Column({ nullable: true })
     phone: string;
 
-    @Column({ type: "varchar", length: 255 })
+    @Column({ nullable: true })
     email: string;
 
-    @Column({ type: "varchar", length: 255 })
+    @Column({ nullable: true })
     owner: string;
 
     @OneToMany(() => User, (user) => user.savedProperties)

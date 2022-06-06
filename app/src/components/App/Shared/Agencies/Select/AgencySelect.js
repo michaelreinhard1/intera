@@ -14,7 +14,7 @@ const AgencySelect = (props) => {
         ? agencies.map((c) => ({ value: c.id, label: c.name }))
         : null;
 
-    return <Select options={options} {...props} />;
+    return <Select value={props.value} options={options} {...props} />;
 };
 
 export default AgencySelect;

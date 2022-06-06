@@ -6,6 +6,7 @@ import { PropertyBody } from "./Property.types";
 import { UploadedFile } from "express-fileupload";
 
 const getImage = (req: Request) => {
+    console.log(req.files);
     if (req.files.image) {
         const image: UploadedFile = Array.isArray(req.files.image)
             ? req.files.image[0]
@@ -16,7 +17,6 @@ const getImage = (req: Request) => {
     }
     return null;
 };
-
 
 export default class PropertyController {
     private propertyService: PropertyService;
@@ -101,12 +101,13 @@ export default class PropertyController {
     create = async (
         req: Request<{}, {}, PropertyBody>,
         res: Response,
-        next: NextFunction
+        next: NextFunction,
     ) => {
-        // const image = getImage(req);
-        // if (image) {
-        //     req.body.image = image;
-        // }
+        const image = getImage(req);
+        if (image) {
+            req.body.image = image;
+        }
+
         const property = await this.propertyService.create(req.body);
         return res.json(property);
     };
@@ -114,7 +115,7 @@ export default class PropertyController {
     update = async (
         req: Request<{ id: string }, {}, PropertyBody>,
         res: Response,
-        next: NextFunction
+        next: NextFunction,
     ) => {
         const image = getImage(req);
         if (image) {

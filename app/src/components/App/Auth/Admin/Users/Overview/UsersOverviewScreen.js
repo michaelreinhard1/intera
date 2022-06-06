@@ -29,7 +29,6 @@ const UsersOverviewScreen = () => {
     }
     );
 
-
     return (
         <>
             <HeaderSpacer />

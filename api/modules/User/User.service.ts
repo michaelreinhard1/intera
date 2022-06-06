@@ -49,6 +49,7 @@ export default class UserService {
             return obj;
         }
     };
+
     update = async (id: number, body: UserBody) => {
         let user = await this.repository.findOneBy({ id });
         if (user) {

@@ -101,7 +101,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
           </div>
           <div className='w-full mr-3 mb-6'>
               <label htmlFor="role" className='w-6/12'>{t('fields.agency')}</label>
-              <AgencySelect
+                <AgencySelect
                     name="agencyId"
                     value={values.agencyId}
                     onChange={handleChange}

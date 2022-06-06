@@ -53,7 +53,8 @@
         "title": "Properties",
         "overview": {
             "title": "Properties",
-            "create": "Create property"
+            "create": "Create property",
+            "no properties": "No properties"
         },
         "create": {
             "title": "Create property"
@@ -174,6 +175,7 @@
         "size": "Size",
         "rooms": "Rooms",
         "bathrooms": "Bathrooms",
+        "agency": "Agency",
         "bedrooms": "Bedrooms",
         "garages": "Garages",
         "floor": "Floor",

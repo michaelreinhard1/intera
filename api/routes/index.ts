@@ -6,6 +6,8 @@ import UserController from "../modules/User/User.controller";
 import AgencyController from "../modules/Agency/Agency.controller";
 import PropertyController from "../modules/Property/Property.controller";
 import { UserRole } from "../modules/User/User.constants";
+import * as express from "express";
+import * as path from "path";
 
 const handleErrors =
     (func: (req: any, res: Response, next: NextFunction) => Promise<any>) =>
@@ -28,7 +30,6 @@ const registerOnboardingRoutes = (router: Router) => {
 
     router.post("/dev/property", propertyController.create);
     router.post("/dev/agency", agencyController.create);
-    router.get("/agencies", handleErrors(agencyController.all));
 
     // test route REMOVE after
     if (process.env.ENV === "development") {
@@ -88,7 +89,7 @@ const registerAuthenticatedRoutes = (router: Router) => {
 
 const registerRoutes = (app: Router) => {
 
-
+    app.use("/public", express.static(path.resolve(__dirname, "../public")));
     // onboarding routes (login, ...)
     registerOnboardingRoutes(app);
 

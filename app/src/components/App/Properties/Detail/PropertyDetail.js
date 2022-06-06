@@ -12,6 +12,7 @@ import { useAuthContext } from '../../Auth/AuthProvider';
 import Banner from '../../../Design/Alerts/Banner';
 import { AuthRoutes } from '../../../../core/routing';
 import { formatArea, formatPrice } from '../../../../core/modules/properties/utils';
+import { getImagePath } from '../../../../core/helpers/api';
 
 const PropertyDetail = () => {
 
@@ -31,7 +32,7 @@ const PropertyDetail = () => {
       <Container>
           <div className="flex gap-10">
               <div className="w-full lg:w-1/2">
-                  <img src={`${process.env.REACT_APP_PUBLIC_URL}/images/${property.image}`} alt={property.title} className="rounded-lg"/>
+                  <img src={getImagePath(property.image)} alt={property.title} className="rounded-lg"/>
               </div>
               <div className="w-full lg:w-1/2 flex flex-col flex-between h-full">
                 <div className='h-1/2'>
