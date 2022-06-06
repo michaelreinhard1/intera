@@ -1,8 +1,6 @@
 import { t } from 'i18next';
 import {useState} from 'react'
-import { useTranslation } from 'react-i18next';
-import { Link, useOutletContext, useParams } from 'react-router-dom';
-import useFetch from '../../../../core/hooks/useFetch';
+import { useOutletContext } from 'react-router-dom';
 import Container from '../../../Design/Container/Container';
 import HeaderSpacer from '../../../Design/HeaderSpacer/HeaderSpacer';
 import AppFooter from '../../AppFooter/AppFooter';

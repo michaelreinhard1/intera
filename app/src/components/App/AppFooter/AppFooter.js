@@ -1,7 +1,7 @@
 import React from 'react'
 import Footer from '../../Design/Footer/Footer'
 import logo from '../../../assets/icons/Logo.svg'
-import { HomeRoutes, PropertyRoutes } from '../../../core/routing'
+import { HomeRoutes } from '../../../core/routing'
 import { t } from 'i18next'
 
 const AppFooter = () => {
