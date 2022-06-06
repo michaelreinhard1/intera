@@ -8,6 +8,7 @@ const ApiRoutes = {
     BuyPropertiesWithLocation: '/buy-properties-with-location',
     RentPropertiesWithLocation: '/rent-properties-with-location',
     PropertyWithLocation: '/properties-with-location/',
+    Property: '/properties/',
     Users: '/users',
     User: '/user/',
     Agencies: '/agencies',
