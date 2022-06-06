@@ -5,6 +5,7 @@ import Property from "../modules/Property/Property.entity";
 import User from "../modules/User/User.entity";
 
 export const AppDataSource = new DataSource({
+    url: process.env.DATABASE_URL,
     type: "postgres",
     host: process.env.DB_HOST,
     port: parseInt(process.env.DB_PORT),
