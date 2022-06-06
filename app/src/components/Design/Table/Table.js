@@ -13,16 +13,13 @@ const { t } = useTranslation();
             <table className="min-w-full">
             <thead className="border-b bg-gray-100">
                 <tr>
-                    {/* Only display the keys once */}
                     {Object.keys(items[0]).map(key => (
-                        // everything except the id and image
-                        <th key={key} scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                            {key}
-                        </th>
+                            <th key={key} scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                {key}
+                            </th>
                     ))}
 
                     <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left"></th>
-
                 </tr>
             </thead>
             <tbody>
@@ -31,7 +28,6 @@ const { t } = useTranslation();
                     <tr key={item.id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                     {
                     Object.keys(item).map(key => (
-                        // everything except the id and image
                         <td key={key} className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                             {item[key]}
                         </td>

@@ -10,4 +10,14 @@ const formatArea = (area) => {
     return `${area.toLocaleString("nl-NL")} m²`;
 };
 
-export { formatPrice, formatArea };
+const convertObjectToArrayForSelect = (object) => {
+    return Object.keys(object).map(key => {
+        return {
+            value: key,
+            label: object[key]
+        };
+    }
+    );
+}
+
+export { formatPrice, formatArea, convertObjectToArrayForSelect };

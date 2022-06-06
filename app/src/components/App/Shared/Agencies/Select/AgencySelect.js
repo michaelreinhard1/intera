@@ -10,8 +10,6 @@ const AgencySelect = (props) => {
         return <LoadingIndicator />;
     }
 
-    console.log(agencies);
-
     const options = agencies
         ? agencies.map((c) => ({ value: c.id, label: c.name }))
         : null;

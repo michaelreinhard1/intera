@@ -13,8 +13,6 @@ const AgenciesOverviewScreen = () => {
     const { t } = useTranslation();
     const {  isLoading, data, error } = useFetch(ApiRoutes.Agencies);
 
-    console.log(data);
-
     if (isLoading) {
         return <LoadingIndicator />
     }

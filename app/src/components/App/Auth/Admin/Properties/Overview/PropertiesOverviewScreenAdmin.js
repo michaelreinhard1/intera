@@ -42,7 +42,7 @@ const PropertiesOverviewScreen = () => {
         <>
             <HeaderSpacer />
             <div className="w-4/5 mx-auto">
-            <div className="flex justify-end mb-5">
+                <div className="flex justify-end mb-5">
                     <Button
                         href={PropertyRoutes.New} color={'primary'}
                         className="text-sm font-medium text-gray-900 w-max flex justify-center items-center gap-2">

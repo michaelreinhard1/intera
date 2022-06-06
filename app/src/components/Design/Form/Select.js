@@ -9,6 +9,7 @@ const Select = ({ name, options = [], onChange, value, error, disabled }) => {
                 disabled={disabled}
                 value={String(value) || ""}
                 onChange={onChange}>
+                <option>--</option>
                 {options &&
                     options.map((option) => (
                         <option key={option.value} value={option.value}>

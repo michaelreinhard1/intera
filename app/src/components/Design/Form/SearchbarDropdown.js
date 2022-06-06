@@ -6,8 +6,6 @@ const SearchbarDropdown = ({onChange, options}) => {
 
     const { data } = useFetch(ApiRoutes.Agencies);
 
-    console.log(data);
-
   const ulRef = useRef();
   const inputRef = useRef();
   useEffect(() => {

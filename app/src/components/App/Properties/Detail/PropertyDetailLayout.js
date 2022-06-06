@@ -13,8 +13,6 @@ const PropertyDetailLayout = () => {
 
     const { isLoading, data: property, invalidate, error } = useFetch(auth ?  `${ApiRoutes.PropertyWithLocation}${id}`: `${ApiRoutes.Property}${id}`);
 
-    console.log(property);
-
     const [liked , setLiked] = useState(false);
 
     const handleLike = () => {

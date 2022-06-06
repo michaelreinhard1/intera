@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import useForm from "../../../../../core/hooks/useForm";
 import { PropertyTypes, TransactionTypes } from "../../../../../core/modules/properties/constants";
+import { convertObjectToArrayForSelect } from "../../../../../core/modules/properties/utils";
 import Button from "../../../../Design/Button/Button";
 import Select from "../../../../Design/Form/Select";
 import Textarea from "../../../../Design/Form/Textarea";
@@ -57,9 +58,16 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
       }
   );
   const handleData = (values) => {
-    console.log(values);
     onSubmit(values);
 };
+
+    // const typeOptions = Object.keys(Object(PropertyTypes)).map(key => {
+    //     return {
+    //         label: Object(PropertyTypes)[key],
+    //         value: key
+    //     }
+    // }
+    // )
 
   const mode = disabled ? "bg-blue-400 hover:bg-blue-400" : "";
 
@@ -182,7 +190,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 label="type"
                 name="type"
                 value={values.type}
-                options={Object.values(PropertyTypes)}
+                options={convertObjectToArrayForSelect(PropertyTypes)}
                 onChange={handleChange}
                 error={errors.type}
               />
@@ -193,7 +201,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 label="payment"
                 name="payment"
                 value={values.type}
-                options={Object.values(TransactionTypes)}
+                options={convertObjectToArrayForSelect(TransactionTypes)}
                 onChange={handleChange}
                 error={errors.type}
               />

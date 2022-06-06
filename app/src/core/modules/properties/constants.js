@@ -1,6 +1,6 @@
 const PropertyTypes = {
     House: "House",
-    Appartement: "Apartment",
+    Apartment: "Apartment",
     Office: "Office",
     Garage: "Garage",
     Store: "Store",

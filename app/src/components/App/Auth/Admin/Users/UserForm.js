@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import useForm from "../../../../../core/hooks/useForm";
+import { convertObjectToArrayForSelect } from "../../../../../core/modules/properties/utils";
 import { UserRoles } from "../../../../../core/modules/users/constants";
 import Button from "../../../../Design/Button/Button";
 import PasswordInput from "../../../../Design/Form/PasswordInput";
@@ -15,7 +16,7 @@ const getSchema = (isUpdate) => {
       email: yup.string().email().required(),
       role: yup.string().required(),
       password: isUpdate ? yup.string() : yup.string().required(),
-      agencyId: yup.number().nullable().required(),
+      agencyId: yup.number().nullable(),
   });
 };
 const transformInitialData = (initialData) => {
@@ -56,7 +57,6 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
       onSubmit(transformValues(values));
   };
 
-  console.log(values);
   const mode = disabled ? "bg-blue-400 hover:bg-blue-400" : "";
   const { t } = useTranslation();
   return (
@@ -91,10 +91,10 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
           <div className='w-full mr-3 mb-6'>
               <label htmlFor="role" className='w-6/12'>{t('fields.role')}</label>
               <Select
-              label="role"
+                label="role"
                 name="role"
                 value={values.role}
-                options={Object.values(UserRoles)}
+                options={convertObjectToArrayForSelect(UserRoles)}
                 onChange={handleChange}
                 error={errors.role}
               />

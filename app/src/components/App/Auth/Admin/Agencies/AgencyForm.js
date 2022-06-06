@@ -33,7 +33,6 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
       }
   );
   const handleData = (values) => {
-    console.log(values);
     onSubmit(values);
 };
 
