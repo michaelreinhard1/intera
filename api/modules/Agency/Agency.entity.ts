@@ -15,7 +15,7 @@ export default class Agency extends BaseEntity {
     @Column()
     description: string;
 
-    @Column()
+    @Column( {nullable: true} )
     image: string;
 
     @Column()
@@ -23,6 +23,18 @@ export default class Agency extends BaseEntity {
 
     @Column()
     province: string;
+
+    @Column()
+    zip: number;
+
+    @Column()
+    city: string;
+
+    @Column()
+    phone: string;
+
+    @Column()
+    email: string;
 
     @OneToMany(() => User, (user) => user.agency)
     agents: User[];

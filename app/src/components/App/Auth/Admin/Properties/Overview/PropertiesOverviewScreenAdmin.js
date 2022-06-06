@@ -23,22 +23,34 @@ const PropertiesOverviewScreen = () => {
     if (error) {
         return <Error message={error} />;
     }
+    const dataForTable = data.map(item => {
+        delete item.id;
+        delete item.description;
+        delete item.image;
+        delete item.rooms;
+        delete item.bathrooms;
+        delete item.bedrooms;
+        delete item.area;
+        delete item.floor;
+        return item;
+    }
+    );
 
     return (
         <>
             <HeaderSpacer />
+            <div className="w-4/5 mx-auto">
 
-            <Container>
             <div className="flex justify-end mb-5">
                     <Button href={PropertyRoutes.New} color={'primary'} className="text-sm font-medium text-gray-900 w-max flex justify-center items-center gap-2">
                         {t('properties.overview.create')}
                     </Button>
                 </div>
                 <Table
-                items={data}
+                items={dataForTable}
                 edit={PropertyRoutes.Detail}
                 />
-            </Container>
+            </div>
         </>
     );
 };

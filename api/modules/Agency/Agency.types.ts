@@ -6,6 +6,10 @@ export interface AgencyBody {
     description: string;
     image: string;
     address: string;
+    city: string;
+    email: string;
+    phone: string;
+    zip: number;
     province: string;
     agents: User[];
     properties: Property[];

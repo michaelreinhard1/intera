@@ -23,10 +23,19 @@ const AgenciesOverviewScreen = () => {
         return <Error message={error} />;
     }
 
+    const dataForTable = data.map(item => {
+        delete item.id;
+        delete item.description;
+        delete item.image;
+        delete item.province;
+        return item;
+    }
+    );
+
     return (
         <>
             <HeaderSpacer />
-            <Container>
+            <div className="w-4/5 mx-auto">
                 <div className="flex justify-end mb-5">
                     <Button href={AgencyRoutes.New} color={'primary'} className="text-sm font-medium text-gray-900 w-max flex justify-center items-center gap-2">
                         {t('agencies.overview.create')}
@@ -40,12 +49,12 @@ const AgenciesOverviewScreen = () => {
                     :
                     <>
                     <Table
-                    items={data}
+                    items={dataForTable}
                     edit={AgencyRoutes.Detail}
                     />
                     </>
                 }
-            </Container>
+            </div>
         </>
     );
 };
