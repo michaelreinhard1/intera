@@ -5,6 +5,7 @@ import * as MaterialDesign from "react-icons/md";
 import './Card.scss'
 import { HomeRoutes, route } from '../../../core/routing';
 import { getImagePath } from '../../../core/helpers/api';
+import { formatPrice } from '../../../core/modules/properties/utils';
 const Card = ({property, toggleLike}) => {
 
   let typeColor;
@@ -37,7 +38,7 @@ const Card = ({property, toggleLike}) => {
       <h2 className="mt-2 mb-2 text-lg text-gray-900 font-bold">{property.name}</h2>
       <p className="text-sm">{property.description}</p>
       <div className="mt-3 flex items-center">
-        <span className="font-bold text-gray-900 text-xl">{property.price}{property.payment === 'Rent' ? <span className="text-sm text-gray-600"> / {t('property.month')}</span> : null}</span>
+        <span className="font-bold text-gray-900 text-xl">{formatPrice(property.price)}{property.payment === 'Rent' ? <span className="text-sm text-gray-600"> / {t('property.month')}</span> : null}</span>
       </div>
     </div>
     <div className="p-4 border-t border-b text-md text-gray-700">
@@ -67,7 +68,7 @@ const Card = ({property, toggleLike}) => {
         <div className="flex items-center pt-2">
             <div className="bg-cover bg-center w-10 h-10 rounded-full mr-3">
                 <img src={`
-                ${property.profilePicture ? `${process.env.REACT_APP_PUBLIC_URL}/images/${property.profilePicture}` : `${process.env.REACT_APP_PUBLIC_URL}/images/profile-picture-placeholder.jpg`}
+                ${property.profilePicture ? `images/${property.profilePicture}` : `images/profile-picture-placeholder.jpg`}
                 `} alt="profile" className="w-full h-full rounded-full" />
             </div>
             <div>

@@ -90,16 +90,13 @@ const registerAuthenticatedRoutes = (router: Router) => {
 const registerRoutes = (app: Router) => {
 
     app.use("/public", express.static(path.resolve(__dirname, "../public")));
-    // onboarding routes (login, ...)
+
     registerOnboardingRoutes(app);
 
     guestRoutes(app);
 
-    // authenticated routes (authentication required)
     registerAuthenticatedRoutes(app);
 
-
-    // fallback route, return our own 404 instead of default
     app.use((req: Request, res: Response, next: NextFunction) => {
         next(new NotFoundError());
     });

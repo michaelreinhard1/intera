@@ -20,7 +20,7 @@ export default class PropertyService {
     allRent = async () => {
         const properties = await this.repository.find({
             where: {
-                payment: "rent"
+                payment: TransactionTypes.Rent
             }
         });
         return properties;
@@ -29,7 +29,7 @@ export default class PropertyService {
     allBuy = async () => {
         const properties = await this.repository.find({
             where: {
-                payment: "buy"
+                payment: TransactionTypes.Buy
             }
         });
         return properties;
