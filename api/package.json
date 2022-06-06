@@ -25,8 +25,13 @@
         "typescript": "^4.6.3"
     },
     "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node dist/src/index.js",
+        "dev": "ts-node-dev src/index.ts",
         "build": "tsc",
-        "start": "node dist/server.js"
+        "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
+        "db:generate-migration": "yarn typeorm -- migrate:generate --config ormconfig.ts --connection --name",
+        "db:run-migration": "yarn typeorm -- migration:run"
     },
     "devDependencies": {
         "@types/bcrypt": "^5.0.0",
