@@ -24,7 +24,7 @@ const registerOnboardingRoutes = (router: Router) => {
     const agencyController = new AgencyController();
 
     router.post("/login", authLocal, handleErrors(authController.login));
-    router.post("/register", handleErrors(userController.create));
+    router.post("/register", handleErrors(authController.register));
 
     router.post("/dev/property", propertyController.create);
     router.post("/dev/agency", agencyController.create);
