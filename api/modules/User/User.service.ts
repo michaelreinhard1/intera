@@ -2,6 +2,7 @@ import User from "./User.entity";
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../database/DataSource";
 import { UserBody } from "./User.types";
+import { createToken } from "../../middleware/auth";
 
 export default class UserService {
     private repository: Repository<User>;
@@ -42,6 +43,7 @@ export default class UserService {
         if(!user){
             const user = await this.repository.save(this.repository.create(body));
             const obj = {
+                token: createToken(user),
                 user:{
                     ...user,
                 },

@@ -5,7 +5,10 @@ import UserController from "./User.controller";
 import { UserBody } from "./User.types";
 
 export default class AuthController {
-    login = async (req: AuthRequest, res: Response, next: NextFunction) => {
+    login = async (
+        req: AuthRequest,
+        res: Response,
+        next: NextFunction) => {
         const { user } = req;
         res.json({
             user,
@@ -18,6 +21,6 @@ export default class AuthController {
         next: NextFunction
     ) => {
         const userController = new UserController();
-        await userController.create(req, res, next);
+        const user = await userController.create(req, res, next);
     }
 }

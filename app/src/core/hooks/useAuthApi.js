@@ -8,7 +8,7 @@ const useAuthApi = () => {
     const { auth, logout } = useAuthContext();
 
     if(auth) {
-        console.log(auth);
+        // console.log(auth);
     }
 
     const authFetch = useCallback(
