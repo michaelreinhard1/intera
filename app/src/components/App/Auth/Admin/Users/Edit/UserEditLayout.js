@@ -4,7 +4,7 @@ import { ApiRoutes } from "../../../../../../core/routing";
 import Error from "../../../../../Design/Alerts/Error";
 import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndicator";
 
-const UserDetailLayout = () => {
+const UserEditLayout = () => {
 
     const { id } = useParams();
 
@@ -27,9 +27,7 @@ const UserDetailLayout = () => {
         return <LoadingIndicator />;
     }
 
-    console.log(user);
-
     return <Outlet context={{ user, onUserUpdate: handleUpdate }} />;
 };
 
-export default UserDetailLayout;
+export default UserEditLayout;

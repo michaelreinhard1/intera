@@ -14,14 +14,15 @@ import useFetch from '../../../../../../core/hooks/useFetch';
 import { useAuthContext } from '../../../AuthProvider';
 import { ApiRoutes, route, UserRoutes } from "../../../../../../core/routing";
 import Select from "../../../../../Design/Form/Select";
-import UserForm from "../UserForm";
 import { useTranslation } from "react-i18next";
 import useTitle from "../../../../../../core/hooks/useTitle";
+import UserForm from "../../../../Shared/Users/Form/UserForm";
 
 const UserEdit = () => {
 
   const { t } = useTranslation();
   const { user, onUserUpdate } = useOutletContext();
+
   const navigate = useNavigate();
 
   useTitle(t("users.edit.title"));
@@ -35,7 +36,7 @@ const UserEdit = () => {
           data,
           onSuccess: () => {
               onUserUpdate();
-              navigate(route(UserRoutes.Detail, { id: user.id }));
+              navigate(route(UserRoutes.Index, { id: user.id }));
           },
       });
   };

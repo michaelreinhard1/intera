@@ -4,7 +4,7 @@ import { ApiRoutes } from "../../../../../../core/routing";
 import Error from "../../../../../Design/Alerts/Error";
 import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndicator";
 
-const AgencyDetailLayout = () => {
+const AgentPropertyEditLayout = () => {
 
     const { id } = useParams();
 
@@ -12,9 +12,9 @@ const AgencyDetailLayout = () => {
         isLoading,
         error,
         invalidate,
-        data: agency,
+        data: property,
         // refresh,
-    } = useFetch(`${ApiRoutes.Agency}${id}`);
+    } = useFetch(`${ApiRoutes.Properties}${id}`);
 
     const handleUpdate = () => {
         invalidate();
@@ -28,7 +28,7 @@ const AgencyDetailLayout = () => {
         return <LoadingIndicator />;
     }
 
-    return <Outlet context={{ agency, onAgencyUpdate: handleUpdate }} />;
+    return <Outlet context={{ property, onPropertyUpdate: handleUpdate }} />;
 };
 
-export default AgencyDetailLayout;
+export default AgentPropertyEditLayout;

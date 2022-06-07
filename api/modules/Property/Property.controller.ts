@@ -97,21 +97,6 @@ export default class PropertyController {
         return res.json(property);
     };
 
-    finPropertiesByAgency = async (
-        req: AuthRequest<{ id: string }>,
-        res: Response,
-        next: NextFunction
-    ) => {
-        const properties = await this.propertyService.findPropertiesByAgency(
-            parseInt(req.params.id)
-        );
-        if (!properties) {
-            next(new NotFoundError());
-        }
-        return res.json(properties);
-    };
-
-
     create = async (
         req: Request<{}, {}, PropertyBody>,
         res: Response,

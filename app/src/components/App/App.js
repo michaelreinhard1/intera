@@ -29,18 +29,16 @@ import AgenciesOverviewScreen from './Auth/Admin/Agencies/Overview/AgenciesOverv
 import UserAdd from './Auth/Admin/Users/Add/UserAdd';
 import PropertyAdd from './Auth/Admin/Properties/Add/PropertyAdd';
 import PropertyEdit from './Auth/Admin/Properties/Edit/PropertyEdit';
-import PropertyDetailScreen from './Auth/Admin/Properties/Detail/PropertyDetailScreen';
-import UserDetailLayout from './Auth/Admin/Users/Detail/UserDetailLayout';
-import UserDetailScreen from './Auth/Admin/Users/Detail/UserDetailScreen';
 import AgencyAdd from './Auth/Admin/Agencies/Add/AgencyAdd';
-import AgencyDetailLayout from './Auth/Admin/Agencies/Detail/AgencyDetailLayout';
-import AgencyDetailScreen from './Auth/Admin/Agencies/Detail/AgencyDetailScreen';
 import AgencyEdit from './Auth/Admin/Agencies/Edit/AgencyEdit';
 import AgentLayout from './Auth/Agent/AgentLayout';
 import AgentPropertiesLayout from './Auth/Agent/Properties/AgentPropertiesLayout';
 import AgentPropertiesOverviewScreen from './Auth/Agent/Properties/Overview/AgentPropertiesOverviewScreen';
 import AgentPropertyAdd from './Auth/Agent/Properties/Add/AgentPropertyAdd';
-import AgentPropertyDetailScreen from './Auth/Agent/Properties/Detail/AgentPropertyDetailScreen';
+import UserEditLayout from './Auth/Admin/Users/Edit/UserEditLayout';
+import PropertyEditLayout from './Auth/Admin/Properties/Edit/PropertyEditLayout';
+import AgencyEditLayout from './Auth/Admin/Agencies/Edit/AgencyEditLayout';
+import AgentPropertyEditLayout from './Auth/Agent/Properties/Edit/AgentPropertyEditLayout';
 
 function App() {
 
@@ -112,10 +110,9 @@ function App() {
 
                                 <Route
                                     path={UserRoutes.Detail}
-                                    element={<UserDetailLayout />}>
+                                    element={<UserEditLayout />}>
 
-                                        <Route index element={<UserDetailScreen />} />
-                                        <Route path={UserRoutes.Edit} element={<UserEdit />} />
+                                        <Route index element={<UserEdit />} />
                                 </Route>
 
                             </Route>
@@ -130,10 +127,9 @@ function App() {
 
                                 <Route
                                     path={PropertyRoutes.Detail}
-                                    element={<PropertyDetailLayout />}>
+                                    element={<PropertyEditLayout />}>
 
-                                        <Route index element={<PropertyDetailScreen />} />
-                                        <Route path={PropertyRoutes.Edit} element={<PropertyEdit />} />
+                                        <Route index element={<PropertyEdit />} />
 
                                 </Route>
                             </Route>
@@ -148,10 +144,9 @@ function App() {
 
                                 <Route
                                     path={AgencyRoutes.Detail}
-                                    element={<AgencyDetailLayout />} >
+                                    element={<AgencyEditLayout />} >
 
-                                        <Route index element={<AgencyDetailScreen />} />
-                                        <Route path={AgencyRoutes.Edit} element={<AgencyEdit />} />
+                                        <Route index element={<AgencyEdit />} />
 
                                 </Route>
                             </Route>
@@ -171,6 +166,12 @@ function App() {
                                 element={<AgentPropertiesLayout />}>
 
                                 <Route index element={<AgentPropertiesOverviewScreen />} />
+                                <Route path={AgentRoutes.Edit} element={<AgentPropertyAdd />} />
+
+                                <Route element={<AgentPropertyEditLayout />}>
+
+                                </Route>
+
                                 {/* <Route path={AgentRoutes.NewProperty} element={<AgentPropertyAdd />} /> */}
 
                             </Route>

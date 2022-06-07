@@ -11,7 +11,7 @@ const ApiRoutes = {
     PropertiesByAgency: '/properties-by-agency/',
     Property: '/properties/',
     Users: '/users',
-    User: '/user/',
+    User: '/users/',
     Agencies: '/agencies',
     Agency: '/agencies/',
 }

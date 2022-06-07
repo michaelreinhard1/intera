@@ -18,6 +18,7 @@ const AgentPropertiesOverviewScreen = () => {
 
     const {  isLoading, data, error } = useFetch(`${ApiRoutes.PropertiesByAgency}${auth.user.id}`);
 
+    console.log(data);
     console.log(`${ApiRoutes.PropertiesByAgency}${auth.user.id}`);
     console.log(data);
 
@@ -52,10 +53,19 @@ const AgentPropertiesOverviewScreen = () => {
                             {t('properties.overview.create')}
                     </Button>
                 </div>
-                <Table
-                items={dataForTable}
-                edit={PropertyRoutes.Detail}
-                />
+                {/* if no data */}
+                {dataForTable.length === 0 ?
+                    <div className="flex justify-center items-center">
+                        <div className="text-center text-gray-900 text-xl">
+                            {t('properties.overview.no properties')}
+                        </div>
+                    </div>
+                    :
+                    <Table
+                    items={dataForTable}
+                    edit={PropertyRoutes.Detail}
+                    />
+                }
             </div>
         </>
     );

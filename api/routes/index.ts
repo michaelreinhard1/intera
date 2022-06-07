@@ -54,6 +54,8 @@ const registerAdminRoutes = (router: Router) => {
 
     const propertyController = new PropertyController();
     adminRouter.post("/properties", handleErrors(propertyController.create));
+    adminRouter.patch("/properties/:id", handleErrors(propertyController.update));
+
 
     const agencyController = new AgencyController();
     adminRouter.get("/agencies", handleErrors(agencyController.all));

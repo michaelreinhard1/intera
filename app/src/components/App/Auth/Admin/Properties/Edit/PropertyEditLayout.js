@@ -1,10 +1,10 @@
 import { Outlet, useParams } from "react-router-dom";
+import useFetch from "../../../../../../core/hooks/useFetch";
 import { ApiRoutes } from "../../../../../../core/routing";
-import useFetch from "../../../../../core/hooks/useFetch";
 import Error from "../../../../../Design/Alerts/Error";
 import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndicator";
 
-const AgentPropertyDetailLayout = () => {
+const PropertyEditLayout = () => {
 
     const { id } = useParams();
 
@@ -14,7 +14,7 @@ const AgentPropertyDetailLayout = () => {
         invalidate,
         data: property,
         // refresh,
-    } = useFetch(`${ApiRoutes.Properties}${id}`);
+    } = useFetch(`${ApiRoutes.Property}${id}`);
 
     const handleUpdate = () => {
         invalidate();
@@ -31,4 +31,4 @@ const AgentPropertyDetailLayout = () => {
     return <Outlet context={{ property, onPropertyUpdate: handleUpdate }} />;
 };
 
-export default AgentPropertyDetailLayout;
+export default PropertyEditLayout;

@@ -6,19 +6,20 @@ import { ApiRoutes, PropertyRoutes } from "../../../../../../core/routing";
 import Error from "../../../../../Design/Alerts/Error";
 import Container from "../../../../../Design/Container/Container";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
-import PropertyForm from "../PropertyForm";
+import PropertyForm from "../../../../Shared/Properties/Form/PropertyForm";
 
 const PropertyEdit = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     useTitle(t("properties.create.title"));
     const { property, onPropertyUpdate } = useOutletContext();
+    console.log(property);
 
     const { isLoading, error, mutate} = useMutation();
 
     const handleSubmit = (data) => {
-        mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.Properties}`, {
-            method: "POST",
+        mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.Property}${property.id}`, {
+            method: "PATCH",
             data,
             multipart: true,
             onSuccess: () => {

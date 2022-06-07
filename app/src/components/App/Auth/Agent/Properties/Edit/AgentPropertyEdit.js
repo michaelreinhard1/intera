@@ -6,9 +6,9 @@ import { ApiRoutes, PropertyRoutes } from "../../../../../../core/routing";
 import Error from "../../../../../Design/Alerts/Error";
 import Container from "../../../../../Design/Container/Container";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
-import PropertyForm from "../PropertyForm";
+import PropertyForm from "../../../../Shared/Properties/Form/PropertyForm";
 
-const PropertyEdit = () => {
+const AgentPropertyEdit = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     useTitle(t("properties.create.title"));
@@ -41,4 +41,4 @@ const PropertyEdit = () => {
     );
 };
 
-export default PropertyEdit;
+export default AgentPropertyEdit;

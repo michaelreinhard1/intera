@@ -20,7 +20,6 @@ const getSchema = (isUpdate) => {
   });
 };
 const transformInitialData = (initialData) => {
-    console.log(initialData);
     if (initialData.agency) {
         initialData = {
             ...initialData,

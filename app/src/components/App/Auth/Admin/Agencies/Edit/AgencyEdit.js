@@ -34,7 +34,7 @@ const AgencyEdit = () => {
           data,
           onSuccess: () => {
               onAgencyUpdate();
-              navigate(route(AgencyRoutes.Detail, { id: agency.id }));
+              navigate(route(AgencyRoutes.Index, { id: agency.id }));
           },
       });
   };

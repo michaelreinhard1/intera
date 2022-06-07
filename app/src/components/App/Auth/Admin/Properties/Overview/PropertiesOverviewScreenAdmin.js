@@ -9,7 +9,6 @@ import useTitle from "../../../../../../core/hooks/useTitle";
 import { useTranslation } from "react-i18next";
 import Button from "../../../../../Design/Button/Button";
 import { formatPrice } from "../../../../../../core/modules/properties/utils";
-import * as MaterialDesign from "react-icons/md";
 
 const PropertiesOverviewScreen = () => {
     const { t } = useTranslation();

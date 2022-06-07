@@ -6,7 +6,7 @@ import { ApiRoutes, route, UserRoutes } from "../../../../../../core/routing";
 import Error from "../../../../../Design/Alerts/Error";
 import Container from "../../../../../Design/Container/Container";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
-import UserForm from "../UserForm";
+import UserForm from "../../../../Shared/Users/Form/UserForm";
 
 const UserAdd = () => {
     const navigate = useNavigate();
