@@ -1,14 +1,14 @@
 import { useState } from 'react'
-import Card from '../../../Design/Card/Card'
-import Container from '../../../Design/Container/Container'
-import { ApiRoutes,  HomeRoutes } from '../../../../core/routing'
-import useFetch from '../../../../core/hooks/useFetch'
-import { useAuthContext } from '../../Auth/AuthProvider'
-import AppFooter from '../../AppFooter/AppFooter'
-import HeaderSpacer from '../../../Design/HeaderSpacer/HeaderSpacer'
-import LoadingIndicator from '../../../Design/LoadingIndicator/LoadingIndicator'
-import useTitle from '../../../../core/hooks/useTitle'
 import { useTranslation } from 'react-i18next'
+import useFetch from '../../../../../core/hooks/useFetch';
+import useTitle from '../../../../../core/hooks/useTitle';
+import { ApiRoutes, HomeRoutes } from '../../../../../core/routing';
+import Card from '../../../../Design/Card/Card';
+import Container from '../../../../Design/Container/Container';
+import HeaderSpacer from '../../../../Design/HeaderSpacer/HeaderSpacer';
+import LoadingIndicator from '../../../../Design/LoadingIndicator/LoadingIndicator';
+import { useAuthContext } from '../../../Auth/AuthProvider';
+import AppFooter from '../../../Shared/AppFooter/AppFooter';
 
 const PropertiesOverviewScreen = ({type}) => {
 

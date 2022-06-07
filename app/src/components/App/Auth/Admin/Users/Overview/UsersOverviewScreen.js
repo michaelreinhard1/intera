@@ -1,7 +1,7 @@
 import useFetch from "../../../../../../core/hooks/useFetch";
 import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndicator";
 import Error from "../../../../../Design/Alerts/Error";
-import "../../../../NotFound/NotFound.css";
+import "../../../../../Design/NotFound/NotFound.css";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
 import Container from "../../../../../Design/Container/Container";
 import Table from "../../../../../Design/Table/Table";
@@ -29,7 +29,7 @@ const UsersOverviewScreen = () => {
             <HeaderSpacer />
             <div className="w-4/5 mx-auto">
                 <div className="flex justify-end mb-5">
-                    <Button href={UserRoutes.New} color={'primary'} className="text-sm font-medium text-gray-900 w-max flex justify-center items-center gap-2">
+                    <Button href={UserRoutes.New} color={'primary'}>
                         {t('users.overview.create')}
                     </Button>
                 </div>

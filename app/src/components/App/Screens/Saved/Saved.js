@@ -1,8 +1,8 @@
 import { t } from 'i18next';
-import { AuthRoutes } from '../../../core/routing';
-import Banner from '../../Design/Alerts/Banner'
-import Container from '../../Design/Container/Container';
-import { useAuthContext } from '../Auth/AuthProvider';
+import { AuthRoutes } from '../../../../core/routing';
+import Banner from '../../../Design/Alerts/Banner';
+import Container from '../../../Design/Container/Container';
+import { useAuthContext } from '../../Auth/AuthProvider';
 
 const Saved = () => {
 

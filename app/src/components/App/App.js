@@ -1,27 +1,20 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import NotFound from './NotFound/NotFound';
+import NotFound from '../Design/NotFound/NotFound';
 import Login from './Auth/Login/Login';
 import Register from './Auth/Register/Register';
-import Home from './Home/Home';
 import AuthProvider from './Auth/AuthProvider';
 import OnboardingLayout from './Auth/OnboardingLayout';
 import Profile from './Auth/Profile/Profile';
 import { AdminRoutes, AgencyRoutes, AgentRoutes, AuthRoutes, HomeRoutes, PropertyRoutes, UserRoutes } from '../../core/routing';
 import RoleContainer from '../App/Auth/RoleContainer';
 import { UserRoles } from "../../core/modules/users/constants";
-import Contact from './Contact/Contact';
-import Saved from './Saved/Saved';
-import PropertiesLayout from './Properties/PropertiesLayout';
-import PropertyDetail from './Properties/Detail/PropertyDetail';
-import PropertyDetailLayout from './Properties/Detail/PropertyDetailLayout';
 import AdminLayout from './Auth/Admin/AdminLayout';
 import AppLayout from './AppLayout';
 import UsersOverviewScreen from './Auth/Admin/Users/Overview/UsersOverviewScreen';
 import UsersLayout from './Auth/Admin/Users/UsersLayout';
 import AgenciesLayout from './Auth/Admin/Agencies/AgenciesLayout';
-import PropertiesOverviewScreen from './Properties/Overview/PropertiesOverviewScreen';
 import PropertiesOverviewScreenAdmin from './Auth/Admin/Properties/Overview/PropertiesOverviewScreenAdmin';
 import PropertiesLayoutAdmin from './Auth/Admin/Properties/PropertiesLayoutAdmin';
 import UserEdit from './Auth/Admin/Users/Edit/UserEdit';
@@ -39,6 +32,12 @@ import UserEditLayout from './Auth/Admin/Users/Edit/UserEditLayout';
 import PropertyEditLayout from './Auth/Admin/Properties/Edit/PropertyEditLayout';
 import AgencyEditLayout from './Auth/Admin/Agencies/Edit/AgencyEditLayout';
 import AgentPropertyEditLayout from './Auth/Agent/Properties/Edit/AgentPropertyEditLayout';
+import Home from './Screens/Home/Home';
+import PropertiesLayout from './Screens/Properties/PropertiesLayout';
+import PropertyDetailLayout from './Screens/Properties/Detail/PropertyDetailLayout';
+import PropertyDetail from './Screens/Properties/Detail/PropertyDetail';
+import Saved from './Screens/Saved/Saved';
+import PropertiesOverviewScreen from './Screens/Properties/Overview/PropertiesOverviewScreen';
 
 function App() {
 
@@ -80,8 +79,6 @@ function App() {
 
 
                     <Route path={HomeRoutes.Saved} element={<Saved />} />
-
-                    <Route path={HomeRoutes.Contact} element={<Contact />} />
 
                     <Route path={AuthRoutes.Profile} element={<Profile />} />
 

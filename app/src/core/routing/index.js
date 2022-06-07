@@ -31,7 +31,6 @@ const HomeRoutes = {
     Rent: "/rent",
     Property: `/property/:id`,
     Saved: "/saved",
-    Contact: "/contact",
     About: "/about",
     Terms: "/terms",
     Privacy: "/privacy",

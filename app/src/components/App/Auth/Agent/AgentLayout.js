@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom';
-import AgentHeader from '../../Header/AgentHeader';
+import AgentHeader from '../../Shared/Header/AgentHeader';
 
 
 const AgentLayout = () => {

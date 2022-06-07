@@ -1,5 +1,5 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import AuthBackground from "../AuthBackground/AuthBackground";
+import AuthBackground from "../Shared/AuthBackground/AuthBackground";
 import { useAuthContext } from "./AuthProvider";
 
 const OnboardingLayout = () => {

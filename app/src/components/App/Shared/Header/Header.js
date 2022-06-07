@@ -1,19 +1,17 @@
 import React from 'react'
 import './Header.scss'
-import { useAuthContext } from "../Auth/AuthProvider";
 import { useTranslation } from "react-i18next";
-import NavBar from '../../Design/NavBar/NavBar';
-import { AuthRoutes, HomeRoutes, AdminRoutes, PropertyRoutes, UserRoutes, AgentRoutes } from '../../../core/routing';
-import { isAdmin, isAgent } from '../../../core/modules/users/utils';
 import { useLocation, useParams } from 'react-router-dom';
+import { AgentRoutes, AuthRoutes, HomeRoutes, UserRoutes } from '../../../../core/routing';
+import { isAdmin, isAgent } from '../../../../core/modules/users/utils';
+import NavBar from '../../../Design/NavBar/NavBar';
+import { useAuthContext } from '../../Auth/AuthProvider';
 
 const Header = () => {
 
 	const { t } = useTranslation();
 
-	const { logout } = useAuthContext();
-
-	const { auth } = useAuthContext();
+	const { auth, logout } = useAuthContext();
 
 	const [isOpen, setIsOpen] = React.useState(false);
 
@@ -33,10 +31,6 @@ const Header = () => {
 		{
 			label: t('navigation.saved'),
 			href: HomeRoutes.Saved
-		},
-		{
-			label: t('navigation.contact'),
-			href: HomeRoutes.Contact
 		},
 	]
 

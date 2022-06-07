@@ -1,7 +1,7 @@
 import { t } from 'i18next';
 import React from 'react'
-import { AdminRoutes, AgencyRoutes, HomeRoutes, PropertyRoutes, UserRoutes } from '../../../core/routing'
-import NavBar from '../../Design/NavBar/NavBar'
+import { AgencyRoutes, HomeRoutes, PropertyRoutes, UserRoutes } from '../../../../core/routing';
+import NavBar from '../../../Design/NavBar/NavBar';
 
 const AdminHeader = () => {
 

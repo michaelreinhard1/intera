@@ -1,10 +1,9 @@
 import React from 'react'
 import './Home.scss'
-import Container from '../../Design/Container/Container'
-import useTitle from '../../../core/hooks/useTitle';
 import { t } from 'i18next';
-import Footer from '../../Design/Footer/Footer';
-import AppFooter from '../AppFooter/AppFooter';
+import useTitle from '../../../../core/hooks/useTitle';
+import Container from '../../../Design/Container/Container';
+import AppFooter from '../../Shared/AppFooter/AppFooter';
 
 const Home = () => {
 useTitle(t('home.title'));

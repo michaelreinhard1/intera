@@ -1,9 +1,8 @@
 import React from 'react'
-import Footer from '../../Design/Footer/Footer'
-import logo from '../../../assets/icons/Logo.svg'
-import { HomeRoutes } from '../../../core/routing'
 import { t } from 'i18next'
-
+import { HomeRoutes } from '../../../../core/routing'
+import Footer from '../../../Design/Footer/Footer'
+import logo from '../../../../assets/icons/Logo.svg'
 const AppFooter = () => {
 
   const sections = [
@@ -13,10 +12,6 @@ const AppFooter = () => {
         {
           title: t('navigation.about us'),
           href: HomeRoutes.About,
-        },
-        {
-          title: t('navigation.contact'),
-          href: HomeRoutes.Contact,
         },
       ],
     },

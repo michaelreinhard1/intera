@@ -1,9 +1,9 @@
 import {useState} from 'react'
 import { Outlet, useParams } from 'react-router-dom';
-import useFetch from '../../../../core/hooks/useFetch';
-import { ApiRoutes } from '../../../../core/routing';
-import LoadingIndicator from '../../../Design/LoadingIndicator/LoadingIndicator';
-import { useAuthContext } from '../../Auth/AuthProvider';
+import useFetch from '../../../../../core/hooks/useFetch';
+import { ApiRoutes } from '../../../../../core/routing';
+import LoadingIndicator from '../../../../Design/LoadingIndicator/LoadingIndicator';
+import { useAuthContext } from '../../../Auth/AuthProvider';
 
 const PropertyDetailLayout = () => {
 

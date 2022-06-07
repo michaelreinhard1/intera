@@ -127,6 +127,8 @@ export default class PropertyController {
         if (!property) {
             next(new NotFoundError());
         }
+        console.log(property);
+
         return res.json(property);
     };
 
