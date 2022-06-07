@@ -27,6 +27,8 @@ const UserDetailLayout = () => {
         return <LoadingIndicator />;
     }
 
+    console.log(user);
+
     return <Outlet context={{ user, onUserUpdate: handleUpdate }} />;
 };
 

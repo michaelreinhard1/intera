@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useMutation from "../../../../../../core/hooks/useMutation";
 import useTitle from "../../../../../../core/hooks/useTitle";
 import { ApiRoutes, PropertyRoutes } from "../../../../../../core/routing";
@@ -12,7 +12,6 @@ const PropertyEdit = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     useTitle(t("properties.create.title"));
-    const { property, onPropertyUpdate } = useOutletContext();
 
     const { isLoading, error, mutate} = useMutation();
 
@@ -20,7 +19,6 @@ const PropertyEdit = () => {
         mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.Properties}`, {
             method: "POST",
             data,
-            multipart: true,
             onSuccess: () => {
                 navigate(PropertyRoutes.Index);
             },
@@ -33,10 +31,9 @@ const PropertyEdit = () => {
         <Container>
             {/* <BackButton href={route(UserRoutes.Index)} /> */}
             <PropertyForm
-                label={t("buttons.save")}
+                label={t("buttons.create")}
                 disabled={isLoading}
                 onSubmit={handleSubmit}
-                initialData={property}
                 />
             {error && <Error>{error}</Error>}
         </Container>

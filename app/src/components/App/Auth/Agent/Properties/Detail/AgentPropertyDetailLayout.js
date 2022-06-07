@@ -4,7 +4,7 @@ import useFetch from "../../../../../core/hooks/useFetch";
 import Error from "../../../../../Design/Alerts/Error";
 import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndicator";
 
-const PropertyDetailLayout = () => {
+const AgentPropertyDetailLayout = () => {
 
     const { id } = useParams();
 
@@ -15,8 +15,6 @@ const PropertyDetailLayout = () => {
         data: property,
         // refresh,
     } = useFetch(`${ApiRoutes.Properties}${id}`);
-
-    console.log(property);
 
     const handleUpdate = () => {
         invalidate();
@@ -33,4 +31,4 @@ const PropertyDetailLayout = () => {
     return <Outlet context={{ property, onPropertyUpdate: handleUpdate }} />;
 };
 
-export default PropertyDetailLayout;
+export default AgentPropertyDetailLayout;

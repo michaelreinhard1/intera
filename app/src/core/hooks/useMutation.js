@@ -9,7 +9,6 @@ const useMutation = () => {
     // method is pretty long, so async/await looks better than Promise.then()
     const mutate = async (url, options = {}) => {
         setIsLoading(true);
-        console.log(authFetch);
 
         let headers = {};
         if (!options.multipart) {

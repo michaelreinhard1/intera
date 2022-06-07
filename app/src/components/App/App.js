@@ -8,7 +8,7 @@ import Home from './Home/Home';
 import AuthProvider from './Auth/AuthProvider';
 import OnboardingLayout from './Auth/OnboardingLayout';
 import Profile from './Auth/Profile/Profile';
-import { AdminRoutes, AgencyRoutes, AuthRoutes, HomeRoutes, PropertyRoutes, UserRoutes } from '../../core/routing';
+import { AdminRoutes, AgencyRoutes, AgentRoutes, AuthRoutes, HomeRoutes, PropertyRoutes, UserRoutes } from '../../core/routing';
 import RoleContainer from '../App/Auth/RoleContainer';
 import { UserRoles } from "../../core/modules/users/constants";
 import Contact from './Contact/Contact';
@@ -36,6 +36,11 @@ import AgencyAdd from './Auth/Admin/Agencies/Add/AgencyAdd';
 import AgencyDetailLayout from './Auth/Admin/Agencies/Detail/AgencyDetailLayout';
 import AgencyDetailScreen from './Auth/Admin/Agencies/Detail/AgencyDetailScreen';
 import AgencyEdit from './Auth/Admin/Agencies/Edit/AgencyEdit';
+import AgentLayout from './Auth/Agent/AgentLayout';
+import AgentPropertiesLayout from './Auth/Agent/Properties/AgentPropertiesLayout';
+import AgentPropertiesOverviewScreen from './Auth/Agent/Properties/Overview/AgentPropertiesOverviewScreen';
+import AgentPropertyAdd from './Auth/Agent/Properties/Add/AgentPropertyAdd';
+import AgentPropertyDetailScreen from './Auth/Agent/Properties/Detail/AgentPropertyDetailScreen';
 
 function App() {
 
@@ -150,7 +155,25 @@ function App() {
 
                                 </Route>
                             </Route>
+                    </Route>
 
+                    {/* Agent */}
+
+                    <Route
+                        element={
+                            <RoleContainer roles={[UserRoles.Agent]}>
+                                <AgentLayout />
+                            </RoleContainer>
+                        }>
+                            {/* Properties */}
+                            <Route
+                                path={AgentRoutes.Properties}
+                                element={<AgentPropertiesLayout />}>
+
+                                <Route index element={<AgentPropertiesOverviewScreen />} />
+                                {/* <Route path={AgentRoutes.NewProperty} element={<AgentPropertyAdd />} /> */}
+
+                            </Route>
 
                     </Route>
 

@@ -3,8 +3,8 @@ import './Header.scss'
 import { useAuthContext } from "../Auth/AuthProvider";
 import { useTranslation } from "react-i18next";
 import NavBar from '../../Design/NavBar/NavBar';
-import { AuthRoutes, HomeRoutes, AdminRoutes, PropertyRoutes, UserRoutes } from '../../../core/routing';
-import { isAdmin } from '../../../core/modules/users/utils';
+import { AuthRoutes, HomeRoutes, AdminRoutes, PropertyRoutes, UserRoutes, AgentRoutes } from '../../../core/routing';
+import { isAdmin, isAgent } from '../../../core/modules/users/utils';
 import { useLocation, useParams } from 'react-router-dom';
 
 const Header = () => {
@@ -82,7 +82,24 @@ const Header = () => {
 			},
 		]
 
-    }}
+    }
+	if (isAgent(auth.user)) {
+		buttons = [
+			{
+				label: 'Dashboard',
+				color: 'primary',
+				href: AgentRoutes.Properties
+			},
+			{
+				label: t('buttons.logout'),
+				className: ' bg-gray-50 hover:bg-gray-100 hover:text-red-700 text-gray-900',
+				onClick: logout
+			},
+		]
+
+    }
+
+}
 
 		return (
 			<NavBar navItems={items} buttons={buttons} isOpen={isOpen} toggleHamburger={toggleHamburger} />

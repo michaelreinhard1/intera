@@ -53,32 +53,35 @@ const PropertiesOverviewScreen = ({type}) => {
         )
     }
 
+    console.log(data);
+
 
   return (
-      <>
-        <HeaderSpacer />
-
-            {/* if no data */}
-            {!data.length ?
-                <div className="w-full">
-                    <div className="text-center">
-                        <h1>{t('properties.overview.no properties')}</h1>
-                    </div>
-                </div>
-            :
-            data.map( (property) => (
-            <Container>
-                <div className="flex flex-wrap">
+    <>
+    <HeaderSpacer />
+    {
+       !data || data.length === 0 ?
+        <div className="w-full">
+            <div className="text-center">
+                <h1>{t('properties.overview.no properties')}</h1>
+            </div>
+        </div>
+        :
+       <>
+        <Container>
+            <div className="flex flex-wrap">
+                {!isLoading && data && data.map( (property) => (
                     <Card
-                        key={property.id}
-                        property={property}
-                        toggleLike={handleLike}
+                    property={property}
+                    toggleLike={handleLike}
                     />
-                </div>
-                <AppFooter />
-            </Container>
-            ))}
-    </>
+                    ))}
+            </div>
+        </Container>
+        <AppFooter />
+        </>
+    }
+</>
 
   )
 }

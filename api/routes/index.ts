@@ -73,15 +73,21 @@ const registerAuthenticatedRoutes = (router: Router) => {
     authRouter.get("/rent-properties-with-location", handleErrors(propertyController.allRentWithLocation));
     authRouter.get("/properties-with-location/:id", handleErrors(propertyController.findWithLocation));
 
-    const userController = new UserController();
-    authRouter.get("/users", handleErrors(userController.all));
-    authRouter.get("/user/:id", handleErrors(userController.find));
-    authRouter.patch("/user/:id", handleErrors(userController.update));
-
+    registerAgentRoutes(authRouter);
     registerAdminRoutes(authRouter);
 
     router.use(authJwt, authRouter);
 };
+
+const registerAgentRoutes = (router: Router) => {
+    const agentRouter = Router();
+
+    const propertyController = new PropertyController();
+    agentRouter.get("/properties-by-agency/:id", handleErrors(propertyController.allByAgency));
+
+    router.use(withRole(UserRole.Agent), agentRouter);
+
+}
 
 const registerRoutes = (app: Router) => {
 
@@ -89,11 +95,8 @@ const registerRoutes = (app: Router) => {
 
     registerOnboardingRoutes(app);
 
-    // authenticated routes (authentication required)
     registerAuthenticatedRoutes(app);
 
-
-    // fallback route, return our own 404 instead of default
     app.use((req: Request, res: Response, next: NextFunction) => {
         next(new NotFoundError());
     });

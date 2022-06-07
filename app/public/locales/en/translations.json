@@ -32,7 +32,8 @@
         "logout": "Logout",
         "login here": "Login here",
         "agencies" : "Agencies",
-        "properties" : "Properties"
+        "properties" : "Properties",
+        "agents" : "Agents"
     },
     "login":{
         "title": "Login"
@@ -66,10 +67,31 @@
             "contact": "Contact person"
         },
         "bedrooms": "bedrooms",
+        "contact agent": "Contact agent",
         "bathrooms": "bathrooms",
         "realtor": "realtor",
         "month": "month",
+        "buy properties": "Buy properties",
+        "rent properties": "Rent properties",
+        "all properties": "All properties",
+        "saved": "Saved",
+        "save": "Save"
+    },
+    "property":{
+        "title": "Property",
+        "overview": {
+            "title": "Property",
+            "no properties": "No properties"
+        },
+        "fields": {
+            "contact": "Contact person"
+        },
+        "bedrooms": "bedrooms",
         "contact agent": "Contact agent",
+        "bathrooms": "bathrooms",
+        "description": "Description",
+        "realtor": "realtor",
+        "month": "month",
         "buy properties": "Buy properties",
         "rent properties": "Rent properties",
         "all properties": "All properties",

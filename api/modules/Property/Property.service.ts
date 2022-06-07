@@ -13,7 +13,17 @@ export default class PropertyService {
     }
 
     all = async () => {
-        const properties = await this.repository.find();
+        const properties = await this.repository.find(
+            { relations: ["agency"] }
+        );
+        return properties;
+    };
+
+    allByAgency = async (id: number) => {
+        const properties = await this.repository.find({
+            relations: ["agency"],
+            where: { agency: { id } }
+        });
         return properties;
     };
 
@@ -35,7 +45,6 @@ export default class PropertyService {
         return properties;
     };
 
-    // get all properties including location column
     allWithLocation = async () => {
         const properties = await this.repository
             .createQueryBuilder("property")

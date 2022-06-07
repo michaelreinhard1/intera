@@ -6,21 +6,19 @@ import './Card.scss'
 import { HomeRoutes, route } from '../../../core/routing';
 import { getImagePath } from '../../../core/helpers/api';
 import { formatPrice } from '../../../core/modules/properties/utils';
+import { PropertyTypes } from '../../../core/modules/properties/constants';
 const Card = ({property, toggleLike}) => {
 
   let typeColor;
   switch (property.type) {
-      case 'apartment':
+      case PropertyTypes.Apartment:
           typeColor = 'bg-orange-200 text-orange-800';
           break;
-      case 'house':
+      case PropertyTypes.House:
           typeColor = 'bg-blue-200 text-blue-800';
           break;
-      case 'villa':
+      case PropertyTypes.Office:
           typeColor = 'bg-green-200 text-green-800';
-          break;
-      case 'duplex':
-          typeColor = 'bg-purple-200 text-purple-800';
           break;
       default:
           typeColor = 'bg-orange-200 text-orange-800';

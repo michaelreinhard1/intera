@@ -24,11 +24,6 @@ const UsersOverviewScreen = () => {
         return <Error message={error} />;
     }
 
-    const dataForTable = data.map(item => {
-        return item;
-    }
-    );
-
     return (
         <>
             <HeaderSpacer />
@@ -45,7 +40,7 @@ const UsersOverviewScreen = () => {
                     </div>
                     :
                     <Table
-                    items={dataForTable}
+                    items={data}
                     edit={UserRoutes.Detail}
                     />
                 }

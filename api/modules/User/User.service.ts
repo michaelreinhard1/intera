@@ -20,7 +20,10 @@ export default class UserService {
     };
 
     findOne = async (id: number) => {
-        const user = await this.repository.findOneBy({ id });
+        const user = await this.repository.findOne({
+            where: { id },
+            relations: ["agency"],
+        });
         return user;
     };
 

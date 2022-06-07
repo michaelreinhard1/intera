@@ -7,10 +7,6 @@ import { handleErrors } from "../helpers/api";
 const useAuthApi = () => {
     const { auth, logout } = useAuthContext();
 
-    if(auth) {
-        // console.log(auth);
-    }
-
     const authFetch = useCallback(
         (url, config = {}) => {
             // add authorization header

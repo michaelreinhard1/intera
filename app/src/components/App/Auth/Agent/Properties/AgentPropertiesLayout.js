@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Outlet } from "react-router-dom";
 import useTitle from "../../../../../core/hooks/useTitle";
 
-const PropertiesLayoutAdmin = () => {
+const AgentPropertiesLayout = () => {
     const { t } = useTranslation();
     useTitle(t("properties.title"));
 
@@ -11,4 +11,4 @@ const PropertiesLayoutAdmin = () => {
     );
 };
 
-export default PropertiesLayoutAdmin;
+export default AgentPropertiesLayout;

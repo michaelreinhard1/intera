@@ -8,7 +8,6 @@ import FileInput from "../../../../Design/Form/FileInput";
 import Select from "../../../../Design/Form/Select";
 import Textarea from "../../../../Design/Form/Textarea";
 import Input from "../../../../Design/Input/Input";
-import AgencySelect from "../../../Shared/Agencies/Select/AgencySelect";
 
 
 const schema = yup.object().shape({
@@ -138,15 +137,6 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               onChange={handleChange}
               error={errors.floor}
               />
-          </div>
-          <div className='w-full mr-3 mb-6 '>
-              <label htmlFor="agency" className='w-6/12'>{t('fields.agency')}</label>
-              <AgencySelect
-                    name="agency"
-                    value={values.agency}
-                    onChange={handleChange}
-                    error={errors.agency}
-                />
           </div>
           <div className="w-6/7 mb-6  col-span-full flex justify-items-start mt-10">
                 <p className="text-lg font-bold">

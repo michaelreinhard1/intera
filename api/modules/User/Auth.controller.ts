@@ -5,11 +5,10 @@ import UserController from "./User.controller";
 import { UserBody } from "./User.types";
 
 export default class AuthController {
-    login = async (
-        req: AuthRequest,
-        res: Response,
-        next: NextFunction) => {
+    login = async (req: AuthRequest, res: Response, next: NextFunction) => {
+        const userController = new UserController();
         const { user } = req;
+
         res.json({
             user,
             token: createToken(user),
@@ -21,6 +20,6 @@ export default class AuthController {
         next: NextFunction
     ) => {
         const userController = new UserController();
-        const user = await userController.create(req, res, next);
+        await userController.create(req, res, next);
     }
 }

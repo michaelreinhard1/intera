@@ -35,7 +35,7 @@ const PropertyDetail = () => {
               <div className="w-full lg:w-1/2 flex flex-col flex-between h-full">
                 <div className='h-1/2'>
                   <div className='flex justify-between'>
-                    <h1 className='text-2xl mb-5 font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate'>{t('property.overview')}</h1>
+                    <h1 className='text-2xl mb-5 font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate'>{property.name}</h1>
                     <h2 className='text-2xl mb-5 font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate'>{formatPrice(property.price)}{property.payment === 'rent' ? <span className="text-sm text-gray-600"> / {t('property.month')}</span> : null}</h2>
                   </div>
                   <span className="flex items-center mb-1">
@@ -101,6 +101,7 @@ const PropertyDetail = () => {
           </div>
           <div>
             <h1 className='text-2xl mb-5 font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate'>{t('property.description')}</h1>
+            <p className='text-gray-700'>{property.description}</p>
           </div>
       </Container>
       <AppFooter />

@@ -40,12 +40,14 @@ const createToken = (user: User) => {
     });
 };
 
-const withRole = (role: UserRole) => (req, res, next) => {
+const withRole = (role: UserRole)=> (req, res, next) => {
     const { user } = req;
-
-    if (user.role === role) {
+    if (user.role === UserRole.Admin) {
         next();
-    } else {
+    }else if (user.role === role) {
+        next();
+    }
+    else {
         next(new ForbiddenError());
     }
 };

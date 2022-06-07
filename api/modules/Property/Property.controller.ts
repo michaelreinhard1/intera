@@ -4,6 +4,8 @@ import NotFoundError from "../../errors/NotFoundError";
 import PropertyService from "./Property.service";
 import { PropertyBody } from "./Property.types";
 import { UploadedFile } from "express-fileupload";
+import { AuthRequest } from "../../middleware/auth/auth.types";
+import UserService from "../User/User.service";
 
 const getImage = (req: Request) => {
     console.log(req.files);
@@ -20,9 +22,11 @@ const getImage = (req: Request) => {
 
 export default class PropertyController {
     private propertyService: PropertyService;
+    private userService: UserService;
 
     constructor() {
         this.propertyService = new PropertyService();
+        this.userService = new UserService();
     }
 
     all = async (req: Request, res: Response, next: NextFunction) => {
@@ -40,17 +44,27 @@ export default class PropertyController {
         return res.json(properties);
     };
 
-    allWithLocation = async (req: Request, res: Response, next: NextFunction) => {
+    allByAgency = async (req: Request<{ id: number }>, res: Response, next: NextFunction) => {
+        const user = await this.userService.findOne(req.params.id);
+        if (!user) {
+            next(new NotFoundError());
+            return;
+        }
+        const properties = await this.propertyService.allByAgency(user.agency.id);
+        return res.json(properties);
+    };
+
+    allWithLocation = async (req: AuthRequest, res: Response, next: NextFunction) => {
         const properties = await this.propertyService.allWithLocation();
         return res.json(properties);
     };
 
-    allRentWithLocation = async (req: Request, res: Response, next: NextFunction) => {
+    allRentWithLocation = async (req: AuthRequest, res: Response, next: NextFunction) => {
         const properties = await this.propertyService.allRentWithLocation();
         return res.json(properties);
     };
 
-    allBuyWithLocation = async (req: Request, res: Response, next: NextFunction) => {
+    allBuyWithLocation = async (req: AuthRequest, res: Response, next: NextFunction) => {
         const properties = await this.propertyService.allBuyWithLocation();
         return res.json(properties);
     };
@@ -70,7 +84,7 @@ export default class PropertyController {
     };
 
     findWithLocation = async (
-        req: Request<{ id: string }>,
+        req: AuthRequest<{ id: string }>,
         res: Response,
         next: NextFunction
     ) => {
@@ -84,7 +98,7 @@ export default class PropertyController {
     };
 
     finPropertiesByAgency = async (
-        req: Request<{ id: string }>,
+        req: AuthRequest<{ id: string }>,
         res: Response,
         next: NextFunction
     ) => {

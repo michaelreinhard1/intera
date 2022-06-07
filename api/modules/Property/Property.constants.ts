@@ -9,7 +9,7 @@ enum PropertyTypes {
 
 enum TransactionTypes {
     Rent = "Rent",
-    Buy = "Buy"
+    Buy = "Buy",
 }
 
 export { PropertyTypes, TransactionTypes };

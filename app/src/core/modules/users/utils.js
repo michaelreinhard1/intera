@@ -8,5 +8,9 @@ const isAdmin = (user) => {
     return user.role === UserRoles.Admin;
 };
 
+const isAgent = (user) => {
+    return user.role === UserRoles.Agent;
+};
 
-export { isAdmin, formatName };
+
+export { isAdmin, formatName, isAgent };

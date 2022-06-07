@@ -8,6 +8,7 @@ const ApiRoutes = {
     BuyPropertiesWithLocation: '/buy-properties-with-location',
     RentPropertiesWithLocation: '/rent-properties-with-location',
     PropertyWithLocation: '/properties-with-location/',
+    PropertiesByAgency: '/properties-by-agency/',
     Property: '/properties/',
     Users: '/users',
     User: '/user/',
@@ -36,7 +37,6 @@ const HomeRoutes = {
     Privacy: "/privacy",
 };
 
-
 const AdminRoutes = {
     Index: "/admin",
     Settings: "/admin/settings",
@@ -45,11 +45,13 @@ const AdminRoutes = {
     Messages: "/admin/messages"
 };
 
-const ProjectRoutes = {
-    Index: "/projects",
-    New: "/projects/new",
-    Detail: "/projects/:id",
-    Edit: "/projects/:id/edit",
+const AgentRoutes = {
+    Index: "/agent",
+    Properties: "/agent/properties",
+    Property: `/agent/property/:id`,
+    NewProperty: "/agent/properties/new",
+    Agents: "/agent/agents",
+    Logout: "/logout",
 };
 
 const UserRoutes = {
@@ -57,6 +59,13 @@ const UserRoutes = {
     New: "/users/new",
     Detail: "/users/:id",
     Edit: "/users/:id/edit",
+};
+
+const ProjectRoutes = {
+    Index: "/projects",
+    New: "/projects/new",
+    Detail: "/projects/:id",
+    Edit: "/projects/:id/edit",
 };
 
 const PropertyRoutes = {
@@ -82,4 +91,4 @@ export const route = (path, options = {}) => {
     return path;
 };
 
-export { AuthRoutes, HomeRoutes, ProjectRoutes, UserRoutes, AdminRoutes, ApiRoutes , PropertyRoutes, AgencyRoutes};
+export { AuthRoutes, HomeRoutes, ProjectRoutes, UserRoutes, AdminRoutes, ApiRoutes , PropertyRoutes, AgencyRoutes, AgentRoutes};

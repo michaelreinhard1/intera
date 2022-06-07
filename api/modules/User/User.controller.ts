@@ -17,6 +17,7 @@ export default class UserController {
     all = async (req: AuthRequest, res: Response, next: NextFunction) => {
         // don't show password
         const users = await this.userService.all();
+
         return res.json(users);
     };
 
@@ -25,9 +26,25 @@ export default class UserController {
         res: Response,
         next: NextFunction
     ) => {
-        const user = await this.userService.findOneBy({ id: req.params.id });
+        const user = await this.userService.findOne(
+            parseInt(req.params.id)
+        );
         if (!user) {
             next(new NotFoundError());
+            return;
+        }
+        return res.json(user);
+    };
+
+    findOneBy = async (
+        req: AuthRequest<{}, {}, UserBody>,
+        res: Response,
+        next: NextFunction
+    ) => {
+        const user = await this.userService.findOneBy(req.body);
+        if (!user) {
+            next(new NotFoundError());
+            return;
         }
         return res.json(user);
     };

@@ -9,15 +9,18 @@ import useTitle from "../../../../../../core/hooks/useTitle";
 import { useTranslation } from "react-i18next";
 import Button from "../../../../../Design/Button/Button";
 import { formatPrice } from "../../../../../../core/modules/properties/utils";
-import * as MaterialDesign from "react-icons/md";
+import { useAuthContext } from "../../../AuthProvider";
 
-const PropertiesOverviewScreen = () => {
+const AgentPropertiesOverviewScreen = () => {
     const { t } = useTranslation();
     useTitle(t('properties.overview.title'));
+    const { auth } = useAuthContext();
 
-    const {  isLoading, data, error } = useFetch(ApiRoutes.PropertiesWithLocation);
+    const {  isLoading, data, error } = useFetch(`${ApiRoutes.PropertiesByAgency}${auth.user.id}`);
 
-console.log(data);
+    console.log(`${ApiRoutes.PropertiesByAgency}${auth.user.id}`);
+    console.log(data);
+
     if (isLoading) {
         return <LoadingIndicator />
     }
@@ -58,4 +61,4 @@ console.log(data);
     );
 };
 
-export default PropertiesOverviewScreen;
+export default AgentPropertiesOverviewScreen;

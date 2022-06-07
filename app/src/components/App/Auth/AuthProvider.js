@@ -7,8 +7,7 @@ const AuthContext = createContext();
 const getAuthFromStorage = () => {
     const auth = localStorage.getItem(KEY);
     if (auth) {
-        console.log(auth);
-        console.log("auth from storage", JSON.parse(atob(auth)));
+        // base64 encode
         return JSON.parse(atob(auth));
     }
     return null;
