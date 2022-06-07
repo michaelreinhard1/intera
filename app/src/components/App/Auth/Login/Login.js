@@ -43,7 +43,7 @@ const Login = () => {
       onSuccess: (data) => {
               login(data);
             },
-          });
+      });
   };
 
   const mode = isLoading ? "bg-blue-400 hover:bg-blue-400" : "";

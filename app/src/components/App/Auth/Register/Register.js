@@ -45,8 +45,7 @@ useTitle(t('register.title'));
           data,
           onSuccess: (data) => {
               login(data);
-              // Redirect to the home page
-              <Navigate to="/" replace={true} />
+              <Navigate to={ApiRoutes.Login} replace={true} />
           },
       });
   };

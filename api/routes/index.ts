@@ -31,6 +31,11 @@ const registerOnboardingRoutes = (router: Router) => {
     router.post("/dev/property", propertyController.create);
     router.post("/dev/agency", agencyController.create);
 
+    router.get("/properties", handleErrors(propertyController.all));
+    router.get("/buy-properties", handleErrors(propertyController.allBuy));
+    router.get("/rent-properties", handleErrors(propertyController.allRent));
+    router.get("/properties/:id", handleErrors(propertyController.find));
+
     // test route REMOVE after
     if (process.env.ENV === "development") {
         router.post("/dev/users", userController.create);
@@ -59,15 +64,6 @@ const registerAdminRoutes = (router: Router) => {
     router.use(withRole(UserRole.Admin), adminRouter);
 };
 
-const guestRoutes = (router: Router) => {
-
-    const propertyController = new PropertyController();
-    router.get("/properties", handleErrors(propertyController.all));
-    router.get("/buy-properties", handleErrors(propertyController.allBuy));
-    router.get("/rent-properties", handleErrors(propertyController.allRent));
-    router.get("/properties/:id", handleErrors(propertyController.find));
-}
-
 const registerAuthenticatedRoutes = (router: Router) => {
     const authRouter = Router();
 
@@ -90,9 +86,8 @@ const registerAuthenticatedRoutes = (router: Router) => {
 const registerRoutes = (app: Router) => {
 
     app.use("/public", express.static(path.resolve(__dirname, "../public")));
-    registerOnboardingRoutes(app);
 
-    guestRoutes(app);
+    registerOnboardingRoutes(app);
 
     // authenticated routes (authentication required)
     registerAuthenticatedRoutes(app);

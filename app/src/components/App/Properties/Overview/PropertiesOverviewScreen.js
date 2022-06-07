@@ -20,22 +20,21 @@ const PropertiesOverviewScreen = ({type}) => {
     let UserRoute;
     let title;
 
-
     switch (type) {
         case HomeRoutes.Buy:
             GuestRoute = ApiRoutes.BuyProperties
             UserRoute = ApiRoutes.BuyPropertiesWithLocation
-            title = t('property.buy properties')
+            title = t('properties.buy properties')
             break;
         case HomeRoutes.Rent:
             GuestRoute = ApiRoutes.RentProperties
             UserRoute = ApiRoutes.RentPropertiesWithLocation
-            title = t('property.rent properties')
+            title = t('properties.rent properties')
             break;
         default:
             GuestRoute = ApiRoutes.Properties
             UserRoute = ApiRoutes.PropertiesWithLocation
-            title = t('property.all properties')
+            title = t('properties.all properties')
     }
 
     useTitle(title);
@@ -47,7 +46,6 @@ const PropertiesOverviewScreen = ({type}) => {
     const handleLike = () => {
         setLiked(!liked);
     }
-
 
     if(isLoading) {
         return (

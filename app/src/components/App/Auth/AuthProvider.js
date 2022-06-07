@@ -7,9 +7,15 @@ const AuthContext = createContext();
 const getAuthFromStorage = () => {
     const auth = localStorage.getItem(KEY);
     if (auth) {
-        return JSON.parse(auth);
+        // base64 encode
+        return JSON.parse(atob(auth));
     }
     return null;
+};
+
+const saveAuthToStorage = (auth) => {
+    // base64 decode
+    localStorage.setItem(KEY, btoa(JSON.stringify(auth)));
 };
 
 const AuthProvider = ({ children }) => {
@@ -17,7 +23,7 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         if (auth) {
-            localStorage.setItem(KEY, JSON.stringify(auth));
+            saveAuthToStorage(auth);
         } else {
             localStorage.removeItem(KEY);
         }
@@ -41,6 +47,11 @@ const AuthProvider = ({ children }) => {
 
 export const useAuthContext = () => {
     return useContext(AuthContext);
+};
+
+export const useUser = () => {
+    const { auth } = useAuthContext();
+    return auth?.user;
 };
 
 export default AuthProvider;

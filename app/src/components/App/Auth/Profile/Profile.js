@@ -13,6 +13,7 @@ const Profile = () => {
   const { auth } = useAuthContext();
   const location = useLocation();
 
+
   if (!auth) {
     const from = location.state?.from?.pathname || "/";
     return (

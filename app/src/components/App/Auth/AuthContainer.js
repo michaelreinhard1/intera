@@ -1,4 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
+import { AuthRoutes } from "../../../core/routing";
 import { useAuthContext } from "./AuthProvider";
 
 const AuthContainer = ({ children }) => {
@@ -8,7 +9,7 @@ const AuthContainer = ({ children }) => {
     if (!auth) {
         return (
             <Navigate
-                to={'/'}
+                to={AuthRoutes.Login}
                 state={{ from: location }}
                 replace
             />
