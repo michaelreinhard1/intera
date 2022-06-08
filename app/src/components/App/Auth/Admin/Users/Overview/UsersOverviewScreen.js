@@ -3,10 +3,8 @@ import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndi
 import Error from "../../../../../Design/Alerts/Error";
 import "../../../../../Design/NotFound/NotFound.css";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
-import Container from "../../../../../Design/Container/Container";
 import Table from "../../../../../Design/Table/Table";
-import { AdminRoutes, ApiRoutes, route, UserRoutes } from "../../../../../../core/routing";
-import * as MaterialDesign from "react-icons/md";
+import { ApiRoutes, UserRoutes } from "../../../../../../core/routing";
 import Button from "../../../../../Design/Button/Button";
 import { useTranslation } from "react-i18next";
 import useTitle from "../../../../../../core/hooks/useTitle";

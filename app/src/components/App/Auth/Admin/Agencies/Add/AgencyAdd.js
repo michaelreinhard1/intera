@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import useMutation from "../../../../../../core/hooks/useMutation";
 import useTitle from "../../../../../../core/hooks/useTitle";
-import { AgencyRoutes, ApiRoutes, PropertyRoutes } from "../../../../../../core/routing";
+import { AgencyRoutes, ApiRoutes } from "../../../../../../core/routing";
 import Error from "../../../../../Design/Alerts/Error";
 import Container from "../../../../../Design/Container/Container";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";

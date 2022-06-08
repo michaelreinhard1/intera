@@ -1,7 +1,6 @@
 import React from 'react'
 import './Header.scss'
 import { useTranslation } from "react-i18next";
-import { useLocation, useParams } from 'react-router-dom';
 import { AgentRoutes, AuthRoutes, HomeRoutes, UserRoutes } from '../../../../core/routing';
 import { isAdmin, isAgent } from '../../../../core/modules/users/utils';
 import NavBar from '../../../Design/NavBar/NavBar';

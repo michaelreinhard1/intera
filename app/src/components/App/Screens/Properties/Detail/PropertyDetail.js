@@ -34,7 +34,7 @@ const PropertyDetail = () => {
     password: "",
 });
 
-const { isLoading, error, mutate } = useMutation();
+const { isLoading, mutate } = useMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();

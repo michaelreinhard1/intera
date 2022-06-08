@@ -12,7 +12,7 @@ const PropertyEdit = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     useTitle(t("properties.create.title"));
-    const { property, onPropertyUpdate } = useOutletContext();
+    const { property } = useOutletContext();
     console.log(property);
 
     const { isLoading, error, mutate} = useMutation();

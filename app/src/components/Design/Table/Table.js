@@ -1,10 +1,8 @@
-import { useTranslation } from "react-i18next";
 import * as MaterialDesign from "react-icons/md";
 import { Link } from "react-router-dom";
-import { AdminRoutes, route } from "../../../core/routing";
+import { route } from "../../../core/routing";
 
 const Table = ({items = [], edit}) => {
-const { t } = useTranslation();
   return (
    <div className="flex flex-col h-2/6">
     <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">

@@ -1,22 +1,12 @@
-import { useState, useEffect } from "react";
-import { t } from 'i18next';
-import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useNavigate, useOutletContext } from 'react-router-dom';
+import useMutation from '../../../../../../core/hooks/useMutation';
+import useTitle from '../../../../../../core/hooks/useTitle';
+import { ApiRoutes, route, UserRoutes } from '../../../../../../core/routing';
 import Error from '../../../../../Design/Alerts/Error';
-import Succes from '../../../../../Design/Alerts/Succes';
-import Button from '../../../../../Design/Button/Button';
 import Container from '../../../../../Design/Container/Container';
 import HeaderSpacer from '../../../../../Design/HeaderSpacer/HeaderSpacer';
-import Input from '../../../../../Design/Input/Input';
-import useMutation from "../../../../../../core/hooks/useMutation";
-import { UserRoles } from "../../../../../../core/modules/users/constants";
-import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndicator";
-import useFetch from '../../../../../../core/hooks/useFetch';
-import { useAuthContext } from '../../../AuthProvider';
-import { ApiRoutes, route, UserRoutes } from "../../../../../../core/routing";
-import Select from "../../../../../Design/Form/Select";
-import { useTranslation } from "react-i18next";
-import useTitle from "../../../../../../core/hooks/useTitle";
-import UserForm from "../../../../Shared/Users/Form/UserForm";
+import UserForm from '../../../../Shared/Users/Form/UserForm';
 
 const UserEdit = () => {
 
