@@ -16,7 +16,6 @@ const PropertyAdd = () => {
     const { isLoading, error, mutate} = useMutation();
 
     const handleSubmit = (data) => {
-        console.log(data);
         mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.Properties}`, {
             method: "POST",
             data,

@@ -53,9 +53,6 @@ const PropertiesOverviewScreen = ({type}) => {
         )
     }
 
-    console.log(data);
-
-
   return (
     <>
     <HeaderSpacer />

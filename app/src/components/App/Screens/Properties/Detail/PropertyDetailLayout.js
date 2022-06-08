@@ -14,7 +14,7 @@ const PropertyDetailLayout = () => {
 
     // const [liked , setLiked] = useState(false);
 
-    const handleLike = () => {
+    const handleUpdate = () => {
         invalidate();
     };
 
@@ -28,7 +28,7 @@ const PropertyDetailLayout = () => {
         <>
             {error && <h1>Error</h1>}
             {property && (
-                <Outlet context={{ property, onLikeUpdate: handleLike }} />
+                <Outlet context={{ property, onPropertyUpdate: handleUpdate }} />
             )}
         </>
     )

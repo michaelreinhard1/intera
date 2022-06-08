@@ -14,7 +14,7 @@ const PropertyEditLayout = () => {
         invalidate,
         data: property,
         // refresh,
-    } = useFetch(`${ApiRoutes.Property}${id}`);
+    } = useFetch(`${ApiRoutes.PropertyWithLocation}${id}`);
 
     const handleUpdate = () => {
         invalidate();

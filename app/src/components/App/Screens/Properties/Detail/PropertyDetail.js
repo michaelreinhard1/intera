@@ -21,8 +21,6 @@ const PropertyDetail = () => {
 
   const { property } = useOutletContext();
 
-  console.log(property.price);
-
   const [liked, setLiked] = useState(false);
 
   const handleLike = () => {

@@ -20,13 +20,12 @@ const UserEdit = () => {
   const { isLoading, error, mutate } = useMutation();
 
   const handleSubmit = (data) => {
-    console.log(data);
       mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.User}${user.id}`, {
           method: "PATCH",
           data,
           onSuccess: () => {
               onUserUpdate();
-              navigate(route(UserRoutes.Index, { id: user.id }));
+              navigate(UserRoutes.Index);
           },
       });
   };

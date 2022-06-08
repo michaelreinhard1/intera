@@ -56,6 +56,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
           ...initialData,
       }
   );
+
   const handleData = (values) => {
     onSubmit(values);
 };
@@ -71,16 +72,20 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     {t('fields.general information')}
                 </p>
           </div>
-          <div className='w-full mr-3 mb-6 '>
-              <label htmlFor="name" className='w-6/12'>{t('fields.name')}</label>
-              <FileInput
-                name="image"
-                value={values.image}
-                disabled={disabled}
-                onChange={handleChange}
-                error={errors.image}
-              />
-          </div>
+          {
+              !initialData ? (
+                <div className='w-full mr-3 mb-6 '>
+                    <label htmlFor="name" className='w-6/12'>{t('fields.name')}</label>
+                    <FileInput
+                        name="image"
+                        value={values.image}
+                        disabled={disabled}
+                        onChange={handleChange}
+                        error={errors.image}
+                    />
+                </div>
+                ) : null
+          }
           <div className='w-full mr-3 mb-6 '>
               <label htmlFor="name" className='w-6/12'>{t('fields.name')}</label>
               <Input

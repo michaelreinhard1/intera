@@ -8,7 +8,6 @@ import { AuthRequest } from "../../middleware/auth/auth.types";
 import UserService from "../User/User.service";
 
 const getImage = (req: Request) => {
-    console.log(req.files);
     if (req.files.image) {
         const image: UploadedFile = Array.isArray(req.files.image)
             ? req.files.image[0]
@@ -116,10 +115,10 @@ export default class PropertyController {
         res: Response,
         next: NextFunction,
     ) => {
-        const image = getImage(req);
-        if (image) {
-            req.body.image = image;
-        }
+        // const image = getImage(req);
+        // if (image) {
+        //     req.body.image = image;
+        // }
         const property = await this.propertyService.update(
             parseInt(req.params.id),
             req.body
@@ -127,8 +126,6 @@ export default class PropertyController {
         if (!property) {
             next(new NotFoundError());
         }
-        console.log(property);
-
         return res.json(property);
     };
 

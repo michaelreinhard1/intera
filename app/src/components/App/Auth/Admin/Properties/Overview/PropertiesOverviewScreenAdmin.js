@@ -16,7 +16,6 @@ const PropertiesOverviewScreenAdmin = () => {
 
     const {  isLoading, data, error } = useFetch(ApiRoutes.PropertiesWithLocation);
 
-console.log(data);
     if (isLoading) {
         return <LoadingIndicator />
     }

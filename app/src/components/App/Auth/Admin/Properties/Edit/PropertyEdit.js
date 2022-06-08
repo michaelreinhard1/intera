@@ -10,18 +10,20 @@ import PropertyForm from "../../../../Shared/Properties/Form/PropertyForm";
 
 const PropertyEdit = () => {
     const navigate = useNavigate();
+
     const { t } = useTranslation();
+
     useTitle(t("properties.create.title"));
-    const { property } = useOutletContext();
-    console.log(property);
+
+    const { property, onPropertyUpdate } = useOutletContext();
 
     const { isLoading, error, mutate} = useMutation();
 
     const handleSubmit = (data) => {
+        console.log(data);
         mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.Property}${property.id}`, {
             method: "PATCH",
             data,
-            multipart: true,
             onSuccess: () => {
                 navigate(PropertyRoutes.Index);
             },

@@ -18,10 +18,6 @@ const AgentPropertiesOverviewScreen = () => {
 
     const {  isLoading, data, error } = useFetch(`${ApiRoutes.PropertiesByAgency}${auth.user.id}`);
 
-    console.log(data);
-    console.log(`${ApiRoutes.PropertiesByAgency}${auth.user.id}`);
-    console.log(data);
-
     if (isLoading) {
         return <LoadingIndicator />
     }
