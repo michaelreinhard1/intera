@@ -51,21 +51,21 @@ Run the api
 
 #### Admin
 
-| email | password     |                
+| email | password     |
 | :-------- | :------- |
-| `admin@amdin.com` | `testtest` |
+| `admin@admin.com` | `testtest` |
 
 
 #### Agent
 
-| email | password     |                
+| email | password     |
 | :-------- | :------- |
 | `agent@agent.com` | `testtest` |
 
 
 #### User
 
-| email | password     |                
+| email | password     |
 | :-------- | :------- |
 | `user@user.com` | `testtest` |
 
