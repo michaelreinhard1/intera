@@ -3,7 +3,7 @@ import * as yup from "yup";
 import useForm from "../../../../../core/hooks/useForm";
 import { PropertyTypes, TransactionTypes } from "../../../../../core/modules/properties/constants";
 import { convertObjectToArrayForSelect } from "../../../../../core/modules/properties/utils";
-import { isAdmin, isAgent } from "../../../../../core/modules/users/utils";
+import { isAdmin } from "../../../../../core/modules/users/utils";
 import Button from "../../../../Design/Button/Button";
 import FileInput from "../../../../Design/Form/FileInput";
 import Select from "../../../../Design/Form/Select";

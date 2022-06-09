@@ -80,7 +80,6 @@ const NavBar = ({ navItems = [],buttons=[], toggleHamburger, isOpen, children })
 			<div>
 				<ul>
                 {navItems.map((navItem, index) => (
-                    <>
                     <li key={navItem.label} className="mb-1" >
                         <NavLink
                         key={index}
@@ -88,12 +87,6 @@ const NavBar = ({ navItems = [],buttons=[], toggleHamburger, isOpen, children })
 						className={({ isActive }) => (isActive ? 'block p-4  font-semibold  bg-blue-50 text-blue-500 rounded' : 'block p-4  font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded')}
 						to={navItem.href}>{navItem.label}</NavLink>
                     </li>
-                    {/* <li className="text-gray-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                    </svg>
-                    </li> */}
-                    </>
                 ))}
 				</ul>
 			</div>

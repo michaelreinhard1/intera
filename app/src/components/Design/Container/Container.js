@@ -2,7 +2,6 @@ import "./Container.css";
 import PropTypes from "prop-types";
 
 const Container = ({ children, className }) => {
-  // if there is a classname
   if (className) {
     return <div className={`container p-4 ${className}`}>{children}</div>;
   } else {

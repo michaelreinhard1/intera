@@ -2,7 +2,7 @@ import useFetch from "../../../../../../core/hooks/useFetch";
 import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndicator";
 import Error from "../../../../../Design/Alerts/Error";
 import "../../../../../Design/NotFound/NotFound.css";
-import { AgentRoutes, ApiRoutes, PropertyRoutes } from "../../../../../../core/routing";
+import { AgentRoutes, ApiRoutes } from "../../../../../../core/routing";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
 import useTitle from "../../../../../../core/hooks/useTitle";
 import { useTranslation } from "react-i18next";

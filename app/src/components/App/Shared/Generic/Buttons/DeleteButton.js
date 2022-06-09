@@ -1,4 +1,3 @@
-import { BiTrash } from "react-icons/bi";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
 import useMutation from "../../../../../core/hooks/useMutation";

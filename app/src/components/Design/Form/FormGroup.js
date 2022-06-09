@@ -2,11 +2,9 @@ import React from 'react'
 import Input from '../Input/Input'
 import PropTypes from "prop-types";
 
-const FormGroup = ({children, label, type, name, placeholder, value, onChange}) => {
+const FormGroup = ({label, type, name, placeholder, value, onChange}) => {
   return (
 
-    // If type is textarea, render textarea
-      // If type is input, render input
       <div className=" text-lg mb-6 md:mb-8">
         <div className='w-full'>
           <label htmlFor="email" className='flex flex-col w-full'>{label}</label>
@@ -32,7 +30,6 @@ const FormGroup = ({children, label, type, name, placeholder, value, onChange}) 
 }
 // PropTypes
 FormGroup.propTypes = {
-  children: PropTypes.node.isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,

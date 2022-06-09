@@ -3,13 +3,11 @@ import * as yup from "yup";
 import useForm from "../../../../../core/hooks/useForm";
 import { convertObjectToArrayForSelect } from "../../../../../core/modules/properties/utils";
 import { UserRoles } from "../../../../../core/modules/users/constants";
-import { ApiRoutes } from "../../../../../core/routing";
 import Button from "../../../../Design/Button/Button";
 import PasswordInput from "../../../../Design/Form/PasswordInput";
 import Select from "../../../../Design/Form/Select";
 import Input from "../../../../Design/Input/Input";
 import AgencySelect from "../../../Shared/Agencies/Select/AgencySelect";
-import DeleteButton from "../../Generic/Buttons/DeleteButton";
 
 const getSchema = (isUpdate) => {
   return yup.object().shape({
@@ -101,7 +99,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 error={errors.role}
               />
           </div>
-          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto'>
+          <div className='w-full mr-3 mb-6  col-span-full '>
               <label htmlFor="role" className='w-6/12'>{t('fields.agency')}</label>
                 <AgencySelect
                     name="agencyId"
@@ -111,7 +109,9 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 />
 
           </div>
-          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto'>
+          {
+            !initialData.id && (
+          <div className='w-full mr-3 mb-6  col-span-full '>
               <label htmlFor="password" className='w-6/12'>{t('fields.password')}</label>
               <PasswordInput
                   name="password"
@@ -126,6 +126,8 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                   </p>
               )}
           </div>
+            )
+        }
 
           <Button className={` justify-self-end w-max col-span-1 col-end-3 ${mode}`} color={'primary'} type="submit" disabled={disabled}>
               {label}

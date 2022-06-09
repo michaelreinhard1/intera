@@ -3,7 +3,6 @@ import { t } from 'i18next';
 import useTitle from '../../../../core/hooks/useTitle';
 import Container from '../../../Design/Container/Container';
 import AppFooter from '../../Shared/Generic/AppFooter/AppFooter';
-import HeaderSpacer from '../../../Design/HeaderSpacer/HeaderSpacer';
 import { HomeRoutes } from '../../../../core/routing';
 import { Link } from 'react-router-dom';
 import Button from '../../../Design/Button/Button';

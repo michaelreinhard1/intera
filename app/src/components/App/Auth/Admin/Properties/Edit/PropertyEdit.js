@@ -15,7 +15,7 @@ const PropertyEdit = () => {
 
     useTitle(t("properties.edit.title"));
 
-    const { property, onPropertyUpdate } = useOutletContext();
+    const { property } = useOutletContext();
 
     const { isLoading, error, mutate} = useMutation();
 

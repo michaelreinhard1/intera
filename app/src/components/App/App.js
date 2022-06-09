@@ -165,13 +165,6 @@ function App() {
 
                                 <Route index element={<AgentPropertiesOverviewScreen />} />
                                 <Route path={AgentRoutes.NewProperty} element={<AgentPropertyAdd />} />
-                                {/* <Route
-                                    path={AgentRoutes.NewProperty}
-                                    element={<AgentPropertyEditLayout />}>
-
-                                        <Route index element={<AgentPropertyAdd />} />
-
-                                </Route> */}
                                 <Route
                                     path={AgentRoutes.Property}
                                     element={<AgentPropertyEditLayout />}>
@@ -180,7 +173,6 @@ function App() {
 
                                 </Route>
 
-                                {/* <Route path={AgentRoutes.NewProperty} element={<AgentPropertyAdd />} /> */}
 
                             </Route>
 
