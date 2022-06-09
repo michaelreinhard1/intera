@@ -6,6 +6,7 @@ import { PropertyBody } from "./Property.types";
 import { UploadedFile } from "express-fileupload";
 import { AuthRequest } from "../../middleware/auth/auth.types";
 import UserService from "../User/User.service";
+import AgencyService from "../Agency/Agency.service";
 
 const getImage = (req: Request) => {
     if (req.files.image) {
@@ -22,10 +23,12 @@ const getImage = (req: Request) => {
 export default class PropertyController {
     private propertyService: PropertyService;
     private userService: UserService;
+    private agencyService: AgencyService;
 
     constructor() {
         this.propertyService = new PropertyService();
         this.userService = new UserService();
+        this.agencyService = new AgencyService();
     }
 
     all = async (req: Request, res: Response, next: NextFunction) => {
@@ -52,6 +55,35 @@ export default class PropertyController {
         const properties = await this.propertyService.allByAgency(user.agency.id);
         return res.json(properties);
     };
+
+    findByAgency = async (req: Request<{ agencyId: number, propertyId: number }>, res: Response, next: NextFunction) => {
+        const user = await this.userService.findOne(req.params.agencyId);
+        if (!user) {
+            next(new NotFoundError());
+            return;
+        }
+        const property = await this.propertyService.findByAgency(user.agency.id, req.params.propertyId);
+        return res.json(property);
+    }
+
+    updateByAgency = async (req: Request<{ agencyId: number, propertyId: number }>, res: Response, next: NextFunction) => {
+        const user = await this.userService.findOne(req.params.agencyId);
+        if (!user) {
+            next(new NotFoundError());
+            return;
+        }
+        const { body } = req;
+
+        if (body.agencyId) {
+            console.log(body.agencyId);
+
+            body.agency = await this.agencyService.findOne(body.agencyId);
+        }
+
+        const property = await this.propertyService.updateByAgency(user.agency.id, req.params.propertyId, req.body);
+
+        return res.json(property);
+    }
 
     allWithLocation = async (req: AuthRequest, res: Response, next: NextFunction) => {
         const properties = await this.propertyService.allWithLocation();
@@ -119,6 +151,12 @@ export default class PropertyController {
         // if (image) {
         //     req.body.image = image;
         // }
+        const { body } = req;
+
+        if (body.agencyId) {
+            body.agency = await this.agencyService.findOne(body.agencyId);
+        }
+
         const property = await this.propertyService.update(
             parseInt(req.params.id),
             req.body
@@ -128,6 +166,22 @@ export default class PropertyController {
         }
         return res.json(property);
     };
+
+    // updateByAgency = async (
+    //     req: AuthRequest<{ id: string }, {}, PropertyBody>,
+    //     res: Response,
+    //     next: NextFunction,
+    // ) => {
+    //     const property = await this.propertyService.updateByAgency(
+    //         parseInt(req.params.id),
+    //         req.body
+    //     );
+    //     if (!property) {
+    //         next(new NotFoundError());
+    //     }
+    //     return res.json(property);
+    // }
+
 
     delete = async (
         req: Request<{ id: string }>,

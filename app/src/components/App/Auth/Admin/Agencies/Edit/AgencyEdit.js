@@ -6,7 +6,7 @@ import useMutation from "../../../../../../core/hooks/useMutation";
 import { AgencyRoutes, ApiRoutes, route } from "../../../../../../core/routing";
 import { useTranslation } from "react-i18next";
 import useTitle from "../../../../../../core/hooks/useTitle";
-import AgencyForm from "../AgencyForm";
+import AgencyForm from '../../../../Shared/Agencies/Form/AgencyForm';
 
 const AgencyEdit = () => {
 

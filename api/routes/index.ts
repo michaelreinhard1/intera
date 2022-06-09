@@ -56,7 +56,6 @@ const registerAdminRoutes = (router: Router) => {
     adminRouter.post("/properties", handleErrors(propertyController.create));
     adminRouter.patch("/properties/:id", handleErrors(propertyController.update));
 
-
     const agencyController = new AgencyController();
     adminRouter.get("/agencies", handleErrors(agencyController.all));
     adminRouter.get("/agencies/:id", handleErrors(agencyController.find));
@@ -86,9 +85,10 @@ const registerAgentRoutes = (router: Router) => {
 
     const propertyController = new PropertyController();
     agentRouter.get("/properties-by-agency/:id", handleErrors(propertyController.allByAgency));
+    agentRouter.get("/properties-by-agency/:agencyId/:propertyId", handleErrors(propertyController.findByAgency));
+    agentRouter.patch("/properties-by-agency/:agencyId/:propertyId", handleErrors(propertyController.updateByAgency));
 
     router.use(withRole(UserRole.Agent), agentRouter);
-
 }
 
 const registerRoutes = (app: Router) => {

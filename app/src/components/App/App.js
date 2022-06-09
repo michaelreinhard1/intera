@@ -38,6 +38,7 @@ import PropertyDetailLayout from './Screens/Properties/Detail/PropertyDetailLayo
 import PropertyDetail from './Screens/Properties/Detail/PropertyDetail';
 import Saved from './Screens/Saved/Saved';
 import PropertiesOverviewScreen from './Screens/Properties/Overview/PropertiesOverviewScreen';
+import AgentPropertyEdit from './Auth/Agent/Properties/Edit/AgentPropertyEdit';
 
 function App() {
 
@@ -163,9 +164,12 @@ function App() {
                                 element={<AgentPropertiesLayout />}>
 
                                 <Route index element={<AgentPropertiesOverviewScreen />} />
-                                <Route path={AgentRoutes.Edit} element={<AgentPropertyAdd />} />
 
-                                <Route element={<AgentPropertyEditLayout />}>
+                                <Route
+                                    path={AgentRoutes.Property}
+                                    element={<AgentPropertyEditLayout />}>
+
+                                        <Route index element={<AgentPropertyEdit />} />
 
                                 </Route>
 

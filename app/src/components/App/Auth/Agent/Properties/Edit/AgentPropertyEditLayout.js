@@ -3,18 +3,20 @@ import useFetch from "../../../../../../core/hooks/useFetch";
 import { ApiRoutes } from "../../../../../../core/routing";
 import Error from "../../../../../Design/Alerts/Error";
 import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndicator";
+import { useAuthContext } from "../../../AuthProvider";
 
 const AgentPropertyEditLayout = () => {
 
     const { id } = useParams();
 
+    const { auth } = useAuthContext();
     const {
         isLoading,
         error,
         invalidate,
         data: property,
         // refresh,
-    } = useFetch(`${ApiRoutes.Properties}${id}`);
+    } = useFetch(`${ApiRoutes.PropertiesByAgency}${auth.user.id}/${id}`);
 
     const handleUpdate = () => {
         invalidate();
@@ -28,7 +30,7 @@ const AgentPropertyEditLayout = () => {
         return <LoadingIndicator />;
     }
 
-    return <Outlet context={{ property, onPropertyUpdate: handleUpdate }} />;
+    return <Outlet context={{ property, auth, onPropertyUpdate: handleUpdate }} />;
 };
 
 export default AgentPropertyEditLayout;

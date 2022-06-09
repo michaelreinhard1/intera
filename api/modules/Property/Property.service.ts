@@ -13,17 +13,23 @@ export default class PropertyService {
     }
 
     all = async () => {
-        const properties = await this.repository.find(
-            { relations: ["agency"] }
-        );
+        const properties = await this.repository
+            .createQueryBuilder("property")
+            .select("property")
+            .leftJoinAndSelect("property.agency", "agency")
+            .addSelect("property.address")
+            .getMany();
         return properties;
     };
 
     allByAgency = async (id: number) => {
-        const properties = await this.repository.find({
-            relations: ["agency"],
-            where: { agency: { id } }
-        });
+        const properties = await this.repository
+            .createQueryBuilder("property")
+            .select("property")
+            .where("property.agencyId = :id", { id })
+            .leftJoinAndSelect("property.agency", "agency")
+            .addSelect("property.address")
+            .getMany();
         return properties;
     };
 
@@ -49,6 +55,7 @@ export default class PropertyService {
         const properties = await this.repository
             .createQueryBuilder("property")
             .select("property")
+            .leftJoinAndSelect("property.agency", "agency")
             .addSelect("property.address")
             .getMany();
         return properties;
@@ -58,6 +65,7 @@ export default class PropertyService {
         const properties = await this.repository
             .createQueryBuilder("property")
             .select("property")
+            .leftJoinAndSelect("property.agency", "agency")
             .addSelect("property.address")
             .where("property.payment = :payment", { payment: TransactionTypes.Rent })
             .getMany();
@@ -68,6 +76,7 @@ export default class PropertyService {
         const properties = await this.repository
             .createQueryBuilder("property")
             .select("property")
+            .leftJoinAndSelect("property.agency", "agency")
             .addSelect("property.address")
             .where("property.payment = :payment", { payment: TransactionTypes.Buy })
             .getMany();
@@ -85,24 +94,46 @@ export default class PropertyService {
     }
 
     findOneWithLocation = async (id: number) => {
-        const property = await this.repository
+        const property = await this.findOneBy({ id });
+        if (!property) {
+            return null;
+        }
+        const propertyWithLocation = await this.repository
             .createQueryBuilder("property")
-            .select("property")
-            .addSelect("property.address")
             .where("property.id = :id", { id })
+            .select("property")
+            .leftJoinAndSelect("property.agency", "agency")
+            .addSelect("property.address")
             .getOne();
-        return property;
+        return propertyWithLocation;
     };
 
-    findPropertiesByAgency = async (id: number) => {
-        const properties = await this.repository
+    findByAgency = async (agencyId: number, propertyId: number) => {
+        const property = await this.repository
             .createQueryBuilder("property")
-            .select("property")
+            .where("property.agencyId = :agencyId", { agencyId })
+            .andWhere("property.id = :propertyId", { propertyId })
+            .leftJoinAndSelect("property.agency", "agency")
             .addSelect("property.address")
-            .where("property.agency = :agency", { agency: id })
-            .getMany();
-        return properties;
-    };
+            .getOne();
+        return property;
+    }
+
+    updateByAgency = async (agencyId: number, propertyId: number, body: PropertyBody) => {
+        const property = await this.findByAgency(agencyId, propertyId);
+        console.log(property);
+
+        if (!property) {
+            return null;
+        }
+        console.log(property);
+
+        const updatedProperty = await this.repository.save({
+            ...property,
+            ...body
+        });
+        return updatedProperty;
+    }
 
     create = async (body: PropertyBody) => {
         const property = await this.findOneBy({ address: body.address });
@@ -115,7 +146,6 @@ export default class PropertyService {
         return newProperty;
     };
 
-
     update = async (id: number, body: PropertyBody) => {
         let property = await this.findOne(id);
         if (property) {
@@ -123,6 +153,14 @@ export default class PropertyService {
         }
         return property;
     };
+
+    // updateByAgency = async (id: number, body: PropertyBody) => {
+    //     let property = await this.findOneByAgency(id, body);
+    //     if (property) {
+    //         property = await this.repository.save({ ...property, ...body });
+    //     }
+    //     return property;
+    // }
 
     delete = async (id: number) => {
         let property = await this.findOne(id);

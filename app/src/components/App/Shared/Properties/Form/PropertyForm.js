@@ -3,13 +3,14 @@ import * as yup from "yup";
 import useForm from "../../../../../core/hooks/useForm";
 import { PropertyTypes, TransactionTypes } from "../../../../../core/modules/properties/constants";
 import { convertObjectToArrayForSelect } from "../../../../../core/modules/properties/utils";
+import { isAdmin, isAgent } from "../../../../../core/modules/users/utils";
 import Button from "../../../../Design/Button/Button";
 import FileInput from "../../../../Design/Form/FileInput";
 import Select from "../../../../Design/Form/Select";
 import Textarea from "../../../../Design/Form/Textarea";
 import Input from "../../../../Design/Input/Input";
+import { useAuthContext } from "../../../Auth/AuthProvider";
 import AgencySelect from "../../../Shared/Agencies/Select/AgencySelect";
-
 
 const schema = yup.object().shape({
     name: yup.string().required(),
@@ -30,9 +31,20 @@ const schema = yup.object().shape({
     zip: yup.string().required(),
     payment: yup.string().required(),
     province: yup.string().required(),
+    agencyId: yup.number().nullable(),
 });
+const transformInitialData = (initialData) => {
+    if (initialData.agency) {
+        initialData = {
+            ...initialData,
+            agencyId: initialData.agency.id,
+        };
+    }
+    return initialData;
+};
 
 const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
+  const { auth } = useAuthContext();
   const { values, errors, handleChange, handleSubmit } = useForm(
     schema,
       {
@@ -53,10 +65,11 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
         city: "",
         zip: "",
         province: "",
-          ...initialData,
-      }
+        ...transformInitialData(initialData),
+    }
   );
 
+  console.log(values);
   const handleData = (values) => {
     onSubmit(values);
 };
@@ -144,15 +157,21 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.floor}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
-              <label htmlFor="agency" className='w-6/12'>{t('fields.agency')}</label>
-              <AgencySelect
-                    name="agency"
-                    value={values.agency}
+          {/* If auth.user.role is AGENT  */}
+
+            {
+                isAdmin(auth.user) ? (
+                <div className='w-full mr-3 mb-6 '>
+                    <label htmlFor="agency" className='w-6/12'>{t('fields.agency')}</label>
+                    <AgencySelect
+                    name="agencyId"
+                    value={values.agencyId}
                     onChange={handleChange}
-                    error={errors.agency}
-                />
-          </div>
+                    error={errors.agencyId}
+                    />
+                </div>
+                ) : null
+            }
           <div className="w-6/7 mb-6  col-span-full flex justify-items-start mt-10">
                 <p className="text-lg font-bold">
                     {t('fields.address')}

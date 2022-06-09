@@ -2,7 +2,7 @@ import useFetch from "../../../../../../core/hooks/useFetch";
 import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndicator";
 import Error from "../../../../../Design/Alerts/Error";
 import "../../../../../Design/NotFound/NotFound.css";
-import { ApiRoutes, PropertyRoutes } from "../../../../../../core/routing";
+import { AgentRoutes, ApiRoutes, PropertyRoutes } from "../../../../../../core/routing";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
 import Table from "../../../../../Design/Table/Table";
 import useTitle from "../../../../../../core/hooks/useTitle";
@@ -58,7 +58,7 @@ const AgentPropertiesOverviewScreen = () => {
                     :
                     <Table
                     items={dataForTable}
-                    edit={PropertyRoutes.Detail}
+                    edit={AgentRoutes.Property}
                     />
                 }
             </div>

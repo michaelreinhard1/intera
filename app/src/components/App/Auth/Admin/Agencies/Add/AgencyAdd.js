@@ -6,7 +6,7 @@ import { AgencyRoutes, ApiRoutes } from "../../../../../../core/routing";
 import Error from "../../../../../Design/Alerts/Error";
 import Container from "../../../../../Design/Container/Container";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
-import AgencyForm from "../AgencyForm";
+import AgencyForm from "../../../../Shared/Agencies/Form/AgencyForm";
 
 const AgencyAdd = () => {
     const navigate = useNavigate();

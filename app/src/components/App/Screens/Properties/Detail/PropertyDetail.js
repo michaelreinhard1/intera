@@ -29,7 +29,8 @@ const PropertyDetail = () => {
 
   const [data, setData] = useState({
     email: "",
-    password: "",
+    subject: "",
+    message: ""
 });
 
 const { isLoading, mutate } = useMutation();
@@ -64,7 +65,7 @@ const mode = isLoading ? "bg-blue-500" : "";
                   <img src={getImagePath(property.image)} alt={property.title} className=" object-cover w-full h-full"/>
               </div>
               <div className="w-full lg:w-1/2 flex flex-col flex-between min-h-full">
-                <div className='h-1/2 flex flex-col gap-2'>
+                <div className='h-max flex flex-col gap-2'>
                   <div className='flex justify-between'>
                     <h2 className='text-2xl mb-5 font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate'>{formatPrice(property.price)}{property.payment === 'rent' ? <span className="text-sm text-gray-600"> / {t('property.month')}</span> : null}</h2>
                   </div>
@@ -139,23 +140,22 @@ const mode = isLoading ? "bg-blue-500" : "";
                   <Form onSubmit={handleSubmit}>
                   <FormGroup
                   label={t('fields.email')}
-                  name={t('fields.email')}
-                  type={t('fields.email')}
+                  name='email'
+                  type='email'
                   placeholder={t('fields.email')}
                   value={data.email}
                   onChange={handleChange}
                   />
                   <FormGroup
                   label={t('fields.subject')}
-                  name={t('fields.subject')}
-                  type='text'
+                  name='subject'
                   placeholder={t('fields.subject')}
                   value={data.subject}
                   onChange={handleChange}
                   />
                   <FormGroup
                   label={t('fields.message')}
-                  name={t('fields.message')}
+                  name='message'
                   type='textarea'
                   placeholder={t('fields.write your message')}
                   value={data.message}
