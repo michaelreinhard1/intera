@@ -6,7 +6,6 @@ import { UserBody } from "./User.types";
 
 export default class AuthController {
     login = async (req: AuthRequest, res: Response, next: NextFunction) => {
-        const userController = new UserController();
         const { user } = req;
 
         res.json({
