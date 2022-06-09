@@ -19,8 +19,8 @@ const AgentPropertyAdd = () => {
     const { auth } = useAuthContext();
 
     const handleSubmit = (data) => {
-        console.log(data);
-        mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.PropertiesByAgency}${auth.user.id}`, {
+        data.userId = auth.user.id;
+        mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.PropertiesByAgency}`, {
             method: "POST",
             data,
             multipart: true,
@@ -39,6 +39,7 @@ const AgentPropertyAdd = () => {
                 label={t("buttons.create")}
                 disabled={isLoading}
                 onSubmit={handleSubmit}
+                initialData={{agencyId: auth.user.id}}
                 />
             {error && <Error>{error}</Error>}
         </Container>

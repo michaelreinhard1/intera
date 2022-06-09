@@ -90,8 +90,7 @@ const registerAgentRoutes = (router: Router) => {
     agentRouter.get("/properties-by-agency/:agencyId/:propertyId", handleErrors(propertyController.findByAgency));
     agentRouter.patch("/properties-by-agency/:agencyId/:propertyId", handleErrors(propertyController.updateByAgency));
     agentRouter.delete("/properties-by-agency/:agencyId/:propertyId", handleErrors(propertyController.deleteByAgency));
-    agentRouter.post("/properties-by-agency/:agencyId", handleErrors(propertyController.create));
-
+    agentRouter.post("/properties-by-agency", handleErrors(propertyController.createByAgency));
 
     router.use(withRole(UserRole.Agent), agentRouter);
 }

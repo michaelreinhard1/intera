@@ -27,10 +27,6 @@ const Header = () => {
 			label: t('navigation.rent'),
 			href: HomeRoutes.Rent
 		},
-		{
-			label: t('navigation.saved'),
-			href: HomeRoutes.Saved
-		},
 	]
 
 	let buttons = [

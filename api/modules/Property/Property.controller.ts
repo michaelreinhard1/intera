@@ -95,24 +95,6 @@ export default class PropertyController {
         return res.json(property);
     }
 
-    // createByAgency using agencyId from params and image
-    createByAgency = async (req: Request<{ agencyId: number }>, res: Response, next: NextFunction) => {
-        const user = await this.userService.findOne(req.params.agencyId);
-        if (!user) {
-            next(new NotFoundError());
-            return;
-        }
-
-        const property: PropertyBody = {
-            ...req.body,
-            agency: user.agency,
-            // image: getImage(req)
-        };
-
-        const newProperty = await this.propertyService.createByAgency(user.agency.id, property);
-
-        return res.json(newProperty);
-    }
 
 
 
@@ -164,11 +146,14 @@ export default class PropertyController {
         res: Response,
         next: NextFunction,
     ) => {
+
         const image = getImage(req);
         if (image) {
             req.body.image = image;
         }
         const { body } = req;
+
+        console.log(body);
 
         if (body.agencyId) {
             console.log(body.agencyId);
@@ -178,6 +163,29 @@ export default class PropertyController {
         const property = await this.propertyService.create(req.body);
         return res.json(property);
     };
+
+    createByAgency = async (req: Request<{}>, res: Response, next: NextFunction) => {
+
+        const user = await this.userService.findOne(req.body.userId);
+        if (!user) {
+            next(new NotFoundError());
+            return;
+        }
+
+        const image = getImage(req);
+        if (image) {
+            req.body.image = image;
+        }
+
+        const property: PropertyBody = {
+            ...req.body,
+            agency: user.agency,
+        };
+
+        const newProperty = await this.propertyService.createByAgency(user.agency.id, property);
+
+        return res.json(newProperty);
+    }
 
     update = async (
         req: AuthRequest<{ id: string }, {}, PropertyBody>,

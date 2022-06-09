@@ -36,7 +36,6 @@ import Home from './Screens/Home/Home';
 import PropertiesLayout from './Screens/Properties/PropertiesLayout';
 import PropertyDetailLayout from './Screens/Properties/Detail/PropertyDetailLayout';
 import PropertyDetail from './Screens/Properties/Detail/PropertyDetail';
-import Saved from './Screens/Saved/Saved';
 import PropertiesOverviewScreen from './Screens/Properties/Overview/PropertiesOverviewScreen';
 import AgentPropertyEdit from './Auth/Agent/Properties/Edit/AgentPropertyEdit';
 
@@ -77,9 +76,6 @@ function App() {
                             </Route>
 
                     </Route>
-
-
-                    <Route path={HomeRoutes.Saved} element={<Saved />} />
 
                     <Route path={AuthRoutes.Profile} element={<Profile />} />
 

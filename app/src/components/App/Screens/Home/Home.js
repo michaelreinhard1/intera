@@ -83,7 +83,7 @@ useTitle(t('home.title'));
                           We're here to help you find the right home for you
                           </p>
                         </div>
-                        <Link to={HomeRoutes.Contact} className='text-blue-600 underline font-medium'>
+                        <Link to={HomeRoutes.Index} className='text-blue-600 underline font-medium'>
                             {t('home.contact us')}
                         </Link>
                       </div>

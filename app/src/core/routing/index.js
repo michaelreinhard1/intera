@@ -3,12 +3,12 @@ const ApiRoutes = {
     Register: '/register',
     Properties: '/properties',
     Property: '/properties/',
+    PropertyWithLocation: '/properties-with-location/',
     BuyProperties : '/buy-properties',
     RentProperties : '/rent-properties',
     PropertiesWithLocation: '/properties-with-location',
     BuyPropertiesWithLocation: '/buy-properties-with-location',
     RentPropertiesWithLocation: '/rent-properties-with-location',
-    PropertyWithLocation: '/properties-with-location/',
     PropertiesByAgency: '/properties-by-agency/',
     Users: '/users',
     User: '/users/',
@@ -30,11 +30,9 @@ const HomeRoutes = {
     Buy: "/buy",
     Rent: "/rent",
     Property: `/property/:id`,
-    Saved: "/saved",
     About: "/about",
     Terms: "/terms",
     Privacy: "/privacy",
-    Contact: "/contact",
 };
 
 const AdminRoutes = {
