@@ -39,7 +39,7 @@ const AgencyEdit = () => {
                 onSubmit={handleSubmit}
                 initialData={agency}
             />
-            {error && <Error>{error}</Error>}
+            {error && <Error message={error} />}
       </Container>
     </>
 

@@ -41,7 +41,7 @@ const AgentPropertyAdd = () => {
                 onSubmit={handleSubmit}
                 initialData={{agencyId: auth.user.id}}
                 />
-            {error && <Error>{error}</Error>}
+            {error && <Error message={error} />}
         </Container>
         </>
     );

@@ -36,7 +36,7 @@ const PropertyAdd = () => {
                 disabled={isLoading}
                 onSubmit={handleSubmit}
                 />
-            {error && <Error>{error}</Error>}
+            {error && <Error message={error} />}
         </Container>
         </>
     );

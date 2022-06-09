@@ -45,7 +45,7 @@ const UserEdit = () => {
                 onSubmit={handleSubmit}
                 initialData={user}
             />
-            {error && <Error>{error}</Error>}
+            {error && <Error message={error} />}
       </Container>
     </>
 

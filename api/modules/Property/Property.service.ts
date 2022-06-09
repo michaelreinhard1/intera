@@ -1,6 +1,7 @@
 import { Repository } from "typeorm";
 
 import { AppDataSource } from "../../database/DataSource";
+import { BadRequestError } from "../../errors/BadRequestError";
 import { TransactionTypes } from "./Property.constants";
 import Property from "./Property.entity";
 import { PropertyBody } from "./Property.types";
@@ -154,7 +155,7 @@ export default class PropertyService {
     create = async (body: PropertyBody) => {
         const property = await this.findOneBy({ address: body.address });
         if (property) {
-            return console.error("Property already exists");
+            throw new BadRequestError('Address already exists', 400);
         }
         const newProperty = await this.repository.save(
             this.repository.create(body)

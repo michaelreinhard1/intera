@@ -66,9 +66,7 @@ const Card = ({property, toggleLike}) => {
         <div className="text-xs uppercase font-bold text-gray-600 tracking-wide">{t('property.realtor')}</div>
         <div className="flex items-center pt-2">
             <div className="bg-cover bg-center w-10 h-10 rounded-full mr-3">
-                <img src={`
-                ${property.profilePicture ? `images/${property.profilePicture}` : `images/profile-picture-placeholder.jpg`}
-                `} alt="profile" className="w-full h-full rounded-full" />
+                <img src={`images/profile-picture-placeholder.jpg`} alt="profile" className="w-full h-full rounded-full" />
             </div>
             <div>
                 <p className="font-bold text-gray-900">{property.owner}</p>

@@ -13,7 +13,7 @@ const AgencyAdd = () => {
     const { t } = useTranslation();
     useTitle(t("agencies.create.title"));
 
-    const { isLoading, error, mutate} = useMutation();
+    const { isLoading, mutate, error} = useMutation();
 
     const handleSubmit = (data) => {
         mutate(`${process.env.REACT_APP_API_URL}${ApiRoutes.Agencies}`, {
@@ -35,7 +35,10 @@ const AgencyAdd = () => {
                 disabled={isLoading}
                 onSubmit={handleSubmit}
                 />
-            {error && <Error>{error}</Error>}
+            {error && <Error message={error} />}
+            <p>
+                {error}
+            </p>
         </Container>
         </>
     );

@@ -41,7 +41,7 @@ const PropertyEdit = () => {
                 onSubmit={handleSubmit}
                 initialData={property}
                 />
-            {error && <Error>{error}</Error>}
+            {error && <Error message={error} />}
         </Container>
         </>
     );
