@@ -92,10 +92,14 @@ export default class UserController {
         res: Response,
         next: NextFunction
     ) => {
-        const user = await this.userService.delete(parseInt(req.params.id));
-        if (!user) {
-            next(new NotFoundError());
+        try {
+            const user = await this.userService.delete(parseInt(req.params.id));
+            if (!user) {
+                next(new NotFoundError());
+            }
+            return res.json({});
+        } catch (err) {
+            next(err);
         }
-        return res.json({});
     };
 }

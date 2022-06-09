@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { HomeRoutes } from '../../../core/routing'
 import HeaderSpacer from '../HeaderSpacer/HeaderSpacer'
+import PropTypes from "prop-types";
 
 const Footer = ({logo, alt, sections, socials = [], companyName}) => {
 
@@ -9,7 +10,7 @@ const Footer = ({logo, alt, sections, socials = [], companyName}) => {
       <>
     <HeaderSpacer />
     <footer className="
-    container z-50 w-full px-4 py-4  bg-white shadow-sm
+    container z-50 w-full p-4  bg-white shadow-sm
     ">
     <div className="md:flex md:justify-between">
         <div className="mb-6 md:mb-0">
@@ -54,5 +55,15 @@ const Footer = ({logo, alt, sections, socials = [], companyName}) => {
 
   )
 }
+
+// PropTypes
+Footer.propTypes = {
+    logo: PropTypes.string,
+    alt: PropTypes.string,
+    sections: PropTypes.array,
+    socials: PropTypes.array,
+    companyName: PropTypes.string,
+};
+
 
 export default Footer

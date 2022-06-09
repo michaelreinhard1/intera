@@ -1,5 +1,6 @@
 import React from 'react'
 import Input from '../Input/Input'
+import PropTypes from "prop-types";
 
 const FormGroup = ({children, label, type, name, placeholder, value, onChange}) => {
   return (
@@ -29,5 +30,15 @@ const FormGroup = ({children, label, type, name, placeholder, value, onChange}) 
       </div>
   )
 }
+// PropTypes
+FormGroup.propTypes = {
+  children: PropTypes.node.isRequired,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default FormGroup

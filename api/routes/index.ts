@@ -55,12 +55,14 @@ const registerAdminRoutes = (router: Router) => {
     const propertyController = new PropertyController();
     adminRouter.post("/properties", handleErrors(propertyController.create));
     adminRouter.patch("/properties/:id", handleErrors(propertyController.update));
+    adminRouter.delete("/properties/:id", handleErrors(propertyController.delete));
 
     const agencyController = new AgencyController();
     adminRouter.get("/agencies", handleErrors(agencyController.all));
     adminRouter.get("/agencies/:id", handleErrors(agencyController.find));
     adminRouter.post("/agencies", handleErrors(agencyController.create));
     adminRouter.patch("/agencies/:id", handleErrors(agencyController.update));
+    adminRouter.delete("/agencies/:id", handleErrors(agencyController.delete));
 
     router.use(withRole(UserRole.Admin), adminRouter);
 };
@@ -87,6 +89,9 @@ const registerAgentRoutes = (router: Router) => {
     agentRouter.get("/properties-by-agency/:id", handleErrors(propertyController.allByAgency));
     agentRouter.get("/properties-by-agency/:agencyId/:propertyId", handleErrors(propertyController.findByAgency));
     agentRouter.patch("/properties-by-agency/:agencyId/:propertyId", handleErrors(propertyController.updateByAgency));
+    agentRouter.delete("/properties-by-agency/:agencyId/:propertyId", handleErrors(propertyController.deleteByAgency));
+    agentRouter.post("/properties-by-agency/:agencyId", handleErrors(propertyController.create));
+
 
     router.use(withRole(UserRole.Agent), agentRouter);
 }

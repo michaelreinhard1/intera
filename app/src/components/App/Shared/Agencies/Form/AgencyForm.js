@@ -47,7 +47,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     {t('fields.general information')}
                 </p>
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="name" className='w-6/12'>{t('fields.name')}</label>
               <Input
               name="name"
@@ -56,7 +56,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.name}
               />
           </div>
-          <div className='w-full mr-3 mb-6 col-span-full'>
+          <div className='w-full mr-3 mb-6  col-span-full  '>
               <label htmlFor="description" className='w-6/12'>{t('fields.description')}</label>
               <Textarea
               name="description"
@@ -64,7 +64,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               onChange={handleChange}
               error={errors.description} />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="address" className='w-6/12'>{t('fields.street and number')}</label>
               <Input
               name="address"
@@ -73,7 +73,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.address}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="province" className='w-6/12'>{t('fields.province')}</label>
               <Input
               name="province"
@@ -82,7 +82,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.province}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="city" className='w-6/12'>{t('fields.city')}</label>
               <Input
               name="city"
@@ -91,7 +91,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.city}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="zip" className='w-6/12'>{t('fields.zip')}</label>
               <Input
               name="zip"
@@ -100,7 +100,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.zip}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="email" className='w-6/12'>{t('fields.email')}</label>
               <Input
               name="email"
@@ -110,7 +110,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.email}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="phone" className='w-6/12'>{t('fields.phone')}</label>
               <Input
               name="phone"
@@ -120,7 +120,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.phone}
               />
           </div>
-          <Button className={` m-auto bg-blue-500 col-span-2 ${mode}`} color={'primary'} type="submit" disabled={disabled}>
+          <Button className={`justify-self-end w-max col-span-1 col-end-3 ${mode}`} color={'primary'} type="submit" disabled={disabled}>
               {label}
           </Button>
       </form>

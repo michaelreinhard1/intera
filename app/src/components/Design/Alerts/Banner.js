@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from "prop-types";
 
 const Banner = ({className, title, message, link = {}}) => {
   return (
@@ -16,5 +17,11 @@ const Banner = ({className, title, message, link = {}}) => {
 
   )
 }
-
+// PropTypes
+Banner.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string,
+  message: PropTypes.string,
+  link: PropTypes.object,
+};
 export default Banner

@@ -8,7 +8,7 @@ import Container from '../../../../Design/Container/Container';
 import HeaderSpacer from '../../../../Design/HeaderSpacer/HeaderSpacer';
 import LoadingIndicator from '../../../../Design/LoadingIndicator/LoadingIndicator';
 import { useAuthContext } from '../../../Auth/AuthProvider';
-import AppFooter from '../../../Shared/AppFooter/AppFooter';
+import AppFooter from '../../../Shared/Generic/AppFooter/AppFooter';
 
 const PropertiesOverviewScreen = ({type}) => {
 

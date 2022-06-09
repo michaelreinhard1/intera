@@ -3,17 +3,17 @@ import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndi
 import Error from "../../../../../Design/Alerts/Error";
 import "../../../../../Design/NotFound/NotFound.css";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
-import Table from "../../../../../Design/Table/Table";
 import { ApiRoutes, UserRoutes } from "../../../../../../core/routing";
 import Button from "../../../../../Design/Button/Button";
 import { useTranslation } from "react-i18next";
 import useTitle from "../../../../../../core/hooks/useTitle";
+import Table from "../../../../Shared/Generic/Table/Table";
 
 const UsersOverviewScreen = () => {
     const { t } = useTranslation();
     useTitle(t('users.overview.title'));
 
-    const {  isLoading, data, error } = useFetch(ApiRoutes.Users);
+    const {  isLoading, data, error, invalidate } = useFetch(ApiRoutes.Users);
 
     if (isLoading) {
         return <LoadingIndicator />
@@ -21,6 +21,11 @@ const UsersOverviewScreen = () => {
     if (error) {
         return <Error message={error} />;
     }
+
+    const handleDelete = () => {
+        invalidate();
+    };
+
 
     return (
         <>
@@ -40,6 +45,8 @@ const UsersOverviewScreen = () => {
                     <Table
                     items={data}
                     edit={UserRoutes.Detail}
+                    invalidate={handleDelete}
+                    scope={ApiRoutes.Users}
                     />
                 }
             </div>

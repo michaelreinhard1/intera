@@ -1,8 +1,11 @@
 import * as MaterialDesign from "react-icons/md";
 import { Link } from "react-router-dom";
-import { route } from "../../../core/routing";
+import { ApiRoutes, route } from "../../../../../core/routing";
+import PropTypes from "prop-types";
+import DeleteButton from "../Buttons/DeleteButton";
 
-const Table = ({items = [], edit}) => {
+const Table = ({items = [], edit, invalidate, scope}) => {
+
   return (
    <div className="flex flex-col h-2/6">
     <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -17,6 +20,7 @@ const Table = ({items = [], edit}) => {
                             </th>
                     ))}
 
+                    <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left"></th>
                     <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left"></th>
                 </tr>
             </thead>
@@ -40,6 +44,15 @@ const Table = ({items = [], edit}) => {
                             <MaterialDesign.MdEdit />
                         </Link>
                     </td>
+                    <td>
+                        <DeleteButton
+                            id={item.id}
+                            color={'danger'}
+                            scope={scope}
+                            onSuccess={invalidate}
+                            />
+
+                    </td>
                     </tr>
                 ))
                 }
@@ -50,6 +63,12 @@ const Table = ({items = [], edit}) => {
     </div>
     </div>
   )
+}
+
+// PropTypes
+Table.propTypes = {
+    items: PropTypes.array,
+    edit: PropTypes.string,
 }
 
 export default Table

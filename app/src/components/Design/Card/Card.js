@@ -6,7 +6,9 @@ import './Card.scss'
 import { HomeRoutes, route } from '../../../core/routing';
 import { getImagePath } from '../../../core/helpers/api';
 import { formatPrice } from '../../../core/modules/properties/utils';
-import { PropertyTypes } from '../../../core/modules/properties/constants';
+import { PropertyTypes, TransactionTypes } from '../../../core/modules/properties/constants';
+import PropTypes from "prop-types";
+
 const Card = ({property, toggleLike}) => {
 
   let typeColor;
@@ -34,9 +36,8 @@ const Card = ({property, toggleLike}) => {
     <div className="p-4">
         <span className={`inline-block px-2 py-1 leading-none rounded-full font-semibold uppercase tracking-wide text-xs ${typeColor}`}>{property.type}</span>
       <h2 className="mt-2 mb-2 text-lg text-gray-900 font-bold">{property.name}</h2>
-      <p className="text-sm">{property.description}</p>
       <div className="mt-3 flex items-center">
-        <span className="font-bold text-gray-900 text-xl">{formatPrice(property.price)}{property.payment === 'Rent' ? <span className="text-sm text-gray-600"> / {t('property.month')}</span> : null}</span>
+        <span className="font-bold text-gray-900 text-xl">{formatPrice(property.price)}{property.payment === TransactionTypes.Rent ? <span className="text-sm text-gray-600"> / {t('property.month')}</span> : null}</span>
       </div>
     </div>
     <div className="p-4 border-t border-b text-md text-gray-700">
@@ -80,5 +81,11 @@ const Card = ({property, toggleLike}) => {
 
   )
 }
+// Proptypes
+Card.propTypes = {
+  property: PropTypes.object,
+  toggleLike: PropTypes.func,
+}
+
 
 export default Card

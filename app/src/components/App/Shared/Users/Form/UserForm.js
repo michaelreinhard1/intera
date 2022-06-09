@@ -3,11 +3,13 @@ import * as yup from "yup";
 import useForm from "../../../../../core/hooks/useForm";
 import { convertObjectToArrayForSelect } from "../../../../../core/modules/properties/utils";
 import { UserRoles } from "../../../../../core/modules/users/constants";
+import { ApiRoutes } from "../../../../../core/routing";
 import Button from "../../../../Design/Button/Button";
 import PasswordInput from "../../../../Design/Form/PasswordInput";
 import Select from "../../../../Design/Form/Select";
 import Input from "../../../../Design/Input/Input";
 import AgencySelect from "../../../Shared/Agencies/Select/AgencySelect";
+import DeleteButton from "../../Generic/Buttons/DeleteButton";
 
 const getSchema = (isUpdate) => {
   return yup.object().shape({
@@ -61,7 +63,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
   const { t } = useTranslation();
   return (
       <form onSubmit={handleSubmit(handleData)} noValidate={true} className="p-12 pt-0 md:p-18 rounded-xl grid grid-cols-2 gap-x-5">
-          <div className='w-full mr-3 mb-6'>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto'>
               <label htmlFor="name" className='w-6/12'>{t('fields.name')}</label>
               <Input
               name="name"
@@ -70,7 +72,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.name}
               />
           </div>
-          <div className='w-full mr-3 mb-6'>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto'>
               <label htmlFor="surname" className='w-6/12'>{t('fields.surname')}</label>
               <Input
               name="surname"
@@ -79,7 +81,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.surname}
               />
           </div>
-          <div className='w-full mr-3 mb-6'>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto'>
               <label htmlFor="email" className='w-6/12'>{t('fields.email')}</label>
               <Input
               name="email"
@@ -88,7 +90,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.email}
               />
           </div>
-          <div className='w-full mr-3 mb-6'>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto'>
               <label htmlFor="role" className='w-6/12'>{t('fields.role')}</label>
               <Select
                 label="role"
@@ -99,7 +101,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 error={errors.role}
               />
           </div>
-          <div className='w-full mr-3 mb-6'>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto'>
               <label htmlFor="role" className='w-6/12'>{t('fields.agency')}</label>
                 <AgencySelect
                     name="agencyId"
@@ -109,7 +111,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 />
 
           </div>
-          <div className='w-full mr-3 mb-6'>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto'>
               <label htmlFor="password" className='w-6/12'>{t('fields.password')}</label>
               <PasswordInput
                   name="password"
@@ -124,7 +126,8 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                   </p>
               )}
           </div>
-          <Button className={` m-auto bg-blue-500 col-span-2 ${mode}`} color={'primary'} type="submit" disabled={disabled}>
+
+          <Button className={` justify-self-end w-max col-span-1 col-end-3 ${mode}`} color={'primary'} type="submit" disabled={disabled}>
               {label}
           </Button>
       </form>

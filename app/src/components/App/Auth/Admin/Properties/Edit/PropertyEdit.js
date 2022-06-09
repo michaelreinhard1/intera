@@ -13,7 +13,7 @@ const PropertyEdit = () => {
 
     const { t } = useTranslation();
 
-    useTitle(t("properties.create.title"));
+    useTitle(t("properties.edit.title"));
 
     const { property, onPropertyUpdate } = useOutletContext();
 

@@ -6,7 +6,23 @@
         }
     },
     "home": {
-        "title": "Home"
+        "title": "Home",
+        "buy": "Buy",
+        "rent": "Rent",
+        "let's find the right selling option for you": "Let's find the right selling option for you",
+        "we're here to help you find the right home for you": "We're here to help you find the right home for you",
+        "explore": "Explore",
+        "buy a home": "Buy a home",
+        "rent a home": "Rent a home",
+        "become an agent": "Become an agent",
+        "see how we can help": "See how we can help",
+        "contact us": "Contact us",
+        "landing": {
+            "title": "We'll help you find your dream home",
+            "description": "We're here to provide you with the tools you need to find your perfect home. Our agents are always ready to answer your questions and help you every step of the way.",
+            "button": "Explore",
+            "dream home": "dream home"
+        }
     },
     "notfound": {
         "title": "404",
@@ -97,7 +113,14 @@
         "all properties": "All properties",
         "saved": "Saved",
         "save": "Save",
-        "contact owner": "Contact owner"
+        "contact owner": "Contact owner",
+        "general": "General",
+        "type": "Type",
+        "transaction type": "Transaction type",
+        "construction year": "Construction year",
+        "total rooms": "Total rooms",
+        "floor": "Floor",
+        "area": "Area"
     },
     "agencies":{
         "title": "Agencies",

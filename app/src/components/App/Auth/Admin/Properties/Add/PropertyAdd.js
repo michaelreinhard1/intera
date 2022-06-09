@@ -32,7 +32,6 @@ const PropertyAdd = () => {
         <Container>
             {/* <BackButton href={route(UserRoutes.Index)} /> */}
             <PropertyForm
-                initialData={null}
                 label={t("buttons.create")}
                 disabled={isLoading}
                 onSubmit={handleSubmit}

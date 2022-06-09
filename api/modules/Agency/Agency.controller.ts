@@ -20,13 +20,13 @@ export default class AgencyController {
         res: Response,
         next: NextFunction
     ) => {
-        const property = await this.agencyService.findOne(
+        const agency = await this.agencyService.findOne(
             parseInt(req.params.id)
         );
-        if (!property) {
+        if (!agency) {
             next(new NotFoundError());
         }
-        return res.json(property);
+        return res.json(agency);
     };
 
     create = async (
@@ -34,8 +34,8 @@ export default class AgencyController {
         res: Response,
         next: NextFunction
     ) => {
-        const property = await this.agencyService.create(req.body);
-        return res.json(property);
+        const agency = await this.agencyService.create(req.body);
+        return res.json(agency);
     };
 
     update = async (
@@ -43,14 +43,14 @@ export default class AgencyController {
         res: Response,
         next: NextFunction
     ) => {
-        const property = await this.agencyService.update(
+        const agency = await this.agencyService.update(
             parseInt(req.params.id),
             req.body
         );
-        if (!property) {
+        if (!agency) {
             next(new NotFoundError());
         }
-        return res.json(property);
+        return res.json(agency);
     };
 
     delete = async (
@@ -58,10 +58,15 @@ export default class AgencyController {
         res: Response,
         next: NextFunction
     ) => {
-        const property = await this.agencyService.delete(parseInt(req.params.id));
-        if (!property) {
-            next(new NotFoundError());
+        try {
+            const agency = await this.agencyService.delete(parseInt(req.params.id));
+            if (!agency) {
+                next(new NotFoundError());
+            }
+            return res.json({});
+        } catch (err) {
+            next(err);
         }
-        return res.json({});
+
     };
 }

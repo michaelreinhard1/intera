@@ -4,19 +4,21 @@ import Error from "../../../../../Design/Alerts/Error";
 import "../../../../../Design/NotFound/NotFound.css";
 import { AgentRoutes, ApiRoutes, PropertyRoutes } from "../../../../../../core/routing";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
-import Table from "../../../../../Design/Table/Table";
 import useTitle from "../../../../../../core/hooks/useTitle";
 import { useTranslation } from "react-i18next";
 import Button from "../../../../../Design/Button/Button";
 import { formatPrice } from "../../../../../../core/modules/properties/utils";
 import { useAuthContext } from "../../../AuthProvider";
+import Table from "../../../../Shared/Generic/Table/Table";
 
 const AgentPropertiesOverviewScreen = () => {
     const { t } = useTranslation();
     useTitle(t('properties.overview.title'));
     const { auth } = useAuthContext();
 
-    const {  isLoading, data, error } = useFetch(`${ApiRoutes.PropertiesByAgency}${auth.user.id}`);
+    console.log(auth);
+
+    const {  isLoading, data, error, invalidate } = useFetch(`${ApiRoutes.PropertiesByAgency}${auth.user.id}`);
 
     if (isLoading) {
         return <LoadingIndicator />
@@ -44,7 +46,7 @@ const AgentPropertiesOverviewScreen = () => {
             <div className="w-4/5 mx-auto">
                 <div className="flex justify-end mb-5">
                     <Button
-                        href={PropertyRoutes.New} color={'primary'} >
+                        href={AgentRoutes.NewProperty} color={'primary'} >
                             {t('properties.overview.create')}
                     </Button>
                 </div>
@@ -59,6 +61,8 @@ const AgentPropertiesOverviewScreen = () => {
                     <Table
                     items={dataForTable}
                     edit={AgentRoutes.Property}
+                    scope={`${ApiRoutes.PropertiesByAgency}${auth.user.id}`}
+                    invalidate={invalidate}
                     />
                 }
             </div>

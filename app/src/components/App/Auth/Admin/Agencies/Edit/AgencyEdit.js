@@ -14,7 +14,7 @@ const AgencyEdit = () => {
   const { agency, onAgencyUpdate } = useOutletContext();
   const navigate = useNavigate();
 
-  useTitle(t("users.edit.title"));
+  useTitle(t("agencies.edit.title"));
 
   const { isLoading, error, mutate } = useMutation();
 

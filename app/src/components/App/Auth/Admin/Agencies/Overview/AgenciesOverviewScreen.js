@@ -3,14 +3,14 @@ import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndi
 import Error from "../../../../../Design/Alerts/Error";
 import "../../../../../Design/NotFound/NotFound.css";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
-import Table from "../../../../../Design/Table/Table";
 import { AgencyRoutes, ApiRoutes } from "../../../../../../core/routing";
 import { useTranslation } from "react-i18next";
 import Button from "../../../../../Design/Button/Button";
+import Table from "../../../../Shared/Generic/Table/Table";
 
 const AgenciesOverviewScreen = () => {
     const { t } = useTranslation();
-    const {  isLoading, data, error } = useFetch(ApiRoutes.Agencies);
+    const {  isLoading, data, error, invalidate } = useFetch(ApiRoutes.Agencies);
 
     if (isLoading) {
         return <LoadingIndicator />
@@ -26,7 +26,9 @@ const AgenciesOverviewScreen = () => {
         return item;
     }
     );
-
+    const handleDelete = () => {
+        invalidate();
+    };
     return (
         <>
             <HeaderSpacer />
@@ -46,6 +48,8 @@ const AgenciesOverviewScreen = () => {
                     <Table
                     items={dataForTable}
                     edit={AgencyRoutes.Detail}
+                    invalidate={handleDelete}
+                    scope={ApiRoutes.Agencies}
                     />
                     </>
                 }

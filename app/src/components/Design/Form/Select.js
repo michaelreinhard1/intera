@@ -4,12 +4,12 @@ const Select = ({ name, options = [], onChange, value, error, disabled }) => {
     return (
         <>
             <select
-                className={`form-control border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full ${error ? "is-invalid" : ""}`}
+                className={`form-control border py-3 mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full ${error ? "is-invalid" : ""}`}
                 name={name}
                 disabled={disabled}
                 value={String(value) || ""}
                 onChange={onChange}>
-                <option>--</option>
+                <option value={null}>--</option>
                 {options &&
                     options.map((option) => (
                         <option key={option.value} value={option.value}>

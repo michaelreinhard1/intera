@@ -5,7 +5,7 @@ const Input = ({ type, error, name, placeholder, value, onChange, className, dis
   return (
     <>
     <input
-      className={`border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full ${className}`}
+      className={`border mt-3 rounded-lg pl-6 sm:py-2 py-3 focus:outline-none w-full ${className}`}
       type={type}
       id={name}
       name={name}

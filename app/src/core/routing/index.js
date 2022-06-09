@@ -34,6 +34,7 @@ const HomeRoutes = {
     About: "/about",
     Terms: "/terms",
     Privacy: "/privacy",
+    Contact: "/contact",
 };
 
 const AdminRoutes = {

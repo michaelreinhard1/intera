@@ -11,9 +11,11 @@ import { AuthRoutes } from '../../../../../core/routing';
 import Button from '../../../../Design/Button/Button';
 import Form from '../../../../Design/Form/Form';
 import FormGroup from '../../../../Design/Form/FormGroup';
-import AppFooter from '../../../Shared/AppFooter/AppFooter';
 import Banner from '../../../../Design/Alerts/Banner';
 import { useAuthContext } from '../../../Auth/AuthProvider';
+import { TransactionTypes } from '../../../../../core/modules/properties/constants';
+import AppFooter from '../../../Shared/Generic/AppFooter/AppFooter';
+import useTitle from '../../../../../core/hooks/useTitle';
 
 const PropertyDetail = () => {
 
@@ -22,7 +24,7 @@ const PropertyDetail = () => {
   const { property } = useOutletContext();
 
   const [liked, setLiked] = useState(false);
-
+  useTitle(property.name)
   const handleLike = () => {
     setLiked(!liked);
   };
@@ -32,19 +34,18 @@ const PropertyDetail = () => {
     subject: "",
     message: ""
 });
-
 const { isLoading, mutate } = useMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    mutate(`${process.env.REACT_APP_API_URL}/login`, {
-      method: "POST",
-      data,
-      onSuccess: (data) => {
-            //   login(data);
-            },
-          });
+    // mutate(`${process.env.REACT_APP_API_URL}/login`, {
+    //   method: "POST",
+    //   data,
+    //   onSuccess: (data) => {
+    //         //   login(data);
+    //         },
+    //       });
   };
 
   const handleChange = (e) => {
@@ -60,14 +61,14 @@ const mode = isLoading ? "bg-blue-500" : "";
       <HeaderSpacer />
       <Container>
           <h1 className='text-2xl mb-10 font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate'>{property.name}</h1>
-          <div className="flex gap-10">
+          <div className="flex flex-col sm:flex-row gap-10">
               <div className="w-full lg:w-1/2 h-96 overflow-hidden rounded-lg">
                   <img src={getImagePath(property.image)} alt={property.title} className=" object-cover w-full h-full"/>
               </div>
               <div className="w-full lg:w-1/2 flex flex-col flex-between min-h-full">
                 <div className='h-max flex flex-col gap-2'>
                   <div className='flex justify-between'>
-                    <h2 className='text-2xl mb-5 font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate'>{formatPrice(property.price)}{property.payment === 'rent' ? <span className="text-sm text-gray-600"> / {t('property.month')}</span> : null}</h2>
+                    <h2 className='text-2xl mb-5 font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate'>{formatPrice(property.price)}{property.payment === TransactionTypes.Rent ? <span className="text-sm text-gray-600"> / {t('property.month')}</span> : null}</h2>
                   </div>
                   <span className="flex items-center mb-1">
                     <i className="mr-2 text-gray-900">
@@ -131,13 +132,87 @@ const mode = isLoading ? "bg-blue-500" : "";
               </div>
           </div>
           <div className='mt-10'>
-            <h3 className='text-2xl mb-5 font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate'>{t('property.description')}</h3>
-            <p className='text-gray-700'>{property.description}</p>
+            <div className='my-5'>
+
+            <h3 className='text-2xl mb-5 font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate'>{t('property.general')}</h3>
+                  <div className='grid grid-cols-2 gap-y-5 w-full sm:w-1/2'>
+                      <span className='font-bold'>
+                        {t('property.type')}
+                      </span>
+                      <span>
+                        {property.type}
+                      </span>
+
+                      <span className='font-bold'>
+                        {t('property.transaction type')}
+                      </span>
+
+                      <span>
+                        {property.payment}
+                      </span>
+                      <span className='font-bold'>
+                        {t('property.construction year')}
+                      </span>
+
+                      <span>
+                        {property.year}
+                      </span>
+
+                      <span className='font-bold'>
+                        {t('property.total rooms')}
+                      </span>
+                      <span>
+                        {property.rooms}
+                      </span>
+
+                      <span className='font-bold'>
+                        {t('property.bedrooms')}
+                      </span>
+
+                      <span>
+                        {property.bedrooms}
+                      </span>
+                      <span className='font-bold'>
+                        {t('property.bathrooms')}
+                      </span>
+
+                      <span>
+                        {property.bathrooms}
+                      </span>
+
+                      <span className='font-bold'>
+                        {t('property.floor')}
+                      </span>
+
+                      <span>
+                        {property.floor}
+                      </span>
+                      <span className='font-bold'>
+                        {t('property.area')}
+                      </span>
+
+                      <span>
+                        {formatArea(property.area)}
+                      </span>
+                  </div>
+              </div>
+
+            <div className="mt-20">
+
+              <h3 className='text-2xl mb-5 font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate'>{t('property.description')}</h3>
+              <p>
+                {property.description}
+              </p>
+            </div>
+
+
+
               <div className='w-full mt-20'>
                 <h3 className='text-2xl font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate my-10'>
                   {t('property.contact owner')}
                 </h3>
-                  <Form onSubmit={handleSubmit}>
+
+                <Form onSubmit={handleSubmit}>
                   <FormGroup
                   label={t('fields.email')}
                   name='email'
@@ -161,7 +236,7 @@ const mode = isLoading ? "bg-blue-500" : "";
                   value={data.message}
                   onChange={handleChange}
                   />
-                  <Button color="primary" className={`w-full ${mode}`} disabled={isLoading}>{t('fields.send')}</Button>
+                  <Button color="primary" className={`w-max ml-auto ${mode}`} disabled={isLoading}>{t('fields.send')}</Button>
               </Form>
             </div>
 

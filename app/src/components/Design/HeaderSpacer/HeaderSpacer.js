@@ -2,7 +2,7 @@ import React from 'react'
 
 const HeaderSpacer = () => {
   return (
-    <div className="mt-40" />
+    <div className="mt-28 sm:mt-40" />
   )
 }
 

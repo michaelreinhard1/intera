@@ -31,7 +31,7 @@ const schema = yup.object().shape({
     zip: yup.string().required(),
     payment: yup.string().required(),
     province: yup.string().required(),
-    agencyId: yup.number().nullable(),
+    agencyId: yup.string().nullable(),
 });
 const transformInitialData = (initialData) => {
     if (initialData.agency) {
@@ -65,11 +65,12 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
         city: "",
         zip: "",
         province: "",
+        agencyId: null,
         ...transformInitialData(initialData),
     }
   );
 
-  console.log(values);
+
   const handleData = (values) => {
     onSubmit(values);
 };
@@ -86,8 +87,9 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 </p>
           </div>
           {
-              !initialData ? (
-                <div className='w-full mr-3 mb-6 '>
+            !initialData.id
+               ? (
+                <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
                     <label htmlFor="name" className='w-6/12'>{t('fields.name')}</label>
                     <FileInput
                         name="image"
@@ -99,7 +101,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 </div>
                 ) : null
           }
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="name" className='w-6/12'>{t('fields.name')}</label>
               <Input
               name="name"
@@ -108,7 +110,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.name}
               />
           </div>
-          <div className='w-full mr-3 mb-6 col-span-full'>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto col-span-full'>
               <label htmlFor="description" className='w-6/12'>{t('fields.description')}</label>
               <Textarea
               className="border mt-3 rounded-lg pl-6 md:py-2 focus:outline-none w-full"
@@ -117,7 +119,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               onChange={handleChange}
               error={errors.description} />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="price" className='w-6/12'>{t('fields.price')}</label>
               <Input
               name="price"
@@ -127,7 +129,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.price}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="year" className='w-6/12'>{t('fields.year')}</label>
               <Input
               name="year"
@@ -137,7 +139,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.year}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="area" className='w-6/12'>{t('fields.area')}</label>
               <Input
               name="area"
@@ -147,7 +149,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.area}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="floor" className='w-6/12'>{t('fields.floor')}</label>
               <Input
               name="floor"
@@ -157,11 +159,9 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.floor}
               />
           </div>
-          {/* If auth.user.role is AGENT  */}
-
             {
                 isAdmin(auth.user) ? (
-                <div className='w-full mr-3 mb-6 '>
+                <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
                     <label htmlFor="agency" className='w-6/12'>{t('fields.agency')}</label>
                     <AgencySelect
                     name="agencyId"
@@ -177,7 +177,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     {t('fields.address')}
                 </p>
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="address" className='w-6/12'>{t('fields.street and number')}</label>
               <Input
               name="address"
@@ -186,7 +186,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.address}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="city" className='w-6/12'>{t('fields.city')}</label>
               <Input
               name="city"
@@ -195,7 +195,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.city}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="province" className='w-6/12'>{t('fields.province')}</label>
               <Input
               name="province"
@@ -204,7 +204,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.province}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="zip" className='w-6/12'>{t('fields.zip')}</label>
               <Input
               name="zip"
@@ -218,7 +218,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     {t('fields.type of property')}
                 </p>
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="type" className='w-6/12'>{t('fields.type')}</label>
               <Select
                 label="type"
@@ -229,7 +229,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 error={errors.type}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="payment" className='w-6/12'>{t('fields.payment')}</label>
               <Select
                 label="payment"
@@ -246,7 +246,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     {t('fields.rooms')}
                 </p>
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="rooms" className='w-6/12'>{t('fields.total rooms')}</label>
               <Input
               name="rooms"
@@ -256,7 +256,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.rooms}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="bedrooms" className='w-6/12'>{t('fields.bedrooms')}</label>
               <Input
               name="bedrooms"
@@ -266,7 +266,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.bedrooms}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="bathrooms" className='w-6/12'>{t('fields.bathrooms')}</label>
               <Input
               name="bathrooms"
@@ -281,7 +281,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     {t("fields.owner's contact details")}
                 </p>
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="owner" className='w-6/12'>{t('fields.name')}</label>
               <Input
               name="owner"
@@ -290,7 +290,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.owner}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full sm:col-auto '>
               <label htmlFor="email" className='w-6/12'>{t('fields.email')}</label>
               <Input
               name="email"
@@ -300,7 +300,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.email}
               />
           </div>
-          <div className='w-full mr-3 mb-6 '>
+          <div className='w-full mr-3 mb-6  col-span-full '>
               <label htmlFor="phone" className='w-6/12'>{t('fields.phone')}</label>
               <Input
               name="phone"
@@ -310,7 +310,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
               error={errors.phone}
               />
           </div>
-          <Button className={` m-auto bg-blue-500 col-span-2 ${mode}`} color={'primary'} type="submit" disabled={disabled}>
+          <Button className={`justify-self-end w-max col-span-1 col-end-3  ${mode}`} color={'primary'} type="submit" disabled={disabled}>
               {label}
           </Button>
       </form>

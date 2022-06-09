@@ -85,6 +85,37 @@ export default class PropertyController {
         return res.json(property);
     }
 
+    deleteByAgency = async (req: Request<{ agencyId: number, propertyId: number }>, res: Response, next: NextFunction) => {
+        const user = await this.userService.findOne(req.params.agencyId);
+        if (!user) {
+            next(new NotFoundError());
+            return;
+        }
+        const property = await this.propertyService.deleteByAgency(user.agency.id, req.params.propertyId);
+        return res.json(property);
+    }
+
+    // createByAgency using agencyId from params and image
+    createByAgency = async (req: Request<{ agencyId: number }>, res: Response, next: NextFunction) => {
+        const user = await this.userService.findOne(req.params.agencyId);
+        if (!user) {
+            next(new NotFoundError());
+            return;
+        }
+
+        const property: PropertyBody = {
+            ...req.body,
+            agency: user.agency,
+            // image: getImage(req)
+        };
+
+        const newProperty = await this.propertyService.createByAgency(user.agency.id, property);
+
+        return res.json(newProperty);
+    }
+
+
+
     allWithLocation = async (req: AuthRequest, res: Response, next: NextFunction) => {
         const properties = await this.propertyService.allWithLocation();
         return res.json(properties);
@@ -101,7 +132,7 @@ export default class PropertyController {
     };
 
     find = async (
-        req: Request<{ id: string }>,
+        req: AuthRequest<{ id: string }>,
         res: Response,
         next: NextFunction
     ) => {
@@ -137,13 +168,12 @@ export default class PropertyController {
         if (image) {
             req.body.image = image;
         }
-
         const property = await this.propertyService.create(req.body);
         return res.json(property);
     };
 
     update = async (
-        req: Request<{ id: string }, {}, PropertyBody>,
+        req: AuthRequest<{ id: string }, {}, PropertyBody>,
         res: Response,
         next: NextFunction,
     ) => {
@@ -184,14 +214,19 @@ export default class PropertyController {
 
 
     delete = async (
-        req: Request<{ id: string }>,
+        req: AuthRequest<{ id: string }>,
         res: Response,
         next: NextFunction
     ) => {
-        const property = await this.propertyService.delete(parseInt(req.params.id));
-        if (!property) {
-            next(new NotFoundError());
+        try {
+            const property = await this.propertyService.delete(parseInt(req.params.id));
+            if (!property) {
+                next(new NotFoundError());
+            }
+            return res.json({});
+        } catch (err) {
+            next(err);
         }
-        return res.json({});
+
     };
 }

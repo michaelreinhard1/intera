@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types";
 
 const Succes = ({message}) => {
   return (
@@ -8,5 +9,10 @@ const Succes = ({message}) => {
 
   )
 }
+// PropTypes
+Succes.propTypes = {
+  message: PropTypes.string,
+};
+
 
 export default Succes

@@ -4,17 +4,17 @@ import Error from "../../../../../Design/Alerts/Error";
 import "../../../../../Design/NotFound/NotFound.css";
 import { ApiRoutes, PropertyRoutes } from "../../../../../../core/routing";
 import HeaderSpacer from "../../../../../Design/HeaderSpacer/HeaderSpacer";
-import Table from "../../../../../Design/Table/Table";
 import useTitle from "../../../../../../core/hooks/useTitle";
 import { useTranslation } from "react-i18next";
 import Button from "../../../../../Design/Button/Button";
 import { formatPrice } from "../../../../../../core/modules/properties/utils";
+import Table from "../../../../Shared/Generic/Table/Table";
 
 const PropertiesOverviewScreenAdmin = () => {
     const { t } = useTranslation();
     useTitle(t('properties.overview.title'));
 
-    const {  isLoading, data, error } = useFetch(ApiRoutes.PropertiesWithLocation);
+    const {  isLoading, data, error, invalidate } = useFetch(ApiRoutes.PropertiesWithLocation);
 
     if (isLoading) {
         return <LoadingIndicator />
@@ -35,7 +35,9 @@ const PropertiesOverviewScreenAdmin = () => {
         return item;
     }
     );
-
+    const handleDelete = () => {
+        invalidate();
+    };
     return (
         <>
             <HeaderSpacer />
@@ -57,6 +59,8 @@ const PropertiesOverviewScreenAdmin = () => {
                 <Table
                 items={dataForTable}
                 edit={PropertyRoutes.Detail}
+                invalidate={handleDelete}
+                scope={ApiRoutes.Properties}
                 />
                 }
             </div>

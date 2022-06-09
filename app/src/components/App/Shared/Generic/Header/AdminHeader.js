@@ -1,9 +1,9 @@
 import { t } from 'i18next';
 import React from 'react'
-import { AgentRoutes, HomeRoutes } from '../../../../core/routing';
-import NavBar from '../../../Design/NavBar/NavBar';
+import { AgencyRoutes, HomeRoutes, PropertyRoutes, UserRoutes } from '../../../../../core/routing';
+import NavBar from '../../../../Design/NavBar/NavBar';
 
-const AgentHeader = () => {
+const AdminHeader = () => {
 
     const [isOpen, setIsOpen] = React.useState(false);
 
@@ -14,12 +14,16 @@ const AgentHeader = () => {
 
     const items = [
         {
-            label: t('navigation.properties'),
-            href: AgentRoutes.Properties
+            label: t('navigation.users'),
+            href: UserRoutes.Index
         },
         {
-            label: t('navigation.agents'),
-            href: AgentRoutes.Agents
+            label: t('navigation.properties'),
+            href: PropertyRoutes.Index
+        },
+        {
+            label: t('navigation.agencies'),
+            href: AgencyRoutes.Index
         },
     ]
 
@@ -38,4 +42,4 @@ const AgentHeader = () => {
   )
 }
 
-export default AgentHeader
+export default AdminHeader

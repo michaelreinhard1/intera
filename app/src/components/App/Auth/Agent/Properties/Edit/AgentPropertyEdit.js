@@ -15,7 +15,7 @@ const AgentPropertyEdit = () => {
 
     const { t } = useTranslation();
 
-    useTitle(t("properties.create.title"));
+    useTitle(t("properties.edit.title"));
 
     const { property, auth, onPropertyUpdate } = useOutletContext();
 

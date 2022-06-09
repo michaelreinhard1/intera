@@ -134,6 +134,22 @@ export default class PropertyService {
         });
         return updatedProperty;
     }
+    deleteByAgency = async (agencyId: number, propertyId: number) => {
+        const property = await this.findByAgency(agencyId, propertyId);
+        if (!property) {
+            return null;
+        }
+        const deletedProperty = await this.repository.remove(property);
+        return deletedProperty;
+    }
+
+    createByAgency = async (agencyId: number, body: PropertyBody) => {
+        const property = await this.repository.save({
+            ...body,
+            agencyId
+        });
+        return property;
+    }
 
     create = async (body: PropertyBody) => {
         const property = await this.findOneBy({ address: body.address });

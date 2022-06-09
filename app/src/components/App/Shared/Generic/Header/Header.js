@@ -1,10 +1,10 @@
 import React from 'react'
 import './Header.scss'
 import { useTranslation } from "react-i18next";
-import { AgentRoutes, AuthRoutes, HomeRoutes, UserRoutes } from '../../../../core/routing';
-import { isAdmin, isAgent } from '../../../../core/modules/users/utils';
-import NavBar from '../../../Design/NavBar/NavBar';
-import { useAuthContext } from '../../Auth/AuthProvider';
+import { AgentRoutes, AuthRoutes, HomeRoutes, UserRoutes } from '../../../../../core/routing';
+import { isAdmin, isAgent } from '../../../../../core/modules/users/utils';
+import NavBar from '../../../../Design/NavBar/NavBar';
+import { useAuthContext } from '../../../Auth/AuthProvider';
 
 const Header = () => {
 

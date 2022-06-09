@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types";
 
 const Textarea = ({name, value, onChange, disabled, placeholder, error}) => {
   return (
@@ -16,5 +17,15 @@ const Textarea = ({name, value, onChange, disabled, placeholder, error}) => {
     </>
   )
 }
+
+// PropTypes
+Textarea.propTypes = {
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+  placeholder: PropTypes.string,
+  error: PropTypes.string,
+};
 
 export default Textarea
