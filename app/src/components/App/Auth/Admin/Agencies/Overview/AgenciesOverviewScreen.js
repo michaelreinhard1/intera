@@ -40,8 +40,10 @@ const AgenciesOverviewScreen = () => {
                 </div>
                 {
                     data.length === 0 ?
-                    <div className="NotFound">
-                        <h1>No agencies found</h1>
+                    <div className="flex justify-center items-center">
+                        <div className="text-center text-gray-900 text-xl">
+                            {t('agencies.overview.no agencies')}
+                        </div>
                     </div>
                     :
                     <>

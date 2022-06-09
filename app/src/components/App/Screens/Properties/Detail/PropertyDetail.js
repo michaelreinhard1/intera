@@ -33,8 +33,9 @@ const PropertyDetail = () => {
     email: "",
     subject: "",
     message: ""
-});
-const { isLoading, mutate } = useMutation();
+  });
+
+  const { isLoading } = useMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,8 +54,10 @@ const { isLoading, mutate } = useMutation();
         ...data,
         [e.target.name]: e.target.value,
     });
-};
-const mode = isLoading ? "bg-blue-500" : "";
+  };
+
+  console.log(property.agency);
+  const mode = isLoading ? "bg-blue-500" : "";
 
   return (
     <>
@@ -92,15 +95,32 @@ const mode = isLoading ? "bg-blue-500" : "";
                           <MaterialDesign.MdOutlinePinDrop />
                       </i>{property.zip} {property.city}
                       </span>
-                      <Banner title={t('banner.informational message')} message={t('fields.you need to be logged in to see the full address')}
+                      <Banner title={t('banner.informational message')} message={t('fields.you need to be logged in to see the agency and the full address')}
                       link={{ title: t('navigation.login here'), href: AuthRoutes.Login }}/>
                       </>
                   :
-                  <span className="flex items-center mb-1">
-                  <i className="mr-2 text-gray-900">
-                      <MaterialDesign.MdOutlinePinDrop />
-                  </i>{property.address}, {property.zip} {property.city}
-                  </span>
+                  <>
+                    <span className="flex items-center mb-1">
+                      <i className="mr-2 text-gray-900">
+                          <MaterialDesign.MdOutlinePinDrop />
+                      </i>{property.address}, {property.zip} {property.city}
+                    </span>
+                    <span className="flex items-center mb-1">
+                      <i className="mr-2 text-gray-900">
+                          <MaterialDesign.MdGroup />
+                      </i>{property.agency.name}
+                    </span>
+                    <span className="flex items-center mb-1">
+                      <i className="mr-2 text-gray-900">
+                          <MaterialDesign.MdEmail />
+                      </i>{property.agency.email}
+                    </span>
+                    <span className="flex items-center mb-1">
+                      <i className="mr-2 text-gray-900">
+                          <MaterialDesign.MdPhone />
+                      </i>{property.agency.phone}
+                    </span>
+                  </>
                   }
                 </div>
 
@@ -111,7 +131,7 @@ const mode = isLoading ? "bg-blue-500" : "";
                   </Button>
                   {/* If like is true show buttons */}
                   {!liked ?
-                  <Button onClick={handleLike} className='py-2 border w-fit lg:flex items-center justify-between gap-2 leading-none rounded-lg font-semibold  '>
+                  <Button  onClick={handleLike} className='py-2 border w-fit lg:flex items-center justify-between gap-2 leading-none rounded-lg font-semibold  '>
                   <>
                     {(t('property.save'))}
                     {/* <MaterialDesign.MdCheck  /> */}
@@ -123,12 +143,9 @@ const mode = isLoading ? "bg-blue-500" : "";
                     <MaterialDesign.MdCheck color='#51cf96' />
                     {(t('property.saved'))}
                   </Button>
-
                   </>
                   }
                 </div>
-
-
               </div>
           </div>
           <div className='mt-10'>
@@ -142,55 +159,45 @@ const mode = isLoading ? "bg-blue-500" : "";
                       <span>
                         {property.type}
                       </span>
-
                       <span className='font-bold'>
                         {t('property.transaction type')}
                       </span>
-
                       <span>
                         {property.payment}
                       </span>
                       <span className='font-bold'>
                         {t('property.construction year')}
                       </span>
-
                       <span>
                         {property.year}
                       </span>
-
                       <span className='font-bold'>
                         {t('property.total rooms')}
                       </span>
                       <span>
                         {property.rooms}
                       </span>
-
                       <span className='font-bold'>
                         {t('property.bedrooms')}
                       </span>
-
                       <span>
                         {property.bedrooms}
                       </span>
                       <span className='font-bold'>
                         {t('property.bathrooms')}
                       </span>
-
                       <span>
                         {property.bathrooms}
                       </span>
-
                       <span className='font-bold'>
                         {t('property.floor')}
                       </span>
-
                       <span>
                         {property.floor}
                       </span>
                       <span className='font-bold'>
                         {t('property.area')}
                       </span>
-
                       <span>
                         {formatArea(property.area)}
                       </span>
@@ -204,14 +211,10 @@ const mode = isLoading ? "bg-blue-500" : "";
                 {property.description}
               </p>
             </div>
-
-
-
               <div className='w-full mt-20'>
                 <h3 className='text-2xl font-bold leading-7 text-gray-700 sm:text-3xl sm:truncate my-10'>
                   {t('property.contact owner')}
                 </h3>
-
                 <Form onSubmit={handleSubmit}>
                   <FormGroup
                   label={t('fields.email')}
@@ -224,6 +227,7 @@ const mode = isLoading ? "bg-blue-500" : "";
                   <FormGroup
                   label={t('fields.subject')}
                   name='subject'
+                  type='text'
                   placeholder={t('fields.subject')}
                   value={data.subject}
                   onChange={handleChange}

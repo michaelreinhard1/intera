@@ -126,7 +126,8 @@
         "title": "Agencies",
         "overview": {
             "title": "Agencies",
-            "create": "Create agency"
+            "create": "Create agency",
+            "no agencies": "No agencies"
         },
         "create": {
             "title": "Create agency"
@@ -237,7 +238,7 @@
         "remember me": "Remember me",
         "dont have an account": "Don't have an account?",
         "already have an account": "Already have an account?",
-        "you need to be logged in to see the full address": "You need to be logged in to see the full address",
+        "you need to be logged in to see the agency and the full address": "You need to be logged in to see the agency and the full address",
         "area": "Area",
         "owner": "Owner",
         "province": "Province",

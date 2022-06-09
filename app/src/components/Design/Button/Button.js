@@ -45,7 +45,7 @@ const Button = ({
 // PropTypes
 Button.propTypes = {
   className: PropTypes.string,
-  color: PropTypes.oneOf(["primary", "secondary", "danger"]).isRequired,
+  color: PropTypes.oneOf(["primary", "secondary", "danger"]),
   type: PropTypes.string,
   disabled: PropTypes.bool,
   href: PropTypes.string,

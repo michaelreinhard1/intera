@@ -168,6 +168,13 @@ export default class PropertyController {
         if (image) {
             req.body.image = image;
         }
+        const { body } = req;
+
+        if (body.agencyId) {
+            console.log(body.agencyId);
+
+            body.agency = await this.agencyService.findOne(body.agencyId);
+        }
         const property = await this.propertyService.create(req.body);
         return res.json(property);
     };

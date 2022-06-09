@@ -16,8 +16,6 @@ const AgentPropertiesOverviewScreen = () => {
     useTitle(t('properties.overview.title'));
     const { auth } = useAuthContext();
 
-    console.log(auth);
-
     const {  isLoading, data, error, invalidate } = useFetch(`${ApiRoutes.PropertiesByAgency}${auth.user.id}`);
 
     if (isLoading) {
@@ -40,6 +38,7 @@ const AgentPropertiesOverviewScreen = () => {
     }
     );
 
+
     return (
         <>
             <HeaderSpacer />
@@ -53,9 +52,9 @@ const AgentPropertiesOverviewScreen = () => {
                 {/* if no data */}
                 {dataForTable.length === 0 ?
                     <div className="flex justify-center items-center">
-                        <div className="text-center text-gray-900 text-xl">
-                            {t('properties.overview.no properties')}
-                        </div>
+                    <div className="text-center text-gray-900 text-xl">
+                        {t('properties.overview.no agencies')}
+                    </div>
                     </div>
                     :
                     <Table
