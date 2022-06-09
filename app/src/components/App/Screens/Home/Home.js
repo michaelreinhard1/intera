@@ -51,40 +51,40 @@ useTitle(t('home.title'));
                       <div className='gap-10 hover:scale-[1.01] transition-all hover:shadow-lg rounded border text-center text-slate-600 p-10 flex flex-col justify-between items-center'>
                         <div className='flex flex-col items-center'>
                           <h5 className='text-xl font-bold text-black mb-5'>
-                            {t('home.buy a home')}
+                            {t('home.cards.buy.title')}
                           </h5>
                           <p>
-                          We're here to help you find the right home for you
+                            {t('home.cards.buy.description')}
                           </p>
                         </div>
                         <Link to={HomeRoutes.Buy} className='text-blue-600 underline font-medium'>
-                            {t('home.buy')}
+                        {t('home.cards.buy.button')}
                         </Link>
                       </div>
                       <div className='gap-10 hover:scale-[1.01] transition-all hover:shadow-lg rounded border text-center text-slate-600 p-10 flex flex-col justify-between items-center'>
                         <div className='flex flex-col items-center'>
                           <h5 className='text-xl font-bold text-black mb-5'>
-                            {t('home.rent a home')}
+                          {t('home.cards.rent.title')}
                           </h5>
                           <p>
-                          We're here to help you find the right home for you
+                          {t('home.cards.rent.description')}
                           </p>
                         </div>
                         <Link to={HomeRoutes.Rent} className='text-blue-600 underline font-medium'>
-                            {t('home.rent')}
+                            {t('home.cards.rent.button')}
                         </Link>
                       </div>
                       <div className='gap-10 hover:scale-[1.01] transition-all hover:shadow-lg rounded border text-center text-slate-600 p-10 flex flex-col justify-between items-center'>
                         <div className='flex flex-col items-center'>
                           <h5 className='text-xl font-bold text-black mb-5'>
-                            {t('home.become an agent')}
+                          {t('home.cards.agent.title')}
                           </h5>
                           <p >
-                          We're here to help you find the right home for you
+                          {t('home.cards.agent.description')}
                           </p>
                         </div>
                         <Link to={HomeRoutes.Index} className='text-blue-600 underline font-medium'>
-                            {t('home.contact us')}
+                        {t('home.cards.agent.button')}
                         </Link>
                       </div>
                     </div>
