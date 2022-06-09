@@ -53,7 +53,7 @@ const AgentPropertiesOverviewScreen = () => {
                 {dataForTable.length === 0 ?
                     <div className="flex justify-center items-center">
                     <div className="text-center text-gray-900 text-xl">
-                        {t('properties.overview.no agencies')}
+                        {t('properties.overview.no properties')}
                     </div>
                     </div>
                     :
